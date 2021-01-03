@@ -163,6 +163,7 @@ export const useStore = create<State>(set => ({
                         : generateElementId()
 
                     let newProperty = {
+                        ...propertyService.factory(property),
                         ...property,
                         elementType: 'property',
                         id: propertyId,

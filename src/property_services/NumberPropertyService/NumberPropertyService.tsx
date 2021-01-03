@@ -1,30 +1,6 @@
-import { ChangeEvent } from 'react'
-import { PropertyService } from '../services_registry'
-import { Property, useStore } from '../state'
-import { Input } from '../components/ui'
-
-export type NumberPropertyOptions = {
-    name: string
-    defaultValue?: number
-    hasInput?: boolean
-    hasOutput?: boolean
-}
-
-export type NumberProperty = {
-    value: number
-}
-
-const NumberPropertyControl = ({ property }: { property: Property & NumberProperty }) => {
-    const { updateProperty } = useStore()
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        updateProperty(property.id, {
-            value: Number(event.target.value),
-        })
-    }
-
-    return <Input type="number" value={property.value} onChange={handleChange} />
-}
+import { PropertyService } from '../../services_registry'
+import { NumberPropertyOptions, NumberProperty } from './types'
+import { NumberPropertyControl } from './NumberPropertyControl'
 
 export const NumberPropertyService: PropertyService<
     'number',
@@ -38,13 +14,22 @@ export const NumberPropertyService: PropertyService<
         defaultValue = 0,
         hasInput = false,
         hasOutput = false,
+        options: partialOptions = {},
     }: NumberPropertyOptions) => {
+        const options = {
+            controlType: partialOptions.controlType || 'number',
+            min: partialOptions.min !== undefined ? partialOptions.min : undefined,
+            max: partialOptions.max !== undefined ? partialOptions.max : undefined,
+            step: partialOptions.step || 1,
+        }
+
         return {
             name,
             type: 'number',
             value: defaultValue,
             hasInput,
             hasOutput,
+            options,
         }
     },
     serialize: property => {

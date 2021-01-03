@@ -49,11 +49,23 @@ export const ChordNodeService: NodeService<'chord', ChordNodeData> = {
         {
             type: 'number',
             name: 'innerRadiusRatio',
-        },
+            options: {
+                controlType: 'range',
+                min: 0,
+                max: 1,
+                step: 0.01,
+            },
+        } as any,
         {
             type: 'number',
             name: 'innerRadiusOffset',
-        },
+            options: {
+                controlType: 'range',
+                min: 0,
+                max: 1,
+                step: 0.01,
+            },
+        } as any,
         {
             type: 'ref',
             name: 'theme',
