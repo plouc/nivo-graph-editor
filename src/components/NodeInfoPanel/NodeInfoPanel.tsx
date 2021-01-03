@@ -1,19 +1,19 @@
-import { createElement } from 'react'
-import { Fragment } from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import registry from '../../registry'
 import { ResolvedNode, useStore } from '../../state'
 import { NodeName } from './NodeName'
+import { PropertyItem } from './PropertyItem'
+import { useCallback } from 'react'
 
 export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
     const nodeService = registry.getNodeService(node.type)
     const { setSelectedNodeIds } = useStore()
     const value: any = nodeService.getValue(node, registry)
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setSelectedNodeIds([])
-    }
+    }, [setSelectedNodeIds])
 
     return (
         <div>
@@ -25,37 +25,9 @@ export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
                 </Close>
             </Header>
             <Properties>
-                {node.properties.map(property => {
-                    const propertyService = registry.getPropertyService(property.type)
-
-                    return (
-                        <Fragment key={property.name}>
-                            <PropertyName>{property.name}</PropertyName>
-                            <div>
-                                {property.input && (
-                                    <span
-                                        style={{
-                                            textDecoration: 'underline',
-                                            color: 'pink',
-                                        }}
-                                        onClick={() => {
-                                            if (property.input?.elementType === 'node') {
-                                                setSelectedNodeIds([property.input.id])
-                                            }
-                                        }}
-                                    >
-                                        {property.input.name}
-                                    </span>
-                                )}
-                                {!property.input && propertyService.control && (
-                                    <div>
-                                        {createElement(propertyService.control, { property })}
-                                    </div>
-                                )}
-                            </div>
-                        </Fragment>
-                    )
-                })}
+                {node.properties.map(property => (
+                    <PropertyItem property={property} />
+                ))}
             </Properties>
             {value !== undefined && (
                 <>
@@ -102,17 +74,8 @@ const Close = styled.span`
 `
 
 const Properties = styled.div`
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-column-gap: 12px;
-    grid-row-gap: 9px;
     font-size: 12px;
     padding: 9px 12px;
-`
-
-const PropertyName = styled.h4`
-    margin: 0;
-    padding: 0;
 `
 
 const NodeValueTitle = styled.h4`
