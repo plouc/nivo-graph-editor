@@ -8,6 +8,7 @@ import { PortWidget } from './PortWidget'
 const NodeContainer = styled.div<{
     isSelected: boolean
 }>`
+    pointer-events: all;
     user-select: none;
     background-color: transparent;
     color: pink;

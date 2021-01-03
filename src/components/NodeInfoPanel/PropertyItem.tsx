@@ -1,6 +1,7 @@
 import { createElement, useCallback } from 'react'
 import styled from 'styled-components'
-import { FaUnlink } from 'react-icons/fa'
+import { FaTimes } from 'react-icons/fa'
+
 import { ElementId, ResolvedProperty, useStore } from '../../state'
 import registry from '../../registry'
 
@@ -20,7 +21,7 @@ const Relation = ({
 
     const handleUnlink = useCallback(() => {
         unlink(element.id, ownId)
-    }, [ownId, element.id])
+    }, [unlink, ownId, element.id])
 
     return (
         <RelationContainer>
@@ -29,7 +30,7 @@ const Relation = ({
                 {element.name}
             </RelationName>
             <UnlinkIcon onClick={handleUnlink}>
-                <FaUnlink />
+                <FaTimes />
             </UnlinkIcon>
         </RelationContainer>
     )

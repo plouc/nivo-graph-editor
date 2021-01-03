@@ -1,11 +1,7 @@
 import styled from 'styled-components'
 
 export const AppHeader = () => {
-    return (
-        <Header>
-            <Title>nivo graph editor</Title>
-        </Header>
-    )
+    return <Header>{/*<Title>nivo graph editor</Title>*/}</Header>
 }
 
 const Header = styled.header`
@@ -20,6 +16,7 @@ const Header = styled.header`
     padding-left: 64px;
 `
 
+/*
 const Title = styled.h1`
     margin: 0;
     padding: 0;
@@ -27,3 +24,4 @@ const Title = styled.h1`
     color: pink;
     text-transform: uppercase;
 `
+*/
