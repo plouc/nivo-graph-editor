@@ -2,6 +2,7 @@
   "name": "nivo-graph-editor",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://plouc.github.io/nivo-graph-editor",
   "dependencies": {
     "@nivo/bump": "^0.67.0",
     "@nivo/chord": "^0.67.0",
@@ -23,6 +24,7 @@
     "@types/uuid": "^8.3.0",
     "browser-nativefs": "^0.12.0",
     "d3-shape": "^2.0.0",
+    "gh-pages": "^3.1.0",
     "lodash": "^4.17.20",
     "nanoid": "^3.1.20",
     "pako": "^2.0.2",
@@ -44,7 +46,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fmt": "prettier --color --write 'src/**/*.{js,ts,tsx,css,json}'"
+    "fmt": "prettier --color --write 'src/**/*.{js,ts,tsx,css,json}'",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
