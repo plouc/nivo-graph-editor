@@ -1,7 +1,56 @@
 import { useMemo } from 'react'
-import registry from '../registry'
-import { useStore } from '../state'
 import styled from 'styled-components'
+import registry from '../registry'
+import { useCreateNode } from '../state'
+import { NodeService } from '../services_registry'
+
+const NodeType = ({ type, onCreate }: { type: NodeService<string, any>; onCreate: () => void }) => {
+    const createNode = useCreateNode()
+
+    return (
+        <NodeTypeItem
+            onClick={() => {
+                createNode(type.type)
+                onCreate()
+            }}
+        >
+            <div>{type.type}</div>
+            {type.description && <NodeTypeDescription>{type.description}</NodeTypeDescription>}
+        </NodeTypeItem>
+    )
+}
+
+const Category = ({
+    category,
+    onCreate,
+}: {
+    category: {
+        category: string
+        types: NodeService<string, any>[]
+    }
+    onCreate: () => void
+}) => {
+    return (
+        <>
+            <CategoryTitle>{category.category}</CategoryTitle>
+            {category.types.map(type => (
+                <NodeType key={type.type} type={type} onCreate={onCreate} />
+            ))}
+        </>
+    )
+}
+
+export const NodeSelector = ({ onCreate }: { onCreate: () => void }) => {
+    const categories = useMemo(() => registry.getNodeServiceCategories(), [])
+
+    return (
+        <Container>
+            {categories.map(category => (
+                <Category key={category.category} category={category} onCreate={onCreate} />
+            ))}
+        </Container>
+    )
+}
 
 const Container = styled.div`
     max-height: 600px;
@@ -38,39 +87,3 @@ const NodeTypeDescription = styled.div`
     margin-top: 6px;
     color: #aaaaaa;
 `
-
-export const NodeSelector = ({ onCreate }: { onCreate: () => void }) => {
-    const categories = useMemo(() => registry.getNodeServiceCategories(), [])
-
-    const { createNode } = useStore()
-
-    return (
-        <Container>
-            {categories.map(category => {
-                return (
-                    <div key={category.category}>
-                        <CategoryTitle>{category.category}</CategoryTitle>
-                        {category.types.map(type => {
-                            return (
-                                <NodeTypeItem
-                                    key={type.type}
-                                    onClick={() => {
-                                        createNode(type.type)
-                                        onCreate()
-                                    }}
-                                >
-                                    <div>{type.type}</div>
-                                    {type.description && (
-                                        <NodeTypeDescription>
-                                            {type.description}
-                                        </NodeTypeDescription>
-                                    )}
-                                </NodeTypeItem>
-                            )
-                        })}
-                    </div>
-                )
-            })}
-        </Container>
-    )
-}

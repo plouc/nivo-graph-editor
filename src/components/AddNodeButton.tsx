@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import styled from 'styled-components'
+import { useState, memo } from 'react'
 import { MdLibraryAdd } from 'react-icons/md'
 import { Modal, ModalTitle } from './Modal'
 import { SidebarButton } from './SidebarButton'
 import { NodeSelector } from './NodeSelector'
 
-export const AddNodeButton = () => {
+export const AddNodeButton = memo(() => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -36,4 +35,4 @@ export const AddNodeButton = () => {
             )}
         </>
     )
-}
+})

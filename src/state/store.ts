@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import create from 'zustand'
+import shallow from 'zustand/shallow'
 import {
     Element,
     ElementId,
@@ -394,6 +395,32 @@ export const useStore = create<State>(set => ({
             }
         }),
 }))
+
+const loadGraphSelector = (state: State) => state.loadGraph
+export const useLoadGraph = () => useStore(loadGraphSelector)
+
+const createNodeSelector = (state: State) => state.createNode
+export const useCreateNode = () => useStore(createNodeSelector)
+
+const updateNodeSelector = (state: State) => state.updateNode
+export const useUpdateNode = () => useStore(updateNodeSelector)
+
+const unlinkSelector = (state: State) => state.unlink
+export const useUnlink = () => useStore(unlinkSelector)
+
+const setSelectedNodeIdsSelector = (state: State) => state.setSelectedNodeIds
+export const useSetSelectedNodeIds = () => useStore(setSelectedNodeIdsSelector)
+
+export const useLinkingActions = () =>
+    useStore(
+        state => ({
+            startLinking: state.startLinking,
+            updateLinking: state.updateLinking,
+            setLinkingPotentialPort: state.setLinkingPotentialPort,
+            resetLinkingPotentialPort: state.resetLinkingPotentialPort,
+        }),
+        shallow
+    )
 
 const serializeProperties = (properties: ResolvedProperty[]) => {
     const props: any = {}

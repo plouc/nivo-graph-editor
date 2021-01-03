@@ -5,16 +5,17 @@ import {
     useEffect,
     useRef,
     useState,
+    memo,
 } from 'react'
 import styled from 'styled-components'
 import { MdEdit } from 'react-icons/md'
-import { ResolvedNode, useStore } from '../../state'
+import { ElementId, useUpdateNode } from '../../state'
 import { useDocumentEventListener } from '../../utils/useDocumentEventListener'
 
-export const NodeName = ({ node }: { node: ResolvedNode }) => {
+export const NodeName = memo(({ id, name: currentName }: { id: ElementId; name: string }) => {
     const [isEditing, setIsEditing] = useState(false)
-    const [name, setName] = useState(node.name)
-    const { updateNode } = useStore()
+    const [name, setName] = useState(currentName)
+    const updateNode = useUpdateNode()
     const inputRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
@@ -24,9 +25,9 @@ export const NodeName = ({ node }: { node: ResolvedNode }) => {
     }, [isEditing, inputRef])
 
     useEffect(() => {
-        setName(node.name)
+        setName(currentName)
         setIsEditing(false)
-    }, [node.name, setName, setIsEditing])
+    }, [currentName, setName, setIsEditing])
 
     const handleChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +38,7 @@ export const NodeName = ({ node }: { node: ResolvedNode }) => {
 
     const handleEnter = (event: ReactKeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            updateNode(node.id, { name })
+            updateNode(id, { name })
             setIsEditing(false)
         }
     }
@@ -62,7 +63,7 @@ export const NodeName = ({ node }: { node: ResolvedNode }) => {
         >
             {!isEditing && (
                 <>
-                    <Name>{node.name}</Name>
+                    <Name>{currentName}</Name>
                     <Icon>
                         <MdEdit />
                     </Icon>
@@ -79,7 +80,7 @@ export const NodeName = ({ node }: { node: ResolvedNode }) => {
             )}
         </Container>
     )
-}
+})
 
 const Icon = styled.span`
     margin-left: 12px;

@@ -1,9 +1,49 @@
-import { createElement, useCallback, MouseEvent } from 'react'
+import { createElement, useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
 import { ResolvedNode, useStore } from '../state'
 import registry from '../registry'
 import { PropertiesWidget } from './PropertiesWidget'
 import { PortWidget } from './PortWidget'
+
+export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
+    const nodeService = registry.getNodeService(node.type)
+    const hasCustomWidget = 'widget' in nodeService
+    const { setSelectedNodeIds, startDrag } = useStore()
+
+    const handleStartDrag = useCallback(
+        (event: MouseEvent) => {
+            setSelectedNodeIds([node.id])
+            startDrag(node.id, [event.clientX, event.clientY])
+        },
+        [setSelectedNodeIds, node.id, startDrag]
+    )
+
+    return (
+        <NodeContainer
+            onMouseDown={handleStartDrag}
+            isSelected={node.isSelected}
+            style={{
+                top: node.y,
+                left: node.x,
+                width: node.width,
+            }}
+        >
+            <NodeHeader>
+                <span>{node.name}</span>
+                {nodeService.hasOutput && (
+                    <PortWidget
+                        type="source"
+                        elementId={node.id}
+                        x={node.x + node.width}
+                        y={node.y + 12}
+                    />
+                )}
+            </NodeHeader>
+            {!hasCustomWidget && <PropertiesWidget properties={node.properties} />}
+            {hasCustomWidget && createElement(nodeService.widget!, { node, registry })}
+        </NodeContainer>
+    )
+})
 
 const NodeContainer = styled.div<{
     isSelected: boolean
@@ -36,42 +76,3 @@ const NodeHeader = styled.header`
         text-overflow: ellipsis;
     }
 `
-
-export const NodeWidget = ({ node }: { node: ResolvedNode }) => {
-    const nodeService = registry.getNodeService(node.type)
-    const hasCustomWidget = 'widget' in nodeService
-    const { setSelectedNodeIds, startDrag } = useStore()
-
-    const handleStartDrag = useCallback(
-        (event: MouseEvent) => {
-            setSelectedNodeIds([node.id])
-            startDrag(node.id, [event.clientX, event.clientY])
-        },
-        [setSelectedNodeIds, node.id, startDrag]
-    )
-
-    return (
-        <NodeContainer
-            onMouseDown={handleStartDrag}
-            isSelected={node.isSelected}
-            style={{
-                top: node.y,
-                left: node.x,
-                width: node.width,
-            }}
-        >
-            <NodeHeader>
-                <span>{node.name}</span>
-                {nodeService.hasOutput && (
-                    <PortWidget
-                        type="source"
-                        elementId={node.id}
-                        position={[node.x + node.width, node.y + 12]}
-                    />
-                )}
-            </NodeHeader>
-            {!hasCustomWidget && <PropertiesWidget properties={node.properties} />}
-            {hasCustomWidget && createElement(nodeService.widget!, { node, registry })}
-        </NodeContainer>
-    )
-}

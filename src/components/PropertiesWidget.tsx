@@ -1,9 +1,9 @@
-import { createElement } from 'react'
+import { createElement, memo } from 'react'
 import { ResolvedProperty } from '../state'
 import registry from '../registry'
 import { PropertyWidget } from './PropertyWidget'
 
-export const PropertiesWidget = ({ properties }: { properties: ResolvedProperty[] }) => {
+export const PropertiesWidget = memo(({ properties }: { properties: ResolvedProperty[] }) => {
     return (
         <>
             {properties.map(property => {
@@ -18,4 +18,4 @@ export const PropertiesWidget = ({ properties }: { properties: ResolvedProperty[
             })}
         </>
     )
-}
+})

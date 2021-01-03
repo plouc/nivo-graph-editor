@@ -1,58 +1,64 @@
-import { useCallback, MouseEvent } from 'react'
+import { useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
-import { ElementId, useStore } from '../state'
+import { ElementId, useLinkingActions } from '../state'
 
 const CONTAINER_SIZE = 20
 const PORT_SIZE = 10
 
-export const PortWidget = ({
-    type,
-    elementId,
-    position,
-}: {
-    type: 'source' | 'target'
-    elementId: ElementId
-    position: [number, number]
-}) => {
-    const { startLinking, setLinkingPotentialPort, resetLinkingPotentialPort } = useStore()
+export const PortWidget = memo(
+    ({
+        type,
+        elementId,
+        x,
+        y,
+    }: {
+        type: 'source' | 'target'
+        elementId: ElementId
+        x: number
+        y: number
+    }) => {
+        const {
+            startLinking,
+            setLinkingPotentialPort,
+            resetLinkingPotentialPort,
+        } = useLinkingActions()
 
-    const [x, y] = position
+        const handleLinking = useCallback(
+            (event: MouseEvent) => {
+                event.stopPropagation()
 
-    const handleLinking = useCallback(
-        (event: MouseEvent) => {
-            event.stopPropagation()
+                startLinking({
+                    elementId,
+                    type,
+                    anchor: [x, y],
+                    initial: [event.clientX, event.clientY],
+                })
+            },
+            [startLinking, elementId, type, x, y]
+        )
 
-            startLinking({
-                elementId,
-                type,
-                anchor: [x, y],
-                initial: [event.clientX, event.clientY],
-            })
-        },
-        [startLinking, elementId, type, x, y]
-    )
+        const handleMouseEnter = useCallback(() => {
+            setLinkingPotentialPort(elementId, type)
+        }, [setLinkingPotentialPort, elementId, type])
 
-    const handleMouseEnter = useCallback(() => {
-        setLinkingPotentialPort(elementId, type)
-    }, [setLinkingPotentialPort, elementId, type])
+        const handleMouseLeave = useCallback(() => {
+            resetLinkingPotentialPort()
+        }, [resetLinkingPotentialPort])
 
-    const handleMouseLeave = useCallback(() => {
-        resetLinkingPotentialPort()
-    }, [resetLinkingPotentialPort])
-
-    return (
-        <Container
-            onMouseDown={handleLinking}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                left: type === 'target' ? 0 : '100%',
-            }}
-        >
-            <Port />
-        </Container>
-    )
-}
+        return (
+            <Container
+                onMouseDown={handleLinking}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    left: type === 'target' ? 0 : '100%',
+                }}
+            >
+                <Port />
+            </Container>
+        )
+    }
+)
 
 const Port = styled.div`
     pointer-events: all;

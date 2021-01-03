@@ -71,6 +71,7 @@ const Canvas = styled.div`
     width: calc(100% - 364px);
     height: calc(100% - 82px);
     background: #292929;
+    overflow: hidden;
 `
 
 const InfoPanel = styled.div`

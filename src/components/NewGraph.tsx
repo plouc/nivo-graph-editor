@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState, memo } from 'react'
 import styled from 'styled-components'
 import { MdNoteAdd } from 'react-icons/md'
-import { useStore } from '../state'
+import { useLoadGraph } from '../state'
 import { Modal, ModalTitle } from './Modal'
 import { SidebarButton } from './SidebarButton'
 
-export const NewGraph = () => {
+export const NewGraph = memo(() => {
     const [isOpen, setIsOpen] = useState(false)
-    const { loadGraph } = useStore()
+    const loadGraph = useLoadGraph()
 
     const handleNewGraph = useCallback(() => {
         loadGraph({ nodes: [], links: [] })
@@ -47,7 +47,7 @@ export const NewGraph = () => {
             )}
         </>
     )
-}
+})
 
 const ConfirmContainer = styled.div`
     padding: 16px;

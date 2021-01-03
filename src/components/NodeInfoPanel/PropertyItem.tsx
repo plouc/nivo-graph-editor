@@ -1,42 +1,49 @@
-import { createElement, useCallback } from 'react'
+import { createElement, useCallback, memo } from 'react'
 import styled from 'styled-components'
 import { FaTimes } from 'react-icons/fa'
-
-import { ElementId, ResolvedProperty, useStore } from '../../state'
+import { ElementId, ResolvedProperty, useSetSelectedNodeIds, useUnlink } from '../../state'
 import registry from '../../registry'
 
-const Relation = ({
-    ownId,
-    element,
-}: {
-    ownId: ElementId
-    element: Exclude<ResolvedProperty['input'], undefined>
-}) => {
-    const { setSelectedNodeIds, unlink } = useStore()
+const Relation = memo(
+    ({
+        ownId,
+        elementId,
+        nodeId,
+        name,
+        parentName,
+    }: {
+        ownId: ElementId
+        elementId: ElementId
+        nodeId: ElementId
+        name: string
+        parentName?: string
+    }) => {
+        const setSelectedNodeIds = useSetSelectedNodeIds()
+        const unlink = useUnlink()
 
-    const goToRelation = useCallback(() => {
-        const nodeId = element.elementType === 'node' ? element.id : element.node.id
-        setSelectedNodeIds([nodeId])
-    }, [setSelectedNodeIds, element])
+        const goToRelation = useCallback(() => {
+            setSelectedNodeIds([nodeId])
+        }, [setSelectedNodeIds, nodeId])
 
-    const handleUnlink = useCallback(() => {
-        unlink(element.id, ownId)
-    }, [unlink, ownId, element.id])
+        const handleUnlink = useCallback(() => {
+            unlink(elementId, ownId)
+        }, [unlink, ownId, elementId])
 
-    return (
-        <RelationContainer>
-            <RelationName onClick={goToRelation}>
-                {element.elementType === 'property' && <span>{element.node.name}.</span>}
-                {element.name}
-            </RelationName>
-            <UnlinkIcon onClick={handleUnlink}>
-                <FaTimes />
-            </UnlinkIcon>
-        </RelationContainer>
-    )
-}
+        return (
+            <RelationContainer>
+                <RelationName onClick={goToRelation}>
+                    {parentName && <span>{parentName}.</span>}
+                    {name}
+                </RelationName>
+                <UnlinkIcon onClick={handleUnlink}>
+                    <FaTimes />
+                </UnlinkIcon>
+            </RelationContainer>
+        )
+    }
+)
 
-export const PropertyItem = ({ property }: { property: ResolvedProperty }) => {
+export const PropertyItem = memo(({ property }: { property: ResolvedProperty }) => {
     const propertyService = registry.getPropertyService(property.type)
 
     const hasInput = property.input !== undefined
@@ -45,7 +52,23 @@ export const PropertyItem = ({ property }: { property: ResolvedProperty }) => {
         <Container>
             <PropertyHeader>
                 <PropertyName>{property.name}</PropertyName>
-                {hasInput && <Relation ownId={property.id} element={property.input!} />}
+                {hasInput && (
+                    <Relation
+                        ownId={property.id}
+                        elementId={property.input!.id}
+                        nodeId={
+                            property.input!.elementType === 'node'
+                                ? property.input!.id
+                                : (property.input! as any).node.id
+                        }
+                        name={property.input!.name}
+                        parentName={
+                            property.input!.elementType === 'property'
+                                ? (property.input! as any).node.name
+                                : undefined
+                        }
+                    />
+                )}
             </PropertyHeader>
             {!hasInput && propertyService.control && (
                 <ControlContainer>
@@ -54,7 +77,7 @@ export const PropertyItem = ({ property }: { property: ResolvedProperty }) => {
             )}
         </Container>
     )
-}
+})
 
 const Container = styled.div`
     padding: 9px 12px;

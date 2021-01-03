@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import registry from '../../registry'
@@ -6,7 +7,7 @@ import { NodeName } from './NodeName'
 import { PropertyItem } from './PropertyItem'
 import { useCallback } from 'react'
 
-export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
+export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
     const nodeService = registry.getNodeService(node.type)
     const { setSelectedNodeIds } = useStore()
     const value: any = nodeService.getValue(node, registry)
@@ -18,7 +19,7 @@ export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
     return (
         <div>
             <Header>
-                <NodeName node={node} />
+                <NodeName id={node.id} name={node.name} />
                 <Id>{node.type}</Id>
                 <Close onClick={handleClose}>
                     <MdClose />
@@ -40,7 +41,7 @@ export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
             )}
         </div>
     )
-}
+})
 
 const Header = styled.header`
     padding: 9px 12px;
