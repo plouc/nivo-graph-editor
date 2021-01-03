@@ -1,0 +1,67 @@
+{
+  "name": "nivo-graph-editor",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nivo/bump": "^0.67.0",
+    "@nivo/chord": "^0.67.0",
+    "@nivo/core": "^0.67.0",
+    "@nivo/line": "^0.67.0",
+    "@nivo/sankey": "^0.67.0",
+    "@nivo/scatterplot": "^0.67.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/d3-shape": "^2.0.0",
+    "@types/jest": "^26.0.19",
+    "@types/lodash": "^4.14.166",
+    "@types/nanoid": "^2.1.0",
+    "@types/node": "^14.14.16",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.7",
+    "@types/uuid": "^8.3.0",
+    "browser-nativefs": "^0.12.0",
+    "d3-shape": "^2.0.0",
+    "lodash": "^4.17.20",
+    "nanoid": "^3.1.20",
+    "pako": "^2.0.2",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-draggable": "^4.4.3",
+    "react-icons": "^4.1.0",
+    "react-scripts": "4.0.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.1.3",
+    "uuid": "^8.3.2",
+    "web-vitals": "^0.2.4",
+    "zustand": "^3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "fmt": "prettier --color --write 'src/**/*.{js,ts,tsx,css,json}'"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
