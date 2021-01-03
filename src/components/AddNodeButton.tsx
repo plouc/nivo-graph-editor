@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { MdLibraryAdd } from 'react-icons/md'
-import { Modal } from './Modal'
+import { Modal, ModalTitle } from './Modal'
 import { SidebarButton } from './SidebarButton'
 import { NodeSelector } from './NodeSelector'
 
@@ -24,9 +24,9 @@ export const AddNodeButton = () => {
                     }}
                     maxWidth={600}
                 >
-                    <Title>
+                    <ModalTitle>
                         <MdLibraryAdd /> Add new node
-                    </Title>
+                    </ModalTitle>
                     <NodeSelector
                         onCreate={() => {
                             setIsOpen(false)
@@ -37,17 +37,3 @@ export const AddNodeButton = () => {
         </>
     )
 }
-
-const Title = styled.h2`
-    margin: 0;
-    padding: 9px 12px;
-    border-bottom: 1px solid #555555;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-
-    svg {
-        color: pink;
-        margin-right: 12px;
-    }
-`

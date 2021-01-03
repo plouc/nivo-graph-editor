@@ -2,6 +2,26 @@ import { ReactNode, KeyboardEvent } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
+export const Modal = ({
+    children,
+    maxWidth,
+    onCloseRequest,
+}: {
+    children: ReactNode
+    maxWidth?: number
+    onCloseRequest(): void
+}) => {
+    const handleKeydown = (event: KeyboardEvent) => {}
+
+    return createPortal(
+        <Container role="dialog" aria-modal="true" onKeyDown={handleKeydown}>
+            <Background onClick={onCloseRequest} />
+            <Content maxWidth={maxWidth}>{children}</Content>
+        </Container>,
+        document.body
+    )
+}
+
 const Container = styled.div`
     position: fixed;
     top: 0;
@@ -40,22 +60,16 @@ const Content = styled.div<{
     box-shadow: 0 0 0 5px rgba(0, 0, 0, 1);
 `
 
-export const Modal = ({
-    children,
-    maxWidth,
-    onCloseRequest,
-}: {
-    children: ReactNode
-    maxWidth?: number
-    onCloseRequest(): void
-}) => {
-    const handleKeydown = (event: KeyboardEvent) => {}
+export const ModalTitle = styled.h2`
+    margin: 0;
+    padding: 9px 12px;
+    border-bottom: 1px solid #555555;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
 
-    return createPortal(
-        <Container role="dialog" aria-modal="true" onKeyDown={handleKeydown}>
-            <Background onClick={onCloseRequest} />
-            <Content maxWidth={maxWidth}>{children}</Content>
-        </Container>,
-        document.body
-    )
-}
+    svg {
+        color: pink;
+        margin-right: 12px;
+    }
+`

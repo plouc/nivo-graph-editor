@@ -47,14 +47,21 @@ export const PropertyItem = ({ property }: { property: ResolvedProperty }) => {
                 {hasInput && <Relation ownId={property.id} element={property.input!} />}
             </PropertyHeader>
             {!hasInput && propertyService.control && (
-                <div>{createElement(propertyService.control, { property })}</div>
+                <ControlContainer>
+                    {createElement(propertyService.control, { property })}
+                </ControlContainer>
             )}
         </Container>
     )
 }
 
 const Container = styled.div`
-    margin-bottom: 9px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #333333;
+
+    &:last-child {
+        border-bottom: none;
+    }
 `
 
 const PropertyHeader = styled.div`
@@ -109,4 +116,8 @@ const UnlinkIcon = styled.span`
     &:hover {
         background-color: #555555;
     }
+`
+
+const ControlContainer = styled.div`
+    margin-top: 6px;
 `

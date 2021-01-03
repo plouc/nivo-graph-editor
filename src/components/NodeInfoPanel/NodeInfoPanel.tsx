@@ -44,7 +44,7 @@ export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
 
 const Header = styled.header`
     padding: 9px 12px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #555555;
     position: relative;
 `
 
@@ -73,13 +73,10 @@ const Close = styled.span`
     }
 `
 
-const Properties = styled.div`
-    font-size: 12px;
-    padding: 9px 12px;
-`
+const Properties = styled.div``
 
 const NodeValueTitle = styled.h4`
-    border-top: 1px solid #333;
+    border-top: 1px solid #555555;
     padding: 6px 12px;
     margin: 0;
 `

@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react'
 import { PropertyService } from '../services_registry'
 import { Property, useStore } from '../state'
+import { Input } from '../components/ui'
 
 export type NumberPropertyOptions = {
     name: string
@@ -22,7 +23,7 @@ const NumberPropertyControl = ({ property }: { property: Property & NumberProper
         })
     }
 
-    return <input type="number" value={property.value} onChange={handleChange} />
+    return <Input type="number" value={property.value} onChange={handleChange} />
 }
 
 export const NumberPropertyService: PropertyService<

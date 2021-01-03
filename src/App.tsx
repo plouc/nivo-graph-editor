@@ -1,4 +1,4 @@
-import { useEffect, MouseEvent, useCallback } from 'react'
+import { MouseEvent, useCallback } from 'react'
 import styled from 'styled-components'
 import { useStore, useSelectedNodes, useGraph } from './state'
 import {
@@ -9,6 +9,7 @@ import {
     LinksLayer,
     NodeInfoPanel,
     Sidebar,
+    Welcome,
 } from './components'
 
 export const App = () => {
@@ -57,6 +58,7 @@ export const App = () => {
                 {selectedNodes.length === 1 && <NodeInfoPanel node={selectedNodes[0]} />}
             </InfoPanel>
             <AppFooter />
+            <Welcome />
         </>
     )
 }

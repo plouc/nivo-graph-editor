@@ -1,11 +1,13 @@
 {
+    "type": "nivo-graph",
+    "version": "beta",
     "nodes": [
         {
             "id": "6bb6718d-e185-4125-97b1-2ca8b0916495",
             "type": "area_bump",
             "name": "AreaBump chart",
-            "x": 225,
-            "y": 194,
+            "x": 226,
+            "y": 197,
             "width": 120,
             "data": {
                 "data": {
@@ -38,7 +40,7 @@
                 },
                 "blendMode": {
                     "id": "b9b934aa-8dcc-4fa5-a294-2431cde4407a",
-                    "data": "screen"
+                    "data": "exclusion"
                 },
                 "borderColor": {
                     "id": "e1ebe461-7088-4f3b-bb8a-35bbee62f545"
@@ -96,7 +98,7 @@
         {
             "id": "2487721a-3240-475c-9d5d-8714236ab996",
             "type": "margin",
-            "name": "margin",
+            "name": "Margin",
             "x": 460,
             "y": 26,
             "width": 120,
@@ -133,7 +135,7 @@
             "type": "series_xy",
             "name": "Charts data",
             "x": 201,
-            "y": 20,
+            "y": 36,
             "width": 120,
             "data": {
                 "serie_0": {
@@ -169,7 +171,7 @@
                         },
                         {
                             "x": 2,
-                            "y": 12
+                            "y": 95
                         },
                         {
                             "x": 3,
@@ -206,6 +208,10 @@
                         {
                             "x": 11,
                             "y": 9
+                        },
+                        {
+                            "x": 12,
+                            "y": 15
                         }
                     ]
                 }
@@ -252,11 +258,11 @@
                         },
                         {
                             "x": 6,
-                            "y": 6
+                            "y": 53
                         },
                         {
                             "x": 7,
-                            "y": 14
+                            "y": 31
                         },
                         {
                             "x": 8,
@@ -273,6 +279,10 @@
                         {
                             "x": 11,
                             "y": 35
+                        },
+                        {
+                            "x": 12,
+                            "y": 77
                         }
                     ]
                 }
@@ -281,7 +291,7 @@
         {
             "id": "bc45505e-be25-4b24-bd73-2d97450d8638",
             "type": "color_scheme",
-            "name": "color scheme",
+            "name": "Color scheme",
             "x": 687,
             "y": 28,
             "width": 120,
@@ -297,7 +307,7 @@
             "type": "axis",
             "name": "Horizontal axis",
             "x": 29,
-            "y": 489,
+            "y": 474,
             "width": 120,
             "data": {
                 "tickSize": {
@@ -353,7 +363,7 @@
         {
             "id": "18f15bb9-9c25-4b7f-b731-05272950f13e",
             "type": "canvas",
-            "name": "canvas",
+            "name": "AreaBump chart rendering",
             "x": 398,
             "y": 194,
             "width": 420,
@@ -374,7 +384,7 @@
         {
             "id": "91ed2034-8825-4e04-ba48-6514580ca8f7",
             "type": "canvas",
-            "name": "canvas",
+            "name": "Line chart rendering",
             "x": 400,
             "y": 480,
             "width": 420,
@@ -395,9 +405,9 @@
         {
             "id": "e922df03-6e18-42e2-8d97-c243d2a7e0f7",
             "type": "scatterplot",
-            "name": "scatterplot",
-            "x": 877,
-            "y": 198,
+            "name": "ScatterPlot chart",
+            "x": 872,
+            "y": 201,
             "width": 120,
             "data": {
                 "data": {
@@ -440,7 +450,7 @@
         {
             "id": "88ba0f9f-663d-461b-872f-8e7f127c4699",
             "type": "canvas",
-            "name": "canvas",
+            "name": "ScatterPlot chart rendering",
             "x": 1044,
             "y": 196,
             "width": 120,
@@ -460,11 +470,6 @@
         }
     ],
     "links": [
-        {
-            "id": "c0624383-2704-49cb-bdea-836bf5b83244",
-            "sourceId": "2487721a-3240-475c-9d5d-8714236ab996",
-            "targetId": "e0f692c1-a26a-4735-a853-1a86df706832"
-        },
         {
             "id": "bf9f0027-cfd5-4ddd-9261-2ac4f65f67e8",
             "sourceId": "2487721a-3240-475c-9d5d-8714236ab996",
@@ -511,19 +516,9 @@
             "targetId": "0292c0fe-415d-4718-b706-5409be6ceb3f"
         },
         {
-            "id": "3681c487-43d0-4626-ad68-4940e0e06b62",
-            "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
-            "targetId": "196c5610-18cf-46e9-ad21-4aed38af35c0"
-        },
-        {
             "id": "2e6134e5-6928-460e-bd43-873b499d8911",
             "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
             "targetId": "d2b0c24d-ed6c-4093-8cbc-60d335ef83c8"
-        },
-        {
-            "id": "b2645086-58b7-454b-aca8-eb7d39de0dae",
-            "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
-            "targetId": "625ea7fd-58b7-4370-a0c7-4124613cb48d"
         },
         {
             "id": "07a243cd-84d3-4c04-b19e-63ac31a09dcc",
@@ -534,11 +529,6 @@
             "id": "8e829f6a-bce6-46d5-aae7-7b34c7f6351d",
             "sourceId": "a389ed60-83bf-4bdd-8554-2dc51100d66c",
             "targetId": "b8aa7713-0386-4ab4-a5ce-deb3ca24ef01"
-        },
-        {
-            "id": "4ad231a4-53b9-42d1-8f2d-a54fcc83c757",
-            "sourceId": "a389ed60-83bf-4bdd-8554-2dc51100d66c",
-            "targetId": "7c90bfb6-13a3-4bbc-939e-b5bdd942356f"
         },
         {
             "id": "f7c6bc67-3ae5-4b7c-afd9-5a3e1b7e3363",
@@ -576,16 +566,6 @@
             "targetId": "09d7e1c3-7b80-4522-b950-87341b10980b"
         },
         {
-            "id": "5c50ca49-a8be-45b0-baee-1d6db2687d97",
-            "sourceId": "2487721a-3240-475c-9d5d-8714236ab996",
-            "targetId": "e342de44-45de-44d2-8073-251565adb50d"
-        },
-        {
-            "id": "9b42e65b-1046-44cf-817f-e76604f252f7",
-            "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
-            "targetId": "2365d753-3da8-4a40-9f9b-78c439c552ef"
-        },
-        {
             "id": "97fb9ca5-b6a0-47d3-8999-fb9e426d42f3",
             "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
             "targetId": "52ffb0ad-d3d2-4a1f-a25f-978994e3a42e"
@@ -616,14 +596,44 @@
             "targetId": "c87df343-3c52-4e74-bd38-5ab00d462b8f"
         },
         {
-            "id": "0f4caf79-6206-4838-9ca3-140329b6444a",
-            "sourceId": "a389ed60-83bf-4bdd-8554-2dc51100d66c",
-            "targetId": "1d156534-ee41-4b71-9635-0a3f676df99e"
-        },
-        {
             "id": "16068502-fff2-479b-8016-7638a0a3fe5c",
             "sourceId": "a389ed60-83bf-4bdd-8554-2dc51100d66c",
             "targetId": "ec704046-32b9-4e17-a2e5-8c8e7bc5d25c"
+        },
+        {
+            "id": "09b87bf3-e668-4e35-bc13-87883ba4e5fb",
+            "sourceId": "972b6a09-555d-4540-928f-e98aca594668",
+            "targetId": "9d44422c-fc07-4c1f-b767-48aa9a43c126"
+        },
+        {
+            "id": "18b67a76-4b8b-42af-9625-c9233c82a9b2",
+            "sourceId": "b676a305-016e-4616-ac65-2ebaf582d1a4",
+            "targetId": "ade476b6-76ca-4b64-a3a5-05a5da1c3a38"
+        },
+        {
+            "id": "95352b52-0263-4185-9638-92de5af77ffc",
+            "sourceId": "b676a305-016e-4616-ac65-2ebaf582d1a4",
+            "targetId": "71c979ba-fcdb-4f4a-a8db-38d2e313ed82"
+        },
+        {
+            "id": "5501cd87-bb7e-4f8a-9f55-d978662ff7b2",
+            "sourceId": "972b6a09-555d-4540-928f-e98aca594668",
+            "targetId": "f8713b2e-7ac4-455f-9a21-6af6936c1001"
+        },
+        {
+            "id": "f31b7377-af7d-433f-8e9f-b523f5c1e4c7",
+            "sourceId": "2487721a-3240-475c-9d5d-8714236ab996",
+            "targetId": "e0f692c1-a26a-4735-a853-1a86df706832"
+        },
+        {
+            "id": "c86d4b38-fb84-4467-a1c5-40475e68e812",
+            "sourceId": "2487721a-3240-475c-9d5d-8714236ab996",
+            "targetId": "e342de44-45de-44d2-8073-251565adb50d"
+        },
+        {
+            "id": "52e8a1c6-eca3-4600-bb03-5d84244609b3",
+            "sourceId": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
+            "targetId": "196c5610-18cf-46e9-ad21-4aed38af35c0"
         }
     ]
 }

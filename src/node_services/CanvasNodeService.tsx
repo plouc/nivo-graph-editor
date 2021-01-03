@@ -21,6 +21,7 @@ const CanvasNodeWidget = ({
                 width: props.width,
                 height: props.height,
                 backgroundColor: '#000000',
+                overflow: 'hidden',
             }}
         >
             {props.content}
@@ -64,5 +65,5 @@ export const CanvasNodeService: NodeService<'canvas', CanvasNodeData> = {
         }
     },
     getValue: () => ({}),
-    // widget: CanvasNodeWidget,
+    widget: CanvasNodeWidget,
 }

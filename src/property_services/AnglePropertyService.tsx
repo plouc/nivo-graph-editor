@@ -1,5 +1,6 @@
-import { PropertyService } from '../services_registry'
 import { ChangeEvent } from 'react'
+import { PropertyService } from '../services_registry'
+import { Input } from '../components/ui'
 
 export type AnglePropertyOptions = {
     name: string
@@ -51,6 +52,6 @@ export const AnglePropertyService: PropertyService<
             console.log(event.target.value)
         }
 
-        return <input type="number" value={property.value} onChange={handleChange} />
+        return <Input type="number" value={property.value} onChange={handleChange} />
     },
 }

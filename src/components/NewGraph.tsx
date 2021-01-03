@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { MdNoteAdd } from 'react-icons/md'
 import { useStore } from '../state'
-import { Modal } from './Modal'
+import { Modal, ModalTitle } from './Modal'
 import { SidebarButton } from './SidebarButton'
 
 export const NewGraph = () => {
@@ -30,9 +30,9 @@ export const NewGraph = () => {
                     }}
                     maxWidth={300}
                 >
-                    <Title>
+                    <ModalTitle>
                         <MdNoteAdd /> Create new graph?
-                    </Title>
+                    </ModalTitle>
                     <ConfirmContainer>
                         <Button onClick={handleNewGraph}>yes</Button>
                         <Button
@@ -48,20 +48,6 @@ export const NewGraph = () => {
         </>
     )
 }
-
-const Title = styled.h2`
-    margin: 0;
-    padding: 9px 12px;
-    border-bottom: 1px solid #555555;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-
-    svg {
-        color: pink;
-        margin-right: 12px;
-    }
-`
 
 const ConfirmContainer = styled.div`
     padding: 16px;

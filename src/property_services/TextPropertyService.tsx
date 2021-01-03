@@ -1,6 +1,7 @@
 import { PropertyService } from '../services_registry'
 import { ChangeEvent } from 'react'
 import { Property, useStore } from '../state'
+import { Input } from '../components/ui'
 
 export type TextPropertyOptions = {
     name: string
@@ -22,7 +23,7 @@ const TextPropertyControl = ({ property }: { property: Property & TextProperty }
         })
     }
 
-    return <input type="text" value={property.value} onChange={handleChange} />
+    return <Input type="text" value={property.value} onChange={handleChange} />
 }
 
 export const TextPropertyService: PropertyService<

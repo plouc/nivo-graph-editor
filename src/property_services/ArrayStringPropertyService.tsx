@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FiPlus } from 'react-icons/fi'
 import { PropertyService } from '../services_registry'
 import { Property, useStore } from '../state'
+import { Input } from '../components/ui'
 
 export type ArrayStringPropertyOptions = {
     name: string
@@ -60,7 +61,7 @@ const ArrayStringPropertyControl = ({ property }: { property: Property & ArraySt
         <ControlContainer>
             {property.value.map((item, index) => {
                 return (
-                    <input
+                    <Input
                         key={index}
                         type="text"
                         value={item}
