@@ -1,15 +1,6 @@
 import styled from 'styled-components'
 import { useStore } from '../state'
 
-const Container = styled.footer`
-    position: fixed;
-    left: 64px;
-    bottom: 0;
-    width: calc(100% - 380px);
-    height: 36px;
-    background-color: #111111;
-`
-
 export const AppFooter = () => {
     const { linking } = useStore()
 
@@ -25,3 +16,12 @@ export const AppFooter = () => {
         </Container>
     )
 }
+
+const Container = styled.footer`
+    position: fixed;
+    left: 64px;
+    bottom: 0;
+    width: calc(100% - 364px);
+    height: 36px;
+    background-color: #222222;
+`
