@@ -4,6 +4,7 @@ export const NivoThemeNodeService: NodeService<'nivo_theme', {}> = {
     type: 'nivo_theme',
     category: 'theming',
     description: `A theme object to be used with nivo charts.`,
+    hasOutput: true,
     properties: [],
     factory: () => {
         return {}

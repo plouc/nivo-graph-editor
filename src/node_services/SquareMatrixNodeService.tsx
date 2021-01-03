@@ -7,6 +7,7 @@ export interface SquareMatrixNodeData {
 export const SquareMatrixNodeService: NodeService<'square_matrix', SquareMatrixNodeData> = {
     type: 'square_matrix',
     category: 'data',
+    hasOutput: true,
     properties: [
         {
             type: 'matrix',

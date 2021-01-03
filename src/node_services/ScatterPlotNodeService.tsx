@@ -18,6 +18,7 @@ export const ScatterPlotNodeService: NodeService<'scatterplot', ScatterPlotNodeD
     type: 'scatterplot',
     category: 'charts',
     description: `A ScatterPlot chart from @nivo/scatterplot package.`,
+    hasOutput: true,
     properties: [
         {
             type: 'ref',

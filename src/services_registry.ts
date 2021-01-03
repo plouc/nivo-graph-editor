@@ -5,6 +5,7 @@ export interface NodeService<Type extends string, Data> {
     type: Type
     category: string
     description?: string
+    hasOutput: boolean
     properties: CreateProperty[]
     factory: (data?: Partial<Data>) => Data
     getValue: (node: ResolvedNode, registry: ServiceRegistry) => any

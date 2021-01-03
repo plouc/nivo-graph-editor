@@ -11,6 +11,7 @@ export const MarginNodeService: NodeService<'margin', MarginNodeData> = {
     type: 'margin',
     category: 'dimensions',
     description: `Top/right/bottom/left margins for charts.`,
+    hasOutput: true,
     properties: [
         {
             type: 'number',

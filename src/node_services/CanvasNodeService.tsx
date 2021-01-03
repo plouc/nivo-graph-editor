@@ -38,6 +38,7 @@ export const CanvasNodeService: NodeService<'canvas', CanvasNodeData> = {
     type: 'canvas',
     category: 'render',
     description: `A canvas to render a React node.`,
+    hasOutput: false,
     properties: [
         {
             type: 'ref',
@@ -63,5 +64,5 @@ export const CanvasNodeService: NodeService<'canvas', CanvasNodeData> = {
         }
     },
     getValue: () => ({}),
-    widget: CanvasNodeWidget,
+    // widget: CanvasNodeWidget,
 }

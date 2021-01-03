@@ -12,6 +12,7 @@ export interface SerieXYNodeData {
 export const SerieXYNodeService: NodeService<'serie_xy', SerieXYNodeData> = {
     type: 'serie_xy',
     category: 'data',
+    hasOutput: true,
     properties: [
         {
             type: 'text',

@@ -7,6 +7,7 @@ export interface BlendModeNodeData {
 export const BlendModeNodeService: NodeService<'blend_mode', BlendModeNodeData> = {
     type: 'blend_mode',
     category: 'colors',
+    hasOutput: true,
     properties: [
         {
             type: 'blend_mode',

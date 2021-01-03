@@ -17,6 +17,7 @@ export const ChordNodeService: NodeService<'chord', ChordNodeData> = {
     type: 'chord',
     category: 'charts',
     description: `An Chord diagram from @nivo/chord package.`,
+    hasOutput: true,
     properties: [
         {
             type: 'ref',

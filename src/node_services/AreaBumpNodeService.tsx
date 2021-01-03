@@ -19,6 +19,7 @@ export const AreaBumpNodeService: NodeService<'area_bump', AreaBumpNodeData> = {
     type: 'area_bump',
     category: 'charts',
     description: `An AreaBump chart from @nivo/bump package.`,
+    hasOutput: true,
     properties: [
         {
             type: 'ref',

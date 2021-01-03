@@ -61,11 +61,13 @@ export const NodeWidget = ({ node }: { node: ResolvedNode }) => {
         >
             <NodeHeader>
                 <span>{node.name}</span>
-                <PortWidget
-                    type="source"
-                    elementId={node.id}
-                    position={[node.x + node.width, node.y + 12]}
-                />
+                {nodeService.hasOutput && (
+                    <PortWidget
+                        type="source"
+                        elementId={node.id}
+                        position={[node.x + node.width, node.y + 12]}
+                    />
+                )}
             </NodeHeader>
             {!hasCustomWidget && <PropertiesWidget properties={node.properties} />}
             {hasCustomWidget && createElement(nodeService.widget!, { node, registry })}

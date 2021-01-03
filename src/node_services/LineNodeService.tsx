@@ -17,6 +17,7 @@ export const LineNodeService: NodeService<'line', LineNodeData> = {
     type: 'line',
     category: 'charts',
     description: `A Line chart from @nivo/line package.`,
+    hasOutput: true,
     properties: [
         {
             type: 'ref',

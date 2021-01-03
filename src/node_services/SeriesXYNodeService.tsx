@@ -7,6 +7,7 @@ const SeriesXYNodeWidget = () => {
 export const SeriesXYNodeService: NodeService<'series_xy', any> = {
     type: 'series_xy',
     category: 'data',
+    hasOutput: true,
     properties: [
         {
             type: 'ref',

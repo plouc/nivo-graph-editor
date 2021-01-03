@@ -13,6 +13,7 @@ export const AxisNodeService: NodeService<'axis', AxisNodeData> = {
     type: 'axis',
     category: 'axis_grid',
     description: `X or Y axis to be used in various chart types.`,
+    hasOutput: true,
     properties: [
         {
             type: 'number',

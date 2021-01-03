@@ -30,6 +30,7 @@ export const ColorSchemeNodeService: NodeService<'color_scheme', ColorSchemeNode
     type: 'color_scheme',
     category: 'colors',
     description: `A predefined color scheme to be used with nivo charts.`,
+    hasOutput: true,
     properties: [
         {
             type: 'choices',
