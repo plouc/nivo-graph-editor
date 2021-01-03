@@ -26,7 +26,7 @@ export const NodeInfoPanel = ({ node }: { node: ResolvedNode }) => {
             </Header>
             <Properties>
                 {node.properties.map(property => (
-                    <PropertyItem property={property} />
+                    <PropertyItem key={property.id} property={property} />
                 ))}
             </Properties>
             {value !== undefined && (

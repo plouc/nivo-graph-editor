@@ -1,11 +1,11 @@
 import { NodeService } from '../services_registry'
 
-export interface SquareMatrixNodeData {
+export interface MatrixNodeData {
     data: number[][]
 }
 
-export const SquareMatrixNodeService: NodeService<'square_matrix', SquareMatrixNodeData> = {
-    type: 'square_matrix',
+export const MatrixNodeService: NodeService<'matrix', MatrixNodeData> = {
+    type: 'matrix',
     category: 'data',
     hasOutput: true,
     properties: [

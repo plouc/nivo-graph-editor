@@ -6,8 +6,8 @@
             "id": "0c33f126-5e56-482e-aa21-e1c1d4046875",
             "type": "chord",
             "name": "Chord diagram",
-            "x": 410,
-            "y": 302,
+            "x": 304,
+            "y": 226,
             "width": 120,
             "data": {
                 "matrix": {
@@ -15,15 +15,15 @@
                 },
                 "keys": {
                     "id": "4b685490-ae10-490d-b962-0c5c92dc4f04",
-                    "data": ["John", "Maeva", "Raoul", "Marcel", "Jane"]
+                    "data": ["John", "Maeva", "Raoul", "Marcel", "Jane", "Lucien", "Lyu"]
                 },
                 "width": {
                     "id": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
-                    "data": 400
+                    "data": 360
                 },
                 "height": {
                     "id": "8537cef6-b305-43ad-a817-095f9269d777",
-                    "data": 400
+                    "data": 360
                 },
                 "margin": {
                     "id": "0b4a8dba-d048-4db7-ad78-ef88fa25c39d"
@@ -46,20 +46,22 @@
         },
         {
             "id": "25429862-babf-454d-aa19-289efa0a6c28",
-            "type": "square_matrix",
-            "name": "Chord matrix 2D",
+            "type": "matrix",
+            "name": "Chord matrix",
             "x": 91,
-            "y": 151,
+            "y": 134,
             "width": 120,
             "data": {
                 "matrix": {
                     "id": "26402676-dcfa-4f46-bcdf-4c7cb088487b",
                     "data": [
-                        [47, 11, 14, 12, 16],
-                        [4, 15, 18, 9, 12],
-                        [15, 13, 5, 20, 17],
-                        [53, 40, 42, 28, 23],
-                        [45, 34, 36, 12, 86]
+                        [47, 11, 15, 12, 16, 11, 54],
+                        [76, 15, 18, 9, 12, 62, 86],
+                        [47, 13, 112, 20, 17, 6, 0],
+                        [53, 40, 42, 28, 23, 8, 17],
+                        [45, 34, 36, 12, 86, 1, 0],
+                        [11, 44, 29, 15, 20, 5, 18],
+                        [39, 24, 24, 31, 56, 44, 22]
                     ]
                 }
             }
@@ -109,7 +111,7 @@
             "data": {
                 "scheme": {
                     "id": "e74b9dd1-ec35-4ac4-bb09-c616d6abe2e0",
-                    "data": "nivo"
+                    "data": "set2"
                 }
             }
         },
@@ -117,8 +119,8 @@
             "id": "7413fc14-80c3-4c07-9ee0-ee46e66fceec",
             "type": "canvas",
             "name": "Chord diagram preview",
-            "x": 705,
-            "y": 183,
+            "x": 522,
+            "y": 226,
             "width": 120,
             "data": {
                 "content": {
@@ -151,19 +153,9 @@
     ],
     "links": [
         {
-            "id": "7f3b2c54-92f6-4369-bc5f-424327ef3f4d",
-            "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
-            "targetId": "77c75f26-1f41-4333-973e-c6b38d2ef2a0"
-        },
-        {
             "id": "84b49c04-2c84-4c5e-bcd1-c588ef95bc45",
             "sourceId": "6ca9cc54-8b38-4499-bc4f-5225c0e8d160",
             "targetId": "8bccb5a4-be03-4434-b270-a92e32371905"
-        },
-        {
-            "id": "e84eb6d1-5a88-4fec-8311-85783ca66cc6",
-            "sourceId": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
-            "targetId": "0b4a8dba-d048-4db7-ad78-ef88fa25c39d"
         },
         {
             "id": "cd7c831c-799a-404f-8927-5783c7a07399",
@@ -184,6 +176,16 @@
             "id": "e6c69272-4d35-4ce0-a042-c26f357c03ee",
             "sourceId": "8537cef6-b305-43ad-a817-095f9269d777",
             "targetId": "b09a8c5f-86f8-4dcb-bcff-6c3b071fc16e"
+        },
+        {
+            "id": "e3cdca0e-968e-467e-b034-606fc3a23de2",
+            "sourceId": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
+            "targetId": "0b4a8dba-d048-4db7-ad78-ef88fa25c39d"
+        },
+        {
+            "id": "02100773-b440-455f-a516-901a5714de29",
+            "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
+            "targetId": "77c75f26-1f41-4333-973e-c6b38d2ef2a0"
         }
     ]
 }

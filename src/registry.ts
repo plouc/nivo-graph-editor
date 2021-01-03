@@ -8,11 +8,11 @@ import {
     ColorSchemeNodeService,
     LineNodeService,
     MarginNodeService,
+    MatrixNodeService,
     NivoThemeNodeService,
     ScatterPlotNodeService,
     SerieXYNodeService,
     SeriesXYNodeService,
-    SquareMatrixNodeService,
 } from './node_services'
 import {
     AnglePropertyService,
@@ -37,11 +37,11 @@ servicesRegistry
     .registerNodeService(ColorSchemeNodeService)
     .registerNodeService(LineNodeService)
     .registerNodeService(MarginNodeService)
+    .registerNodeService(MatrixNodeService)
     .registerNodeService(NivoThemeNodeService)
     .registerNodeService(ScatterPlotNodeService)
     .registerNodeService(SerieXYNodeService)
     .registerNodeService(SeriesXYNodeService)
-    .registerNodeService(SquareMatrixNodeService)
 
 servicesRegistry
     .registerPropertyService(AnglePropertyService)
