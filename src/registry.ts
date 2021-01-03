@@ -20,6 +20,7 @@ import {
     ArrayXYPropertyService,
     BlendModePropertyService,
     ChoicesPropertyService,
+    CustomPropertyService,
     MatrixPropertyService,
     NumberPropertyService,
     RefPropertyService,
@@ -49,6 +50,7 @@ servicesRegistry
     .registerPropertyService(ArrayXYPropertyService)
     .registerPropertyService(BlendModePropertyService)
     .registerPropertyService(ChoicesPropertyService)
+    .registerPropertyService(CustomPropertyService)
     .registerPropertyService(MatrixPropertyService)
     .registerPropertyService(NumberPropertyService)
     .registerPropertyService(RefPropertyService)

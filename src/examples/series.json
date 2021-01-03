@@ -6,8 +6,8 @@
             "id": "6bb6718d-e185-4125-97b1-2ca8b0916495",
             "type": "area_bump",
             "name": "AreaBump chart",
-            "x": 226,
-            "y": 197,
+            "x": 227,
+            "y": 198,
             "width": 120,
             "data": {
                 "data": {
@@ -99,8 +99,8 @@
             "id": "2487721a-3240-475c-9d5d-8714236ab996",
             "type": "margin",
             "name": "Margin",
-            "x": 460,
-            "y": 26,
+            "x": 29,
+            "y": 261,
             "width": 120,
             "data": {
                 "top": {
@@ -125,8 +125,8 @@
             "id": "ddd2c4a3-69a4-4978-b469-1b77dd931b90",
             "type": "nivo_theme",
             "name": "Theme",
-            "x": 850,
-            "y": 30,
+            "x": 538,
+            "y": 32,
             "width": 120,
             "data": {}
         },
@@ -364,8 +364,8 @@
             "id": "18f15bb9-9c25-4b7f-b731-05272950f13e",
             "type": "canvas",
             "name": "AreaBump chart rendering",
-            "x": 398,
-            "y": 194,
+            "x": 401,
+            "y": 138,
             "width": 420,
             "data": {
                 "content": {
@@ -385,7 +385,7 @@
             "id": "91ed2034-8825-4e04-ba48-6514580ca8f7",
             "type": "canvas",
             "name": "Line chart rendering",
-            "x": 400,
+            "x": 403,
             "y": 480,
             "width": 420,
             "data": {
@@ -406,8 +406,8 @@
             "id": "e922df03-6e18-42e2-8d97-c243d2a7e0f7",
             "type": "scatterplot",
             "name": "ScatterPlot chart",
-            "x": 872,
-            "y": 201,
+            "x": 894,
+            "y": 222,
             "width": 120,
             "data": {
                 "data": {
@@ -451,8 +451,8 @@
             "id": "88ba0f9f-663d-461b-872f-8e7f127c4699",
             "type": "canvas",
             "name": "ScatterPlot chart rendering",
-            "x": 1044,
-            "y": 196,
+            "x": 1057,
+            "y": 145,
             "width": 120,
             "data": {
                 "content": {

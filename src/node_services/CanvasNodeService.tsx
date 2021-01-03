@@ -1,5 +1,6 @@
 import { ResolvedNode } from '../state'
 import { NodeService, ServiceRegistry } from '../services_registry'
+import { PropertiesWidget } from '../components/PropertiesWidget'
 
 const CanvasNodeWidget = ({
     node,
@@ -16,16 +17,19 @@ const CanvasNodeWidget = ({
     })
 
     return (
-        <div
-            style={{
-                width: props.width,
-                height: props.height,
-                backgroundColor: '#000000',
-                overflow: 'hidden',
-            }}
-        >
-            {props.content}
-        </div>
+        <>
+            <PropertiesWidget properties={node.properties} />
+            <div
+                style={{
+                    width: props.width,
+                    height: props.height,
+                    backgroundColor: '#000000',
+                    overflow: 'hidden',
+                }}
+            >
+                {props.content}
+            </div>
+        </>
     )
 }
 

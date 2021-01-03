@@ -6,8 +6,8 @@
             "id": "0c33f126-5e56-482e-aa21-e1c1d4046875",
             "type": "chord",
             "name": "Chord diagram",
-            "x": 304,
-            "y": 226,
+            "x": 307,
+            "y": 175,
             "width": 120,
             "data": {
                 "matrix": {
@@ -119,8 +119,8 @@
             "id": "7413fc14-80c3-4c07-9ee0-ee46e66fceec",
             "type": "canvas",
             "name": "Chord diagram preview",
-            "x": 522,
-            "y": 226,
+            "x": 534,
+            "y": 128,
             "width": 120,
             "data": {
                 "content": {
