@@ -9,35 +9,36 @@ export interface AxisNodeData {
     legendOffset: number
 }
 
-export const AxisNodeService: NodeService<'axis', AxisNodeData> = {
-    type: 'axis',
+export const AxisNodeService: NodeService<'node:axis', AxisNodeData> = {
+    type: 'node:axis',
     category: 'axis_grid',
     description: `X or Y axis to be used in various chart types.`,
     hasOutput: true,
     properties: [
         {
-            type: 'number',
+            type: 'property:number',
             name: 'tickSize',
-            hasInput: true,
+            accepts: ['property:number'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'tickPadding',
-            hasInput: true,
+            accepts: ['property:number'],
         },
         {
-            type: 'angle',
+            type: 'property:angle',
             name: 'tickRotation',
-            hasInput: true,
+            accepts: ['property:angle'],
         },
         {
-            type: 'text',
+            type: 'property:text',
             name: 'legend',
+            accepts: ['property:text'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'legendOffset',
-            hasInput: true,
+            accepts: ['property:number'],
         },
     ],
     factory: (data = {}) => {

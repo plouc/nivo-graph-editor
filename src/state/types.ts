@@ -3,13 +3,13 @@ export type ElementId = string
 export interface CreateProperty {
     type: string
     name: string
-    hasInput?: boolean
+    accepts?: string[]
     hasOutput?: boolean
 }
 
 export interface Property extends CreateProperty {
     name: string
-    hasInput: boolean
+    accepts: string[]
     hasOutput: boolean
     id: ElementId
     elementType: 'property'
@@ -98,7 +98,7 @@ export type State = {
     //
     // DRAGGING
     //
-    drag: {
+    dragging: {
         isDragging: boolean
         elementId: ElementId | null
         initial: [number, number]
@@ -113,6 +113,8 @@ export type State = {
     linking: {
         isLinking: boolean
         elementId?: ElementId
+        elementType?: string
+        accepts: string[]
         potentialId?: ElementId
         type: 'source' | 'target'
         anchor: [number, number]

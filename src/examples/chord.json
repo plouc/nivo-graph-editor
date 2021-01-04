@@ -4,10 +4,10 @@
     "nodes": [
         {
             "id": "0c33f126-5e56-482e-aa21-e1c1d4046875",
-            "type": "chord",
+            "type": "node:chord",
             "name": "Chord diagram",
-            "x": 307,
-            "y": 175,
+            "x": 216,
+            "y": 45,
             "width": 120,
             "data": {
                 "matrix": {
@@ -46,10 +46,10 @@
         },
         {
             "id": "25429862-babf-454d-aa19-289efa0a6c28",
-            "type": "matrix",
+            "type": "node:matrix",
             "name": "Chord matrix",
-            "x": 91,
-            "y": 134,
+            "x": 23,
+            "y": 15,
             "width": 120,
             "data": {
                 "matrix": {
@@ -68,24 +68,24 @@
         },
         {
             "id": "6ca9cc54-8b38-4499-bc4f-5225c0e8d160",
-            "type": "nivo_theme",
+            "type": "node:nivo_theme",
             "name": "Chart theme",
-            "x": 84,
-            "y": 361,
+            "x": 21,
+            "y": 197,
             "width": 120,
             "data": {}
         },
         {
             "id": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
-            "type": "margin",
+            "type": "node:margin",
             "name": "Margin",
-            "x": 87,
-            "y": 214,
+            "x": 23,
+            "y": 77,
             "width": 120,
             "data": {
                 "top": {
                     "id": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
-                    "data": 30
+                    "data": 40
                 },
                 "right": {
                     "id": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb",
@@ -103,10 +103,10 @@
         },
         {
             "id": "52906eeb-9b69-48bc-a424-1f81c714a88f",
-            "type": "color_scheme",
+            "type": "node:color_scheme",
             "name": "Color scheme",
-            "x": 83,
-            "y": 423,
+            "x": 20,
+            "y": 238,
             "width": 120,
             "data": {
                 "scheme": {
@@ -117,10 +117,10 @@
         },
         {
             "id": "7413fc14-80c3-4c07-9ee0-ee46e66fceec",
-            "type": "canvas",
+            "type": "node:canvas",
             "name": "Chord diagram preview",
-            "x": 534,
-            "y": 128,
+            "x": 415,
+            "y": 47,
             "width": 120,
             "data": {
                 "content": {
@@ -138,10 +138,10 @@
         },
         {
             "id": "eeac5692-c5db-47e5-a32b-4502dae1d897",
-            "type": "blend_mode",
+            "type": "node:blend_mode",
             "name": "Blend mode",
-            "x": 77,
-            "y": 521,
+            "x": 21,
+            "y": 301,
             "width": 120,
             "data": {
                 "blendMode": {
@@ -186,6 +186,26 @@
             "id": "02100773-b440-455f-a516-901a5714de29",
             "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
             "targetId": "77c75f26-1f41-4333-973e-c6b38d2ef2a0"
+        },
+        {
+            "id": "f9fd568f-9963-449b-86be-0957e933ce38",
+            "sourceId": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
+            "targetId": "8537cef6-b305-43ad-a817-095f9269d777"
+        },
+        {
+            "id": "d42c7fc1-6164-41a7-8a28-73cffa336c13",
+            "sourceId": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
+            "targetId": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb"
+        },
+        {
+            "id": "cc7b83fe-16dd-46ff-ab6a-9c3a8d4dc8a0",
+            "sourceId": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb",
+            "targetId": "68a558d7-88ca-4ad4-b348-eed02b709b33"
+        },
+        {
+            "id": "3bb9bd85-604f-4435-b03a-cbb31b2db539",
+            "sourceId": "68a558d7-88ca-4ad4-b348-eed02b709b33",
+            "targetId": "4b03f5ff-a0a3-430f-96be-1d61ba6d2581"
         }
     ]
 }

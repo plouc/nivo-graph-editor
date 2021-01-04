@@ -15,71 +15,73 @@ export interface AreaBumpNodeData {
     axisBottom?: any
 }
 
-export const AreaBumpNodeService: NodeService<'area_bump', AreaBumpNodeData> = {
-    type: 'area_bump',
+export const AreaBumpNodeService: NodeService<'node:area_bump', AreaBumpNodeData> = {
+    type: 'node:area_bump',
     category: 'charts',
     description: `An AreaBump chart from @nivo/bump package.`,
     hasOutput: true,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'data',
-            hasInput: true,
+            accepts: ['node:series_xy'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'width',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'height',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'margin',
-            hasInput: true,
+            accepts: ['node:margin'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'spacing',
+            accepts: ['property:number'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'xPadding',
+            accepts: ['property:number'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'theme',
-            hasInput: true,
+            accepts: ['node:nivo_theme'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'colors',
-            hasInput: true,
+            accepts: ['node:color_scheme'],
         },
         {
-            type: 'blend_mode',
+            type: 'property:blend_mode',
             name: 'blendMode',
-            hasInput: true,
+            accepts: ['node:blend_mode'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'borderColor',
-            hasInput: true,
+            accepts: [],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisTop',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisBottom',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
     ],
     factory: (data = {}) => {

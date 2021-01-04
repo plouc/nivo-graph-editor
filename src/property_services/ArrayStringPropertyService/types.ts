@@ -1,7 +1,6 @@
 export type ArrayStringPropertyOptions = {
     name: string
     defaultValue?: string[]
-    hasInput?: boolean
     hasOutput?: boolean
 }
 

@@ -4,20 +4,20 @@ const SeriesXYNodeWidget = () => {
     return <div>Custom</div>
 }
 
-export const SeriesXYNodeService: NodeService<'series_xy', any> = {
-    type: 'series_xy',
+export const SeriesXYNodeService: NodeService<'node:series_xy', any> = {
+    type: 'node:series_xy',
     category: 'data',
     hasOutput: true,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'serie_0',
-            hasInput: true,
+            accepts: ['node:serie_xy'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'serie_1',
-            hasInput: true,
+            accepts: ['node:serie_xy'],
         },
     ],
     factory: () => {

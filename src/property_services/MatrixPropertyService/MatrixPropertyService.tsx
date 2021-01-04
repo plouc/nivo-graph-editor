@@ -3,23 +3,17 @@ import { MatrixPropertyOptions, MatrixProperty } from './types'
 import { MatrixPropertyControl } from './MatrixPropertyControl'
 
 export const MatrixPropertyService: PropertyService<
-    'matrix',
+    'property:matrix',
     MatrixPropertyOptions,
     MatrixProperty,
     number[][]
 > = {
-    type: 'matrix',
-    factory: ({
-        name,
-        defaultValue = [],
-        hasInput = false,
-        hasOutput = false,
-    }: MatrixPropertyOptions) => {
+    type: 'property:matrix',
+    factory: ({ name, defaultValue = [], hasOutput = false }: MatrixPropertyOptions) => {
         return {
             name,
-            type: 'matrix',
+            type: 'property:matrix',
             value: defaultValue,
-            hasInput,
             hasOutput,
         }
     },

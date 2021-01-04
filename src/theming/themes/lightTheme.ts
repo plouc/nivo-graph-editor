@@ -6,6 +6,7 @@ export const lightTheme: DefaultTheme = {
         background: '#ececec',
         mediumDepthBackground: '#f5f3f3',
         topDepthBackground: '#ffffff',
+        nodeBackground: '#f2f2f2',
         badgeBackground: '#eeeeee',
         inputBackground: '#eeeeee',
         inputText: '#444444',

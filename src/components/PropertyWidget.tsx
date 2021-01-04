@@ -8,7 +8,7 @@ export const PropertyWidget = memo(({ property }: { property: Property }) => {
     return (
         <PropertyContainer>
             <PropertyName>{property.name}</PropertyName>
-            {property.hasInput && (
+            {property.accepts.length > 0 && (
                 <PortWidget
                     type="target"
                     elementId={property.id}
@@ -35,7 +35,7 @@ const PropertyContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0 12px;
-    background-color: ${props => transparentize(0.6, props.theme.colors.topDepthBackground)};
+    background-color: ${props => transparentize(0.15, props.theme.colors.nodeBackground)};
     color: ${props => props.theme.colors.accentColor};
     font-size: 11px;
 `

@@ -37,6 +37,12 @@ export class ServiceRegistry {
     }
 
     registerNodeService(nodeService: NodeService<string, any>) {
+        if (nodeService.type.indexOf('node:') !== 0) {
+            throw new Error(
+                `a node service type should use a 'node:' prefix, got: '${nodeService.type}'`
+            )
+        }
+
         this.nodeServices[nodeService.type] = nodeService
 
         return this
@@ -62,6 +68,12 @@ export class ServiceRegistry {
     }
 
     registerPropertyService(propertyService: PropertyService<any, any, any, any>) {
+        if (propertyService.type.indexOf('property:') !== 0) {
+            throw new Error(
+                `a property service type should use a 'property:' prefix, got: '${propertyService.type}'`
+            )
+        }
+
         this.propertyServices[propertyService.type] = propertyService
 
         return this

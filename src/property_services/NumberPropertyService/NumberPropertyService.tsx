@@ -3,16 +3,15 @@ import { NumberPropertyOptions, NumberProperty } from './types'
 import { NumberPropertyControl } from './NumberPropertyControl'
 
 export const NumberPropertyService: PropertyService<
-    'number',
+    'property:number',
     NumberPropertyOptions,
     NumberProperty,
     number
 > = {
-    type: 'number',
+    type: 'property:number',
     factory: ({
         name,
         defaultValue = 0,
-        hasInput = false,
         hasOutput = false,
         options: partialOptions = {},
     }: NumberPropertyOptions) => {
@@ -25,9 +24,8 @@ export const NumberPropertyService: PropertyService<
 
         return {
             name,
-            type: 'number',
+            type: 'property:number',
             value: defaultValue,
-            hasInput,
             hasOutput,
             options,
         }

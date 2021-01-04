@@ -39,26 +39,28 @@ export interface CanvasNodeData {
     height: number
 }
 
-export const CanvasNodeService: NodeService<'canvas', CanvasNodeData> = {
-    type: 'canvas',
+export const CanvasNodeService: NodeService<'node:canvas', CanvasNodeData> = {
+    type: 'node:canvas',
     category: 'render',
     description: `A canvas to render a React node.`,
     hasOutput: false,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'content',
-            hasInput: true,
+            accepts: ['node:chord', 'node:line', 'node:scatterplot'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'width',
-            hasInput: true,
+            accepts: ['property:number'],
+            hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'height',
-            hasInput: true,
+            accepts: ['property:number'],
+            hasOutput: true,
         },
     ],
     factory: (data = {}) => {

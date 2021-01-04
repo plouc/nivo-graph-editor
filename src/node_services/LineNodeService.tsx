@@ -13,63 +13,62 @@ export interface LineNodeData {
     axisLeft?: any
 }
 
-export const LineNodeService: NodeService<'line', LineNodeData> = {
-    type: 'line',
+export const LineNodeService: NodeService<'node:line', LineNodeData> = {
+    type: 'node:line',
     category: 'charts',
     description: `A Line chart from @nivo/line package.`,
     hasOutput: true,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'data',
-            hasInput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'width',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'height',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
+            accepts: ['node:margin'],
             name: 'margin',
-            hasInput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
+            accepts: ['node:nivo_theme'],
             name: 'theme',
-            hasInput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'colors',
-            hasInput: true,
+            accepts: ['node:color_scheme'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisTop',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisRight',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisBottom',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisLeft',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
     ],
     factory: (data = {}) => {

@@ -4,7 +4,7 @@
     "nodes": [
         {
             "id": "6bb6718d-e185-4125-97b1-2ca8b0916495",
-            "type": "area_bump",
+            "type": "node:area_bump",
             "name": "AreaBump chart",
             "x": 227,
             "y": 198,
@@ -55,7 +55,7 @@
         },
         {
             "id": "d490f638-855f-4098-a3f6-03fbbf0a856e",
-            "type": "line",
+            "type": "node:line",
             "name": "Line chart",
             "x": 223,
             "y": 481,
@@ -97,7 +97,7 @@
         },
         {
             "id": "2487721a-3240-475c-9d5d-8714236ab996",
-            "type": "margin",
+            "type": "node:margin",
             "name": "Margin",
             "x": 29,
             "y": 261,
@@ -123,7 +123,7 @@
         },
         {
             "id": "ddd2c4a3-69a4-4978-b469-1b77dd931b90",
-            "type": "nivo_theme",
+            "type": "node:nivo_theme",
             "name": "Theme",
             "x": 538,
             "y": 32,
@@ -132,7 +132,7 @@
         },
         {
             "id": "813b643e-369a-4114-b433-b88c648a5fe1",
-            "type": "series_xy",
+            "type": "node:series_xy",
             "name": "Charts data",
             "x": 201,
             "y": 36,
@@ -148,7 +148,7 @@
         },
         {
             "id": "ac68f977-f194-472c-b9f9-5b485f8d745a",
-            "type": "serie_xy",
+            "type": "node:serie_xy",
             "name": "Paris data",
             "x": 22,
             "y": 18,
@@ -219,7 +219,7 @@
         },
         {
             "id": "c40ce264-9462-48cd-b15b-1e0f614537d1",
-            "type": "serie_xy",
+            "type": "node:serie_xy",
             "name": "Tokyo data",
             "x": 22,
             "y": 96,
@@ -290,7 +290,7 @@
         },
         {
             "id": "bc45505e-be25-4b24-bd73-2d97450d8638",
-            "type": "color_scheme",
+            "type": "node:color_scheme",
             "name": "Color scheme",
             "x": 687,
             "y": 28,
@@ -304,7 +304,7 @@
         },
         {
             "id": "76f9dd30-9472-40cd-9e39-4751627dfa3d",
-            "type": "axis",
+            "type": "node:axis",
             "name": "Horizontal axis",
             "x": 29,
             "y": 474,
@@ -333,7 +333,7 @@
         },
         {
             "id": "a389ed60-83bf-4bdd-8554-2dc51100d66c",
-            "type": "axis",
+            "type": "node:axis",
             "name": "Vertical axis",
             "x": 27,
             "y": 627,
@@ -362,7 +362,7 @@
         },
         {
             "id": "18f15bb9-9c25-4b7f-b731-05272950f13e",
-            "type": "canvas",
+            "type": "node:canvas",
             "name": "AreaBump chart rendering",
             "x": 401,
             "y": 138,
@@ -383,7 +383,7 @@
         },
         {
             "id": "91ed2034-8825-4e04-ba48-6514580ca8f7",
-            "type": "canvas",
+            "type": "node:canvas",
             "name": "Line chart rendering",
             "x": 403,
             "y": 480,
@@ -404,7 +404,7 @@
         },
         {
             "id": "e922df03-6e18-42e2-8d97-c243d2a7e0f7",
-            "type": "scatterplot",
+            "type": "node:scatterplot",
             "name": "ScatterPlot chart",
             "x": 894,
             "y": 222,
@@ -449,7 +449,7 @@
         },
         {
             "id": "88ba0f9f-663d-461b-872f-8e7f127c4699",
-            "type": "canvas",
+            "type": "node:canvas",
             "name": "ScatterPlot chart rendering",
             "x": 1057,
             "y": 145,

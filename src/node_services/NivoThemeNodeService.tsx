@@ -1,7 +1,7 @@
 import { NodeService } from '../services_registry'
 
-export const NivoThemeNodeService: NodeService<'nivo_theme', {}> = {
-    type: 'nivo_theme',
+export const NivoThemeNodeService: NodeService<'node:nivo_theme', {}> = {
+    type: 'node:nivo_theme',
     category: 'theming',
     description: `A theme object to be used with nivo charts.`,
     hasOutput: true,

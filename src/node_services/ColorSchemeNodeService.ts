@@ -26,15 +26,16 @@ export interface ColorSchemeNodeData {
     scheme: string
 }
 
-export const ColorSchemeNodeService: NodeService<'color_scheme', ColorSchemeNodeData> = {
-    type: 'color_scheme',
+export const ColorSchemeNodeService: NodeService<'node:color_scheme', ColorSchemeNodeData> = {
+    type: 'node:color_scheme',
     category: 'colors',
     description: `A predefined color scheme to be used with nivo charts.`,
     hasOutput: true,
     properties: [
         {
-            type: 'choices',
+            type: 'property:choices',
             name: 'scheme',
+            accepts: ['node:color_scheme'],
             choices: schemeChoices,
         } as any,
     ],

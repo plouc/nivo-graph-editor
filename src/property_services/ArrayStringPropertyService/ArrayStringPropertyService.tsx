@@ -3,23 +3,18 @@ import { ArrayStringPropertyOptions, ArrayStringProperty } from './types'
 import { ArrayStringPropertyControl } from './ArrayStringPropertyControl'
 
 export const ArrayStringPropertyService: PropertyService<
-    'array_string',
+    'property:array_string',
     ArrayStringPropertyOptions,
     ArrayStringProperty,
     string[]
 > = {
-    type: 'array_string',
-    factory: ({
-        name,
-        defaultValue = [],
-        hasInput = false,
-        hasOutput = false,
-    }: ArrayStringPropertyOptions) => {
+    type: 'property:array_string',
+    factory: ({ name, defaultValue = [], hasOutput = false }: ArrayStringPropertyOptions) => {
         return {
             name,
-            type: 'array_string',
+            type: 'property:array_string',
             value: defaultValue,
-            hasInput,
+            accepts: [],
             hasOutput,
         }
     },

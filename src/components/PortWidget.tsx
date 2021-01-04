@@ -1,6 +1,6 @@
 import { useCallback, MouseEvent, memo } from 'react'
-import styled from 'styled-components'
-import { ElementId, useLinkingActions } from '../state'
+import styled, { css } from 'styled-components'
+import { ElementId, useLinkingActions, useLinking } from '../state'
 
 const CONTAINER_SIZE = 20
 const PORT_SIZE = 10
@@ -17,6 +17,7 @@ export const PortWidget = memo(
         x: number
         y: number
     }) => {
+        const { type: linkingType, isLinking, potentialId } = useLinking()
         const {
             startLinking,
             setLinkingPotentialPort,
@@ -50,6 +51,8 @@ export const PortWidget = memo(
                 onMouseDown={handleLinking}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
+                isLinking={isLinking}
+                isHighlighted={potentialId === elementId && linkingType !== type}
                 style={{
                     left: type === 'target' ? 0 : '100%',
                 }}
@@ -70,7 +73,10 @@ const Port = styled.div`
     transition: transform 200ms;
 `
 
-const Container = styled.div`
+const Container = styled.div<{
+    isLinking: boolean
+    isHighlighted: boolean
+}>`
     pointer-events: all;
     position: absolute;
     top: 50%;
@@ -81,11 +87,18 @@ const Container = styled.div`
     height: ${CONTAINER_SIZE}px;
     margin-top: -${CONTAINER_SIZE / 2}px;
     margin-left: -${CONTAINER_SIZE / 2}px;
-    cursor: pointer;
+    cursor: crosshair;
 
-    &:hover {
-        ${Port} {
-            transform: scale(1.6);
-        }
+    ${Port} {
+        transform: scale(${props => (props.isHighlighted ? 1.6 : 1)});
     }
+
+    ${props =>
+        !props.isLinking
+            ? css`
+                  &:hover {
+                      transform: scale(1.6);
+                  }
+              `
+            : undefined};
 `

@@ -10,7 +10,6 @@ export type ArrayXYPropertyOptions = {
         x: number
         y: number
     }[]
-    hasInput?: boolean
     hasOutput?: boolean
 }
 
@@ -106,7 +105,7 @@ const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProp
 }
 
 export const ArrayXYPropertyService: PropertyService<
-    'array_xy',
+    'property:array_xy',
     ArrayXYPropertyOptions,
     ArrayXYProperty,
     {
@@ -114,18 +113,12 @@ export const ArrayXYPropertyService: PropertyService<
         y: number
     }[]
 > = {
-    type: 'array_xy',
-    factory: ({
-        name,
-        defaultValue = [],
-        hasInput = false,
-        hasOutput = false,
-    }: ArrayXYPropertyOptions) => {
+    type: 'property:array_xy',
+    factory: ({ name, defaultValue = [], hasOutput = false }: ArrayXYPropertyOptions) => {
         return {
             name,
-            type: 'array_xy',
+            type: 'property:array_xy',
             value: defaultValue,
-            hasInput,
             hasOutput,
         }
     },

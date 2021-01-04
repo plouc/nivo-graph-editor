@@ -18,6 +18,7 @@ import {
 } from './types'
 import { generateElementId } from './generateElementId'
 import registry from '../registry'
+import { findLinkingPotentialPort } from './linking'
 
 const DEFAULT_NODE_HEADER_HEIGHT = 24
 const PROPERTY_HEIGHT = 20
@@ -56,7 +57,7 @@ const updateNodePosition = (
 
 export const useStore = create<State>(set => ({
     settings: {
-        themeId: 'light',
+        themeId: 'dark',
     },
     setSettings: partialSettings =>
         set(state => {
@@ -92,6 +93,7 @@ export const useStore = create<State>(set => ({
                 const propertyService = registry.getPropertyService(property.type)
 
                 const newProperty: Property = {
+                    accepts: [],
                     ...property,
                     elementType: 'property',
                     id: generateElementId(),
@@ -104,7 +106,6 @@ export const useStore = create<State>(set => ({
                         newProperties.length * PROPERTY_HEIGHT,
                     height: PROPERTY_HEIGHT,
                     width: newNode.width,
-                    hasInput: property.hasInput || false,
                     hasOutput: property.hasOutput || false,
                 }
 
@@ -238,7 +239,7 @@ export const useStore = create<State>(set => ({
     //
     // dragging
     //
-    drag: {
+    dragging: {
         isDragging: false,
         elementId: null,
         initial: [0, 0],
@@ -247,7 +248,7 @@ export const useStore = create<State>(set => ({
     startDrag: (elementId, initial) =>
         set(state => {
             return {
-                drag: {
+                dragging: {
                     isDragging: true,
                     elementId: elementId,
                     initial,
@@ -258,23 +259,23 @@ export const useStore = create<State>(set => ({
     updateDrag: position =>
         set(state => {
             const offset: [number, number] = [
-                position[0] - state.drag.initial[0],
-                position[1] - state.drag.initial[1],
+                position[0] - state.dragging.initial[0],
+                position[1] - state.dragging.initial[1],
             ]
 
             return {
-                drag: {
-                    ...state.drag,
+                dragging: {
+                    ...state.dragging,
                     offset,
                     initial: [position[0], position[1]],
                 },
-                elements: updateNodePosition(state.elements, state.drag.elementId, offset),
+                elements: updateNodePosition(state.elements, state.dragging.elementId, offset),
             }
         }),
     stopDrag: () =>
-        set(state => {
+        set(() => {
             return {
-                drag: {
+                dragging: {
                     isDragging: false,
                     elementId: null,
                     initial: [0, 0],
@@ -282,20 +283,37 @@ export const useStore = create<State>(set => ({
                 },
             }
         }),
+    //
+    // linking
+    //
     linking: {
         isLinking: false,
         elementId: undefined,
+        accepts: [],
         type: 'source',
         anchor: [0, 0],
         position: [0, 0],
         previous: [0, 0],
     },
     startLinking: ({ elementId, type, anchor, initial }) =>
-        set(() => {
+        set(state => {
+            const element = state.elements.find(element => element.id === elementId)
+            let elementType: string | undefined = undefined
+            if (element && 'type' in element) {
+                elementType = element.type
+            }
+
+            let accepts: string[] = []
+            if (element && 'accepts' in element) {
+                accepts = element.accepts
+            }
+
             return {
                 linking: {
                     isLinking: true,
                     elementId,
+                    elementType,
+                    accepts,
                     type,
                     anchor,
                     position: anchor,
@@ -323,21 +341,20 @@ export const useStore = create<State>(set => ({
         }),
     setLinkingPotentialPort: (elementId, type) =>
         set(state => {
-            if (
-                // no current linking
-                !state.linking.isLinking ||
-                // source & target are identical
-                elementId === state.linking.elementId ||
-                // both are sources or targets
-                state.linking.type === type
-            ) {
-                return state
+            const potentialId = findLinkingPotentialPort(
+                state.linking,
+                state.elements,
+                elementId,
+                type
+            )
+            if (!potentialId) {
+                return {}
             }
 
             return {
                 linking: {
                     ...state.linking,
-                    potentialId: elementId,
+                    potentialId,
                 },
             }
         }),
@@ -374,6 +391,7 @@ export const useStore = create<State>(set => ({
                 elements,
                 linking: {
                     isLinking: false,
+                    accepts: [],
                     type: 'source',
                     anchor: [0, 0],
                     position: [0, 0],
@@ -420,11 +438,11 @@ export const useCreateNode = () => useStore(createNodeSelector)
 const updateNodeSelector = (state: State) => state.updateNode
 export const useUpdateNode = () => useStore(updateNodeSelector)
 
-const unlinkSelector = (state: State) => state.unlink
-export const useUnlink = () => useStore(unlinkSelector)
-
 const setSelectedNodeIdsSelector = (state: State) => state.setSelectedNodeIds
 export const useSetSelectedNodeIds = () => useStore(setSelectedNodeIdsSelector)
+
+const linkingSelector = (state: State) => state.linking
+export const useLinking = () => useStore(linkingSelector)
 
 export const useLinkingActions = () =>
     useStore(
@@ -436,6 +454,12 @@ export const useLinkingActions = () =>
         }),
         shallow
     )
+
+const linkSelector = (state: State) => state.link
+export const useLink = () => useStore(linkSelector)
+
+const unlinkSelector = (state: State) => state.unlink
+export const useUnlink = () => useStore(unlinkSelector)
 
 const serializeProperties = (properties: ResolvedProperty[]) => {
     const props: any = {}

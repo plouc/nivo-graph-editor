@@ -4,14 +4,15 @@ export interface MatrixNodeData {
     data: number[][]
 }
 
-export const MatrixNodeService: NodeService<'matrix', MatrixNodeData> = {
-    type: 'matrix',
+export const MatrixNodeService: NodeService<'node:matrix', MatrixNodeData> = {
+    type: 'node:matrix',
     category: 'data',
     hasOutput: true,
     properties: [
         {
-            type: 'matrix',
+            type: 'property:matrix',
             name: 'matrix',
+            accepts: ['property:matrix'],
         },
     ],
     factory: data => {

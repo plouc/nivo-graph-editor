@@ -1,7 +1,6 @@
 export type NumberPropertyOptions = {
     name: string
     defaultValue?: number
-    hasInput?: boolean
     hasOutput?: boolean
     options?: {
         controlType?: 'number' | 'range'

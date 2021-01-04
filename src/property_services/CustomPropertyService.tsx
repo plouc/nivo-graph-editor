@@ -7,18 +7,17 @@ export type CustomPropertyOptions = {
 }
 
 export const CustomPropertyService: PropertyService<
-    'custom',
+    'property:custom',
     CustomPropertyOptions,
     any,
     undefined
 > = {
-    type: 'custom',
+    type: 'property:custom',
     factory: ({ name, renderer }: CustomPropertyOptions) => {
         return {
             name,
             renderer,
-            type: 'custom',
-            hasInput: false,
+            type: 'property:custom',
             hasOutput: false,
         }
     },

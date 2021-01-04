@@ -14,23 +14,17 @@ export type AngleProperty = {
 }
 
 export const AnglePropertyService: PropertyService<
-    'angle',
+    'property:angle',
     AnglePropertyOptions,
     AngleProperty,
     number
 > = {
-    type: 'angle',
-    factory: ({
-        name,
-        defaultValue,
-        hasInput = false,
-        hasOutput = false,
-    }: AnglePropertyOptions) => {
+    type: 'property:angle',
+    factory: ({ name, defaultValue, hasOutput = false }: AnglePropertyOptions) => {
         return {
             name,
-            type: 'angle',
+            type: 'property:angle',
             value: defaultValue,
-            hasInput,
             hasOutput,
         }
     },

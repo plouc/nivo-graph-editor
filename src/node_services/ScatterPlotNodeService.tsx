@@ -14,68 +14,66 @@ export interface ScatterPlotNodeData {
     axisLeft?: any
 }
 
-export const ScatterPlotNodeService: NodeService<'scatterplot', ScatterPlotNodeData> = {
-    type: 'scatterplot',
+export const ScatterPlotNodeService: NodeService<'node:scatterplot', ScatterPlotNodeData> = {
+    type: 'node:scatterplot',
     category: 'charts',
     description: `A ScatterPlot chart from @nivo/scatterplot package.`,
     hasOutput: true,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'data',
-            hasInput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'width',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'height',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'margin',
-            hasInput: true,
+            accepts: ['node:margin'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'theme',
-            hasInput: true,
+            accepts: ['node:nivo_theme'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'colors',
-            hasInput: true,
+            accepts: ['node:color_scheme'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'borderColor',
-            hasInput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisTop',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisRight',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisBottom',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'axisLeft',
-            hasInput: true,
+            accepts: ['node:axis'],
         },
     ],
     factory: (data = {}) => {

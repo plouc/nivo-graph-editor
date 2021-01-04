@@ -19,28 +19,28 @@ export const App = () => {
     const { nodes, links } = useGraph()
     const selectedNodes = useSelectedNodes()
 
-    const { drag, updateDrag, stopDrag, linking, updateLinking, stopLinking } = store
+    const { dragging, updateDrag, stopDrag, linking, updateLinking, stopLinking } = store
     const handleMouseMove = useCallback(
         (event: MouseEvent) => {
-            if (drag.isDragging) {
+            if (dragging.isDragging) {
                 updateDrag([event.clientX, event.clientY])
             }
             if (linking.isLinking) {
                 updateLinking([event.clientX, event.clientY])
             }
         },
-        [drag.isDragging, updateDrag, linking.isLinking, updateLinking]
+        [dragging.isDragging, updateDrag, linking.isLinking, updateLinking]
     )
     const handleMouseOut = useCallback(
         (event: MouseEvent) => {
-            if (drag.isDragging) {
+            if (dragging.isDragging) {
                 stopDrag()
             }
             if (linking.isLinking) {
                 stopLinking()
             }
         },
-        [drag.isDragging, stopDrag, linking.isLinking, stopLinking]
+        [dragging.isDragging, stopDrag, linking.isLinking, stopLinking]
     )
 
     return (

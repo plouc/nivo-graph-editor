@@ -4,14 +4,15 @@ export interface BlendModeNodeData {
     blendMode: string
 }
 
-export const BlendModeNodeService: NodeService<'blend_mode', BlendModeNodeData> = {
-    type: 'blend_mode',
+export const BlendModeNodeService: NodeService<'node:blend_mode', BlendModeNodeData> = {
+    type: 'node:blend_mode',
     category: 'colors',
     hasOutput: true,
     properties: [
         {
-            type: 'blend_mode',
+            type: 'property:blend_mode',
             name: 'blendMode',
+            accepts: ['property:blend_mode'],
         },
     ],
     factory: (data = {}) => {

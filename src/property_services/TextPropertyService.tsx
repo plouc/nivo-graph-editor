@@ -6,7 +6,6 @@ import { Input } from '../components/ui'
 export type TextPropertyOptions = {
     name: string
     defaultValue?: string
-    hasInput?: boolean
     hasOutput?: boolean
 }
 
@@ -27,23 +26,17 @@ const TextPropertyControl = ({ property }: { property: Property & TextProperty }
 }
 
 export const TextPropertyService: PropertyService<
-    'text',
+    'property:text',
     TextPropertyOptions,
     TextProperty,
     string
 > = {
-    type: 'text',
-    factory: ({
-        name,
-        defaultValue = '',
-        hasInput = false,
-        hasOutput = false,
-    }: TextPropertyOptions) => {
+    type: 'property:text',
+    factory: ({ name, defaultValue = '', hasOutput = false }: TextPropertyOptions) => {
         return {
             name,
-            type: 'text',
+            type: 'property:text',
             value: defaultValue,
-            hasInput,
             hasOutput,
         }
     },

@@ -7,27 +7,35 @@ export interface MarginNodeData {
     left: number
 }
 
-export const MarginNodeService: NodeService<'margin', MarginNodeData> = {
-    type: 'margin',
+export const MarginNodeService: NodeService<'node:margin', MarginNodeData> = {
+    type: 'node:margin',
     category: 'dimensions',
     description: `Top/right/bottom/left margins for charts.`,
     hasOutput: true,
     properties: [
         {
-            type: 'number',
+            type: 'property:number',
             name: 'top',
+            accepts: ['property:number'],
+            hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'right',
+            accepts: ['property:number'],
+            hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'bottom',
+            accepts: ['property:number'],
+            hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'left',
+            accepts: ['property:number'],
+            hasOutput: true,
         },
     ],
     factory: (data = {}) => {

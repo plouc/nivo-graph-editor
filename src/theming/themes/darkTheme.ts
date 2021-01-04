@@ -6,6 +6,7 @@ export const darkTheme: DefaultTheme = {
         background: '#292929',
         mediumDepthBackground: '#111111',
         topDepthBackground: '#000000',
+        nodeBackground: '#202020',
         badgeBackground: '#333333',
         inputBackground: '#333333',
         inputText: '#eeeeee',

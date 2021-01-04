@@ -13,42 +13,43 @@ export interface ChordNodeData {
     colors?: any
 }
 
-export const ChordNodeService: NodeService<'chord', ChordNodeData> = {
-    type: 'chord',
+export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
+    type: 'node:chord',
     category: 'charts',
     description: `An Chord diagram from @nivo/chord package.`,
     hasOutput: true,
     properties: [
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'matrix',
-            hasInput: true,
+            accepts: ['node:matrix'],
         },
         {
-            type: 'array_string',
+            type: 'property:array_string',
             name: 'keys',
-            hasInput: true,
+            accepts: ['property:array_string'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'width',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'height',
-            hasInput: true,
+            accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'margin',
-            hasInput: true,
+            accepts: ['node:margin'],
         },
         {
-            type: 'number',
+            type: 'property:number',
             name: 'innerRadiusRatio',
+            accepts: ['property:number'],
             options: {
                 controlType: 'range',
                 min: 0,
@@ -57,8 +58,9 @@ export const ChordNodeService: NodeService<'chord', ChordNodeData> = {
             },
         } as any,
         {
-            type: 'number',
+            type: 'property:number',
             name: 'innerRadiusOffset',
+            accepts: ['property:number'],
             options: {
                 controlType: 'range',
                 min: 0,
@@ -67,14 +69,14 @@ export const ChordNodeService: NodeService<'chord', ChordNodeData> = {
             },
         } as any,
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'theme',
-            hasInput: true,
+            accepts: ['node:nivo_theme'],
         },
         {
-            type: 'ref',
+            type: 'property:ref',
             name: 'colors',
-            hasInput: true,
+            accepts: ['node:color_scheme'],
         },
     ],
     factory: (data = {}) => {

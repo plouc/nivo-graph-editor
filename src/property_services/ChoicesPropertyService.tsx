@@ -14,7 +14,6 @@ export type ChoicesPropertyOptions = {
     name: string
     defaultValue?: ChoiceProperty['value']
     choices: ChoiceProperty['choices']
-    hasInput?: boolean
     hasOutput?: boolean
 }
 
@@ -41,25 +40,18 @@ export const ChoicesPropertyControl = ({ property }: { property: Property & Choi
 }
 
 export const ChoicesPropertyService: PropertyService<
-    'choices',
+    'property:choices',
     ChoicesPropertyOptions,
     ChoiceProperty,
     string | number
 > = {
-    type: 'choices',
-    factory: ({
-        name,
-        choices,
-        defaultValue,
-        hasInput = false,
-        hasOutput = false,
-    }: ChoicesPropertyOptions) => {
+    type: 'property:choices',
+    factory: ({ name, choices, defaultValue, hasOutput = false }: ChoicesPropertyOptions) => {
         return {
             name,
-            type: 'choices',
+            type: 'property:choices',
             choices,
             value: defaultValue,
-            hasInput,
             hasOutput,
         }
     },

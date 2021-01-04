@@ -9,18 +9,20 @@ export interface SerieXYNodeData {
     }[]
 }
 
-export const SerieXYNodeService: NodeService<'serie_xy', SerieXYNodeData> = {
-    type: 'serie_xy',
+export const SerieXYNodeService: NodeService<'node:serie_xy', SerieXYNodeData> = {
+    type: 'node:serie_xy',
     category: 'data',
     hasOutput: true,
     properties: [
         {
-            type: 'text',
+            type: 'property:text',
             name: 'id',
+            accepts: ['property:text'],
         },
         {
-            type: 'array_xy',
+            type: 'property:array_xy',
             name: 'data',
+            accepts: ['property:array_xy'],
         },
     ],
     factory: (data = {}) => {

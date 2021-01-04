@@ -26,17 +26,16 @@ const blendModeChoices = [
 ]
 
 export const BlendModePropertyService: PropertyService<
-    'blend_mode',
+    'property:blend_mode',
     ChoicesPropertyOptions,
     ChoiceProperty,
     string | number
 > = {
-    type: 'blend_mode',
-    factory: ({ name, defaultValue, hasInput = false, hasOutput = false }: any) =>
+    type: 'property:blend_mode',
+    factory: ({ name, defaultValue, hasOutput = false }: any) =>
         ChoicesPropertyService.factory({
             name,
             defaultValue,
-            hasInput,
             hasOutput,
             choices: blendModeChoices,
         }),

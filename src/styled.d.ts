@@ -6,6 +6,7 @@ declare module 'styled-components' {
             background: string
             mediumDepthBackground: string
             topDepthBackground: string
+            nodeBackground: string
             badgeBackground: string
             inputBackground: string
             inputText: string
