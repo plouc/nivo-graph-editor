@@ -1,5 +1,19 @@
 import { ElementId, State } from './types'
 
+/**
+ * Find eligible port depending on current element,
+ * which can be either a node or a property.
+ *
+ * The following conditions must be met:
+ * - should currently be linking
+ * - current element ID should be different from target
+ * - should be from a source to a target or the other way
+ * - element should have a defined type
+ * - target element should contain source type in its
+ *   accepts list
+ *
+ * @todo: prevent circular dependencies
+ */
 export const findLinkingPotentialPort = (
     linking: State['linking'],
     elements: State['elements'],
