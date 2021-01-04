@@ -31,12 +31,12 @@ const Category = ({
     onCreate: () => void
 }) => {
     return (
-        <>
+        <div>
             <CategoryTitle>{category.category}</CategoryTitle>
             {category.types.map(type => (
                 <NodeType key={type.type} type={type} onCreate={onCreate} />
             ))}
-        </>
+        </div>
     )
 }
 
@@ -60,14 +60,14 @@ const Container = styled.div`
 const CategoryTitle = styled.h3`
     padding: 9px 12px;
     margin: 0;
-    background-color: #222222;
+    background-color: ${props => props.theme.colors.mediumDepthBackground};
     font-size: 16px;
-    color: pink;
+    color: ${props => props.theme.colors.accentColor};
 `
 
 const NodeTypeItem = styled.div`
     padding: 12px 12px;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid ${props => props.theme.colors.lightBorder};
     font-size: 14px;
     cursor: pointer;
     font-weight: 600;
@@ -77,7 +77,7 @@ const NodeTypeItem = styled.div`
     }
 
     &:hover {
-        background-color: #444444;
+        background-color: ${props => props.theme.colors.mediumDepthBackground};
     }
 `
 

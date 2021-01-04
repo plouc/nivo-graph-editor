@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import styled from 'styled-components'
+import { transparentize } from 'polished'
 import { Property } from '../state'
 import { PortWidget } from './PortWidget'
 
@@ -34,8 +35,8 @@ const PropertyContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0 12px;
-    background-color: #222222ee;
-    color: pink;
+    background-color: ${props => transparentize(0.6, props.theme.colors.topDepthBackground)};
+    color: ${props => props.theme.colors.accentColor};
     font-size: 11px;
 `
 

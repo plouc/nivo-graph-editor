@@ -55,6 +55,18 @@ const updateNodePosition = (
 }
 
 export const useStore = create<State>(set => ({
+    settings: {
+        themeId: 'light',
+    },
+    setSettings: partialSettings =>
+        set(state => {
+            return {
+                settings: {
+                    ...state.settings,
+                    ...partialSettings,
+                },
+            }
+        }),
     elements: [],
     selectedNodeIds: [],
     setSelectedNodeIds: selectedNodeIds => set(() => ({ selectedNodeIds })),
@@ -395,6 +407,9 @@ export const useStore = create<State>(set => ({
             }
         }),
 }))
+
+const settingsSelector = (state: State) => state.settings
+export const useSettings = () => useStore(settingsSelector)
 
 const loadGraphSelector = (state: State) => state.loadGraph
 export const useLoadGraph = () => useStore(loadGraphSelector)

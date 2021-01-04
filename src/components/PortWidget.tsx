@@ -65,10 +65,9 @@ const Port = styled.div`
     width: ${PORT_SIZE}px;
     height: ${PORT_SIZE}px;
     border-radius: ${PORT_SIZE / 2}px;
-    background: #111111;
-    border: 2px solid pink;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    transition: transform 200ms, box-shadow 200ms;
+    background: ${props => props.theme.colors.background};
+    border: 2px solid ${props => props.theme.colors.accentColor};
+    transition: transform 200ms;
 `
 
 const Container = styled.div`
@@ -87,7 +86,6 @@ const Container = styled.div`
     &:hover {
         ${Port} {
             transform: scale(1.6);
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
         }
     }
 `

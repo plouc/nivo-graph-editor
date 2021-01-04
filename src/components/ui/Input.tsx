@@ -5,8 +5,8 @@ export const Input = styled.input`
     padding: 3px 6px;
     border-radius: 2px;
     font-family: inherit;
-    background-color: #333333;
-    color: #eeeeee;
+    background-color: ${props => props.theme.colors.inputBackground};
+    color: ${props => props.theme.colors.inputText};
     font-size: 12px;
     cursor: pointer;
 

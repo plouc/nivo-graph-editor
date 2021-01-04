@@ -1,5 +1,6 @@
 import { createElement, useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
+import { transparentize } from 'polished'
 import { ResolvedNode, useStore } from '../state'
 import registry from '../registry'
 import { PropertiesWidget } from './PropertiesWidget'
@@ -51,21 +52,27 @@ const NodeContainer = styled.div<{
     pointer-events: all;
     user-select: none;
     background-color: transparent;
-    color: pink;
+    color: ${props => props.theme.colors.accentColor};
     position: absolute;
-    box-shadow: ${props => (props.isSelected ? '0 0 0 2px pink' : '0 0 0 1px rgba(0, 0, 0, 0.66)')};
+    box-shadow: ${props =>
+        props.isSelected
+            ? `0 0 0 2px ${props.theme.colors.accentColor}`
+            : `0 0 0 1px ${props.theme.colors.nodeBorder}`};
     cursor: move;
     font-size: 12px;
 
     &:hover {
-        box-shadow: ${props => (props.isSelected ? '0 0 0 2px pink' : '0 0 0 1px pink')};
+        box-shadow: ${props =>
+            props.isSelected
+                ? `0 0 0 2px ${props.theme.colors.accentColor}`
+                : `0 0 0 1px ${props.theme.colors.accentColor}`};
     }
 `
 
 const NodeHeader = styled.header`
     position: relative;
     font-weight: 600;
-    background-color: #000000cc;
+    background-color: ${props => transparentize(0.15, props.theme.colors.topDepthBackground)};
     display: flex;
     align-items: center;
     height: 24px;

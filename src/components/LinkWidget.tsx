@@ -124,7 +124,7 @@ const Path = styled.path<{
     isHover: boolean
 }>`
     fill: none;
-    stroke: pink;
+    stroke: ${props => props.theme.colors.accentColor};
     stroke-width: ${props => (props.isHover ? 4 : 2)}px;
 `
 
@@ -137,14 +137,14 @@ const UnlinkButton = styled.div`
     height: ${UNLINK_BUTTON_SIZE}px;
     border-radius: ${UNLINK_BUTTON_SIZE / 2}px;
     cursor: pointer;
-    background-color: #000000;
-    color: pink;
-    border: 2px solid pink;
+    background-color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.accentColor};
+    border: 2px solid ${props => props.theme.colors.accentColor};
     font-size: 10px;
 `
 
 const Circle = styled.circle`
-    fill: #000000;
-    stroke: pink;
+    fill: ${props => props.theme.colors.background};
+    stroke: ${props => props.theme.colors.accentColor};
     stroke-width: 2px;
 `

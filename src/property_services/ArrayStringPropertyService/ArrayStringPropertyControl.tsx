@@ -92,7 +92,7 @@ const RemoveButton = styled.span`
 
     &:hover {
         background-color: #333333;
-        color: pink;
+        color: ${props => props.theme.colors.accentColor};
     }
 `
 

@@ -24,10 +24,8 @@ export const LinkingLayer = () => {
     }
 
     let icon: ReactNode = <FaChevronRight />
-    let iconColor = 'pink'
     if (linking.potentialId) {
         icon = <FaCheck />
-        iconColor = '#65f7cf'
     }
 
     return (
@@ -39,38 +37,43 @@ export const LinkingLayer = () => {
                 pointerEvents: 'none',
             }}
         >
-            <line
-                strokeWidth={3}
-                stroke="pink"
+            <Line
                 strokeLinecap="round"
                 x1={linking.anchor[0]}
                 x2={linking.position[0]}
                 y1={linking.anchor[1]}
                 y2={linking.position[1]}
             />
-            <circle cx={linking.position[0]} cy={linking.position[1]} r={4} fill="pink" />
+            <Circle cx={linking.position[0]} cy={linking.position[1]} r={4} />
             <foreignObject x={iconPosition[0]} y={iconPosition[1]} width={24} height={24}>
-                <Icon
-                    style={{
-                        color: iconColor,
-                        borderColor: iconColor,
-                    }}
-                >
-                    {icon}
-                </Icon>
+                <Icon isValid={!!linking.potentialId}>{icon}</Icon>
             </foreignObject>
         </svg>
     )
 }
 
-const Icon = styled.div`
+const Line = styled.line`
+    stroke-width: 3px;
+    stroke: ${props => props.theme.colors.accentColor};
+`
+
+const Circle = styled.circle`
+    fill: ${props => props.theme.colors.accentColor};
+`
+
+const Icon = styled.div<{
+    isValid: boolean
+}>`
     width: ${ICON_SIZE}px;
     height: ${ICON_SIZE}px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
-    border: 2px solid;
+    background-color: ${props => props.theme.colors.topDepthBackground};
+    color: ${props =>
+        props.isValid ? props.theme.colors.success : props.theme.colors.accentColor};
+    border: 2px solid
+        ${props => (props.isValid ? props.theme.colors.success : props.theme.colors.accentColor)};
     border-radius: ${ICON_SIZE / 2}px;
     font-size: 12px;
 `

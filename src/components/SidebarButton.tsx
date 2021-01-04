@@ -5,9 +5,8 @@ const Button = styled.div`
     width: 64px;
     height: 64px;
     cursor: pointer;
-    background-color: #000000;
+    background-color: ${props => props.theme.colors.topDepthBackground};
     color: #777777;
-    border-bottom: 1px solid #333333;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -23,5 +23,5 @@ const Container = styled.footer`
     bottom: 0;
     width: calc(100% - 364px);
     height: 36px;
-    background-color: #222222;
+    background-color: ${props => props.theme.colors.mediumDepthBackground};
 `

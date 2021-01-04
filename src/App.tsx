@@ -1,6 +1,7 @@
 import { MouseEvent, useCallback } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { useStore, useSelectedNodes, useGraph } from './state'
+import { useCurrentTheme, GlobalStyle } from './theming'
 import {
     AppHeader,
     AppFooter,
@@ -14,6 +15,7 @@ import {
 
 export const App = () => {
     const store = useStore()
+    const theme = useCurrentTheme()
     const { nodes, links } = useGraph()
     const selectedNodes = useSelectedNodes()
 
@@ -42,7 +44,8 @@ export const App = () => {
     )
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
             <AppHeader />
             <Sidebar nodes={nodes} links={links} />
             <Canvas
@@ -59,7 +62,7 @@ export const App = () => {
             </InfoPanel>
             <AppFooter />
             <Welcome />
-        </>
+        </ThemeProvider>
     )
 }
 
@@ -70,7 +73,7 @@ const Canvas = styled.div`
     left: 64px;
     width: calc(100% - 364px);
     height: calc(100% - 82px);
-    background: #292929;
+    background: ${props => props.theme.colors.background};
     overflow: hidden;
 `
 
@@ -80,6 +83,6 @@ const InfoPanel = styled.div`
     right: 0;
     width: 300px;
     height: 100%;
-    background: #111111;
+    background: ${props => props.theme.colors.topDepthBackground};
     overflow-y: auto;
 `

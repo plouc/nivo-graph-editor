@@ -79,7 +79,13 @@ export interface ResolvedLink extends Link {
 
 export type Element = Node | Property | Link
 
+export interface AppSettings {
+    themeId: string
+}
+
 export type State = {
+    settings: AppSettings
+    setSettings: (partialSettings: Partial<AppSettings>) => void
     // flat representation of all nodes/properties/links
     elements: Element[]
     selectedNodeIds: ElementId[]

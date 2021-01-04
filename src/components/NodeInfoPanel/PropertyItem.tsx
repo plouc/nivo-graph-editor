@@ -81,7 +81,7 @@ export const PropertyItem = memo(({ property }: { property: ResolvedProperty }) 
 
 const Container = styled.div`
     padding: 9px 12px;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid ${props => props.theme.colors.lightBorder};
 
     &:last-child {
         border-bottom: none;
@@ -104,7 +104,7 @@ const RelationContainer = styled.div`
     align-items: center;
     height: 24px;
     border-radius: 2px;
-    color: pink;
+    color: ${props => props.theme.colors.accentColor};
 `
 
 const RelationName = styled.span`
@@ -116,7 +116,7 @@ const RelationName = styled.span`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #333333;
+    background-color: ${props => props.theme.colors.badgeBackground};
     font-weight: 600;
     font-size: 11px;
 

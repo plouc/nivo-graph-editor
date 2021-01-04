@@ -35,7 +35,7 @@ const ExampleItemContainer = styled.div`
     align-items: center;
     background-color: #000000;
     border-radius: 2px;
-    color: pink;
+    color: ${props => props.theme.colors.accentColor};
     cursor: pointer;
     margin: 0 12px 9px 0;
 

@@ -45,7 +45,7 @@ export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
 
 const Header = styled.header`
     padding: 9px 12px;
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
     position: relative;
 `
 
@@ -77,7 +77,7 @@ const Close = styled.span`
 const Properties = styled.div``
 
 const NodeValueTitle = styled.h4`
-    border-top: 1px solid #555555;
+    border-top: 1px solid ${props => props.theme.colors.border};
     padding: 6px 12px;
     margin: 0;
 `
@@ -86,5 +86,5 @@ const NodeValue = styled.pre`
     padding: 12px;
     font-size: 12px;
     margin: 0;
-    background-color: #000000;
+    background-color: ${props => props.theme.colors.topDepthBackground};
 `
