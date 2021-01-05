@@ -16,24 +16,28 @@ export const MarginNodeService: NodeService<'node:margin', MarginNodeData> = {
     properties: [
         {
             type: 'property:number',
+            category: 'dimensions',
             name: 'top',
             accepts: ['property:number'],
             hasOutput: true,
         },
         {
             type: 'property:number',
+            category: 'dimensions',
             name: 'right',
             accepts: ['property:number'],
             hasOutput: true,
         },
         {
             type: 'property:number',
+            category: 'dimensions',
             name: 'bottom',
             accepts: ['property:number'],
             hasOutput: true,
         },
         {
             type: 'property:number',
+            category: 'dimensions',
             name: 'left',
             accepts: ['property:number'],
             hasOutput: true,

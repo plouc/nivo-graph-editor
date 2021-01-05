@@ -9,12 +9,13 @@ export interface BlendModeNodeData {
 
 export const BlendModeNodeService: NodeService<BlendModeNodeType, BlendModeNodeData> = {
     type: 'node:blend_mode',
-    category: 'colors',
+    category: 'colors_theming',
     hasOutput: true,
     properties: [
         {
-            type: 'property:blend_mode',
             name: 'blendMode',
+            type: 'property:blend_mode',
+            category: 'colors_theming',
             accepts: ['property:blend_mode'],
         },
     ],

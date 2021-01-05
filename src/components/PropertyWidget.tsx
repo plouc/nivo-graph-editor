@@ -14,6 +14,7 @@ export const PropertyWidget = memo(({ property }: { property: Property }) => {
                     elementId={property.id}
                     x={property.x}
                     y={property.y + property.height / 2}
+                    category={property.category}
                 />
             )}
             {property.hasOutput && (
@@ -22,6 +23,7 @@ export const PropertyWidget = memo(({ property }: { property: Property }) => {
                     elementId={property.id}
                     x={property.x + property.width}
                     y={property.y + property.height / 2}
+                    category={property.category}
                 />
             )}
         </PropertyContainer>
@@ -36,7 +38,7 @@ const PropertyContainer = styled.div`
     align-items: center;
     padding: 0 12px;
     background-color: ${props => transparentize(0.15, props.theme.colors.nodeBackground)};
-    color: ${props => props.theme.colors.accentColor};
+    color: ${props => props.theme.colors.text};
     font-size: 11px;
 `
 

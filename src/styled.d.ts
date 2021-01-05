@@ -17,6 +17,14 @@ declare module 'styled-components' {
             nodeBorder: string
             success: string
             overlay: string
+            categories: {
+                axis_grid: string
+                charts: string
+                colors_theming: string
+                data: string
+                dimensions: string
+                render: string
+            }
         }
     }
 }

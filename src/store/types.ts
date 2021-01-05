@@ -10,6 +10,7 @@ export interface CreateProperty<
     elementType: 'property'
     id: ElementId
     type: Type
+    category: string
     name: string
     accepts: string[]
     hasOutput: boolean
@@ -21,8 +22,13 @@ export type PropertySpec<
     Type extends PropertyType = PropertyType,
     Data = any,
     Options = any
-> = Pick<CreateProperty<Type, Data, Options>, 'type' | 'name'> &
-    Partial<Omit<CreateProperty<Type, Data, Options>, 'elementType' | 'type' | 'name' | 'id'>>
+> = Pick<CreateProperty<Type, Data, Options>, 'type' | 'category' | 'name'> &
+    Partial<
+        Omit<
+            CreateProperty<Type, Data, Options>,
+            'elementType' | 'type' | 'category' | 'name' | 'id'
+        >
+    >
 
 export interface Property<Type extends PropertyType = PropertyType, Data = any, Options = any>
     extends CreateProperty<Type, Data, Options> {

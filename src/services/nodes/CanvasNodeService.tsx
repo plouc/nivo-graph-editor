@@ -36,19 +36,22 @@ export const CanvasNodeService: NodeService<'node:canvas', CanvasNodeData> = {
     hasOutput: false,
     properties: [
         {
-            type: 'property:ref',
             name: 'content',
+            type: 'property:ref',
+            category: 'render',
             accepts: ['node:area_bump', 'node:chord', 'node:line', 'node:scatterplot'],
         },
         {
-            type: 'property:number',
             name: 'width',
+            type: 'property:number',
+            category: 'dimensions',
             accepts: ['property:number'],
             hasOutput: true,
         },
         {
-            type: 'property:number',
             name: 'height',
+            type: 'property:number',
+            category: 'dimensions',
             accepts: ['property:number'],
             hasOutput: true,
         },

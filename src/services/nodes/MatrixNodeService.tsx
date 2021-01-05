@@ -11,8 +11,9 @@ export const MatrixNodeService: NodeService<'node:matrix', MatrixNodeData> = {
     hasOutput: true,
     properties: [
         {
-            type: 'property:matrix',
             name: 'matrix',
+            type: 'property:matrix',
+            category: 'data',
             accepts: ['property:matrix'],
         },
     ],

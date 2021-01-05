@@ -2,9 +2,10 @@ import { createElement, useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
 import { ResolvedNode, useStore } from '../store'
-import registry from '../registry'
+import registry, { NodeType } from '../registry'
 import { PropertiesWidget } from './PropertiesWidget'
 import { PortWidget } from './PortWidget'
+import { getCategoryColor } from '../theming'
 
 export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
     const nodeService = registry.getNodeService(node.type)
@@ -22,21 +23,22 @@ export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
     return (
         <NodeContainer
             onMouseDown={handleStartDrag}
+            category={nodeService.category}
             isSelected={node.isSelected}
             style={{
-                top: node.y,
-                left: node.x,
+                transform: `translate(${node.x}px,${node.y}px)`,
                 width: node.width,
             }}
         >
             <NodeHeader>
-                <span>{node.name}</span>
+                <NodeName>{node.name}</NodeName>
                 {nodeService.hasOutput && (
                     <PortWidget
                         type="source"
                         elementId={node.id}
                         x={node.x + node.width}
                         y={node.y + 12}
+                        category={nodeService.category}
                     />
                 )}
             </NodeHeader>
@@ -48,16 +50,17 @@ export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
 })
 
 const NodeContainer = styled.div<{
+    category: string
     isSelected: boolean
 }>`
     pointer-events: all;
     user-select: none;
     background-color: transparent;
-    color: ${props => props.theme.colors.accentColor};
+    color: ${props => getCategoryColor(props.category, props.theme)};
     position: absolute;
     box-shadow: ${props =>
         props.isSelected
-            ? `0 0 0 2px ${props.theme.colors.accentColor}`
+            ? `0 0 0 2px ${getCategoryColor(props.category, props.theme)}`
             : `0 0 0 1px ${props.theme.colors.nodeBorder}`};
     cursor: move;
     font-size: 12px;
@@ -65,22 +68,26 @@ const NodeContainer = styled.div<{
     &:hover {
         box-shadow: ${props =>
             props.isSelected
-                ? `0 0 0 2px ${props.theme.colors.accentColor}`
-                : `0 0 0 1px ${props.theme.colors.accentColor}`};
+                ? `0 0 0 2px ${getCategoryColor(props.category, props.theme)}`
+                : `0 0 0 1px ${getCategoryColor(props.category, props.theme)}`};
     }
 `
 
 const NodeHeader = styled.header`
     position: relative;
-    font-weight: 600;
     background-color: ${props => transparentize(0.15, props.theme.colors.topDepthBackground)};
+    width: 100%;
+    height: 24px;
+    padding: 0 12px 0 9px;
+`
+
+const NodeName = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    height: 24px;
-    padding: 0 12px;
-
-    span {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `

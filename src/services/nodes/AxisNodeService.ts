@@ -18,29 +18,39 @@ export const AxisNodeService: NodeService<AxisNodeType, AxisNodeData> = {
     hasOutput: true,
     properties: [
         {
-            type: 'property:number',
             name: 'tickSize',
+            type: 'property:number',
+            category: 'dimensions',
             accepts: ['property:number'],
+            hasOutput: true,
         },
         {
-            type: 'property:number',
             name: 'tickPadding',
-            accepts: ['property:number'],
-        },
-        {
-            type: 'property:angle',
-            name: 'tickRotation',
-            accepts: ['property:angle'],
-        },
-        {
-            type: 'property:text',
-            name: 'legend',
-            accepts: ['property:text'],
-        },
-        {
             type: 'property:number',
-            name: 'legendOffset',
+            category: 'dimensions',
             accepts: ['property:number'],
+            hasOutput: true,
+        },
+        {
+            name: 'tickRotation',
+            type: 'property:angle',
+            category: 'dimensions',
+            accepts: ['property:angle'],
+            hasOutput: true,
+        },
+        {
+            name: 'legend',
+            type: 'property:text',
+            category: 'data',
+            accepts: ['property:text'],
+            hasOutput: true,
+        },
+        {
+            name: 'legendOffset',
+            type: 'property:number',
+            category: 'dimensions',
+            accepts: ['property:number'],
+            hasOutput: true,
         },
     ],
     factory: (data = {}) => {

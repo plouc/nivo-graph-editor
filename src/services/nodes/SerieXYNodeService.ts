@@ -15,14 +15,18 @@ export const SerieXYNodeService: NodeService<'node:serie_xy', SerieXYNodeData> =
     hasOutput: true,
     properties: [
         {
-            type: 'property:text',
             name: 'id',
+            type: 'property:text',
+            category: 'data',
             accepts: ['property:text'],
+            hasOutput: true,
         },
         {
-            type: 'property:array_xy',
             name: 'data',
+            type: 'property:array_xy',
+            category: 'data',
             accepts: ['property:array_xy'],
+            hasOutput: true,
         },
     ],
     factory: (data = {}) => {

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { line as d3Line, curveBasis } from 'd3-shape'
 import { FaTimes } from 'react-icons/fa'
 import { ResolvedLink, useStore } from '../store'
+import { getCategoryColor } from '../theming'
+import registry from '../registry'
 
 const lineGenerator = d3Line().curve(curveBasis)
 
@@ -88,10 +90,22 @@ export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
         return null
     }
 
+    let category: string = 'default'
+    if (source.elementType === 'property') {
+        if (source.category) {
+            category = source.category
+        }
+    } else if (source.elementType === 'node') {
+        const nodeService = registry.getNodeService(source.type)
+        if (nodeService) {
+            category = nodeService.category
+        }
+    }
+
     return (
         <>
-            <Path d={path} isHover={isHover} />
-            {!isHover && <Circle cx={center[0]} cy={center[1]} r={4} />}
+            <Path d={path} category={category} isHover={isHover} />
+            {!isHover && <Circle cx={center[0]} cy={center[1]} r={4} category={category} />}
             <CapturePath d={path} onMouseEnter={handleHover} onMouseLeave={handleOut} />
             {isHover && (
                 <foreignObject
@@ -104,6 +118,7 @@ export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
                         onMouseEnter={handleHover}
                         onMouseLeave={handleOut}
                         onClick={handleUnlink}
+                        category={category}
                     >
                         <FaTimes />
                     </UnlinkButton>
@@ -121,14 +136,17 @@ const CapturePath = styled.path`
 `
 
 const Path = styled.path<{
+    category: string
     isHover: boolean
 }>`
     fill: none;
-    stroke: ${props => props.theme.colors.accentColor};
-    stroke-width: ${props => (props.isHover ? 4 : 2)}px;
+    stroke: ${props => getCategoryColor(props.category, props.theme)};
+    stroke-width: ${props => (props.isHover ? 3 : 1)}px;
 `
 
-const UnlinkButton = styled.div`
+const UnlinkButton = styled.div<{
+    category: string
+}>`
     pointer-events: all;
     display: flex;
     justify-content: center;
@@ -138,13 +156,15 @@ const UnlinkButton = styled.div`
     border-radius: ${UNLINK_BUTTON_SIZE / 2}px;
     cursor: pointer;
     background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.accentColor};
-    border: 2px solid ${props => props.theme.colors.accentColor};
+    color: ${props => getCategoryColor(props.category, props.theme)};
+    border: 2px solid ${props => getCategoryColor(props.category, props.theme)};
     font-size: 10px;
 `
 
-const Circle = styled.circle`
+const Circle = styled.circle<{
+    category: string
+}>`
     fill: ${props => props.theme.colors.background};
-    stroke: ${props => props.theme.colors.accentColor};
+    stroke: ${props => getCategoryColor(props.category, props.theme)};
     stroke-width: 2px;
 `

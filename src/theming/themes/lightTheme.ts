@@ -17,5 +17,13 @@ export const lightTheme: DefaultTheme = {
         nodeBorder: '#cccccc',
         success: '#0ab537',
         overlay: transparentize(0.3, '#eeeeee'),
+        categories: {
+            axis_grid: '#60399b',
+            charts: '#006dcd',
+            colors_theming: '#d2702d',
+            data: '#3da914',
+            dimensions: '#288fa5',
+            render: '#c3931a',
+        },
     },
 }

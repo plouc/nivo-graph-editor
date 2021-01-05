@@ -1,6 +1,7 @@
 import { useCallback, MouseEvent, memo } from 'react'
 import styled, { css } from 'styled-components'
 import { ElementId, useLinkingActions, useLinking } from '../store'
+import { getCategoryColor } from '../theming'
 
 const CONTAINER_SIZE = 20
 const PORT_SIZE = 10
@@ -11,11 +12,13 @@ export const PortWidget = memo(
         elementId,
         x,
         y,
+        category = 'default',
     }: {
         type: 'source' | 'target'
         elementId: ElementId
         x: number
         y: number
+        category?: string
     }) => {
         const { type: linkingType, isLinking, potentialId } = useLinking()
         const {
@@ -57,19 +60,21 @@ export const PortWidget = memo(
                     left: type === 'target' ? 0 : '100%',
                 }}
             >
-                <Port />
+                <Port category={category} />
             </Container>
         )
     }
 )
 
-const Port = styled.div`
+const Port = styled.div<{
+    category: string
+}>`
     pointer-events: all;
     width: ${PORT_SIZE}px;
     height: ${PORT_SIZE}px;
     border-radius: ${PORT_SIZE / 2}px;
     background: ${props => props.theme.colors.background};
-    border: 2px solid ${props => props.theme.colors.accentColor};
+    border: 2px solid ${props => getCategoryColor(props.category, props.theme)};
     transition: transform 200ms;
 `
 

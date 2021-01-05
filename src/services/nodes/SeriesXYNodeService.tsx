@@ -11,20 +11,22 @@ export const SeriesXYNodeService: NodeService<'node:series_xy', any> = {
     hasOutput: true,
     properties: [
         {
-            type: 'property:ref',
             name: 'serie_0',
+            type: 'property:ref',
+            category: 'data',
             accepts: ['node:serie_xy'],
         },
         {
-            type: 'property:ref',
             name: 'serie_1',
+            type: 'property:ref',
+            category: 'data',
             accepts: ['node:serie_xy'],
         },
     ],
     factory: () => {
         return {}
     },
-    widget: SeriesXYNodeWidget,
+    //widget: SeriesXYNodeWidget,
     getValue: node => {
         return node.properties.map(property => {
             const propertyService = registry.getPropertyService(property.type)
