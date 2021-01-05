@@ -16,8 +16,8 @@ export interface NodeService<Type extends NodeType = NodeType, Data = any> {
     hasOutput: boolean
     properties: PropertySpec[]
     factory: (data?: Partial<Data>) => Data
-    getValue: (node: ResolvedNode<Type>, registry: ServiceRegistry) => any
-    widget?: (props: { node: ResolvedNode<Type>; registry: ServiceRegistry }) => JSX.Element
+    getValue: (node: ResolvedNode<Type>) => any
+    widget?: (props: { node: ResolvedNode<Type> }) => JSX.Element
 }
 
 export interface PropertyService<
@@ -29,7 +29,7 @@ export interface PropertyService<
 > {
     type: Type
     create: (propertySpec: PropertySpec<Type, Data, Options>) => PropertySpec<Type, Data, Options>
-    getValue: (property: ResolvedProperty<Type, Data, Options>, registry: ServiceRegistry) => Value
+    getValue: (property: ResolvedProperty<Type, Data, Options>) => Value
     serialize: (property: ResolvedProperty<Type, Data, Options>) => SerializedValue
     hydrate: (
         property: Property<Type, Data, Options>,
@@ -40,12 +40,12 @@ export interface PropertyService<
 }
 
 export class ServiceRegistry {
-    private readonly nodeServices: NodeServiceMap
     private readonly propertyServices: PropertyServiceMap
+    private readonly nodeServices: NodeServiceMap
 
-    constructor(nodes: NodeServiceMap, properties: PropertyServiceMap) {
-        this.nodeServices = nodes
+    constructor(properties: PropertyServiceMap, nodes: NodeServiceMap) {
         this.propertyServices = properties
+        this.nodeServices = nodes
     }
 
     getNodeService(nodeType: NodeType): NodeServiceMap[NodeType] {
@@ -113,5 +113,16 @@ export class ServiceRegistry {
             // @ts-ignore
             return this.getNodeService(input.type).getValue(input, this)
         }
+    }
+
+    resolvePropertyValues(properties: ResolvedProperty[]) {
+        const resolved: any = {}
+        properties.forEach(property => {
+            resolved[property.name] = this.getPropertyService(property.type)
+                // @ts-ignore
+                .getValue(property, this)
+        })
+
+        return resolved
     }
 }
