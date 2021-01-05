@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import registry from '../registry'
 import { useCreateNode } from '../store'
 import { NodeService } from '../services_registry'
+import { getCategoryColor } from '../theming'
 
 const NodeType = ({ type, onCreate }: { type: NodeService; onCreate: () => void }) => {
     const createNode = useCreateNode()
@@ -14,7 +15,7 @@ const NodeType = ({ type, onCreate }: { type: NodeService; onCreate: () => void 
                 onCreate()
             }}
         >
-            <div>{type.type}</div>
+            <NodeTypeTitle category={type.category}>{type.type}</NodeTypeTitle>
             {type.description && <NodeTypeDescription>{type.description}</NodeTypeDescription>}
         </NodeTypeItem>
     )
@@ -32,7 +33,7 @@ const Category = ({
 }) => {
     return (
         <div>
-            <CategoryTitle>{category.category}</CategoryTitle>
+            <CategoryTitle category={category.category}>{category.category}</CategoryTitle>
             {category.types.map(type => (
                 <NodeType key={type.type} type={type} onCreate={onCreate} />
             ))}
@@ -58,12 +59,14 @@ const Container = styled.div`
     overflow-y: auto;
 `
 
-const CategoryTitle = styled.h3`
+const CategoryTitle = styled.h3<{
+    category: string
+}>`
     padding: 9px 12px;
     margin: 0;
     background-color: ${props => props.theme.colors.mediumDepthBackground};
     font-size: 16px;
-    color: ${props => props.theme.colors.accentColor};
+    color: ${props => getCategoryColor(props.category, props.theme)};
 `
 
 const NodeTypeItem = styled.div`
@@ -71,7 +74,6 @@ const NodeTypeItem = styled.div`
     border-bottom: 1px solid ${props => props.theme.colors.lightBorder};
     font-size: 14px;
     cursor: pointer;
-    font-weight: 600;
 
     &:last-child {
         border-bottom: none;
@@ -82,9 +84,19 @@ const NodeTypeItem = styled.div`
     }
 `
 
+const NodeTypeTitle = styled.h4<{
+    category: string
+}>`
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: ${props => getCategoryColor(props.category, props.theme)};
+`
+
 const NodeTypeDescription = styled.div`
     font-weight: 400;
     font-size: 12px;
     margin-top: 6px;
-    color: #aaaaaa;
+    color: ${props => props.theme.colors.textLight};
 `

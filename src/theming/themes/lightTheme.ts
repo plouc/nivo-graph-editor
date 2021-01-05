@@ -11,6 +11,7 @@ export const lightTheme: DefaultTheme = {
         inputBackground: '#eeeeee',
         inputText: '#444444',
         text: '#333333',
+        textLight: '#777777',
         accentColor: '#1a8cc3',
         border: '#dddddd',
         lightBorder: '#eeeeee',

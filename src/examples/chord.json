@@ -6,8 +6,8 @@
             "id": "0c33f126-5e56-482e-aa21-e1c1d4046875",
             "type": "node:chord",
             "name": "Chord diagram",
-            "x": 216,
-            "y": 45,
+            "x": 287,
+            "y": 18,
             "width": 120,
             "data": {
                 "matrix": {
@@ -119,8 +119,8 @@
             "id": "7413fc14-80c3-4c07-9ee0-ee46e66fceec",
             "type": "node:canvas",
             "name": "Chord diagram preview",
-            "x": 415,
-            "y": 47,
+            "x": 501,
+            "y": 20,
             "width": 120,
             "data": {
                 "content": {
@@ -147,6 +147,69 @@
                 "blendMode": {
                     "id": "dedb267f-c386-47ca-bc00-88abfacaefe6",
                     "data": "screen"
+                }
+            }
+        },
+        {
+            "id": "84760eb2-46e0-44db-be19-bbb1d999bfca",
+            "type": "node:chord",
+            "name": "node:chord",
+            "x": 283,
+            "y": 417,
+            "width": 120,
+            "data": {
+                "matrix": {
+                    "id": "53fb2185-00de-4659-9e7d-69804ddfb93a"
+                },
+                "keys": {
+                    "id": "e52f3589-b1e9-4afb-aac6-5566e5d46371",
+                    "data": []
+                },
+                "width": {
+                    "id": "400c40b8-4eda-4ccd-97f0-f0ed9ed14034",
+                    "data": 420
+                },
+                "height": {
+                    "id": "67566e4b-dac3-4a88-8e28-573af07071b1",
+                    "data": 240
+                },
+                "margin": {
+                    "id": "28362acb-8812-401b-a5e3-b29c4969045c"
+                },
+                "innerRadiusRatio": {
+                    "id": "c09688b8-c8e6-4207-8eed-6edc4d715d2c",
+                    "data": 0.9
+                },
+                "innerRadiusOffset": {
+                    "id": "ef635377-f074-41bf-9fb0-c695f6692913",
+                    "data": 0
+                },
+                "theme": {
+                    "id": "c4bab59f-7ee9-4f48-ba5e-2e4d295b9f3e"
+                },
+                "colors": {
+                    "id": "b445bc61-ca29-40eb-8fa2-8f8cdb93f7e9"
+                }
+            }
+        },
+        {
+            "id": "e3249239-6422-45cb-8d66-a072db42051d",
+            "type": "node:canvas",
+            "name": "node:canvas",
+            "x": 498,
+            "y": 528,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "749b9f77-682b-457c-9f15-f0557536d860"
+                },
+                "width": {
+                    "id": "6559a174-973f-4791-b0ae-90eabe553ead",
+                    "data": 300
+                },
+                "height": {
+                    "id": "3a7e72e4-ee54-4ca3-991b-929e0928489d",
+                    "data": 240
                 }
             }
         }
@@ -206,6 +269,66 @@
             "id": "2ffeaca0-31e2-41fc-9db4-2fe2eead0bbf",
             "sourceId": "d942017a-81b0-4d81-b9d7-7941f015d210",
             "targetId": "b09a8c5f-86f8-4dcb-bcff-6c3b071fc16e"
+        },
+        {
+            "id": "249b74db-4f33-422c-9aba-e64faa36c8dc",
+            "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
+            "targetId": "53fb2185-00de-4659-9e7d-69804ddfb93a"
+        },
+        {
+            "id": "3eb24418-2e3b-410d-b8bc-3691bab4757b",
+            "sourceId": "4b685490-ae10-490d-b962-0c5c92dc4f04",
+            "targetId": "e52f3589-b1e9-4afb-aac6-5566e5d46371"
+        },
+        {
+            "id": "f16e504c-199b-489c-ae6d-e6da625afbbb",
+            "sourceId": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
+            "targetId": "400c40b8-4eda-4ccd-97f0-f0ed9ed14034"
+        },
+        {
+            "id": "24fed926-1e6f-4788-8151-b8f81e736243",
+            "sourceId": "400c40b8-4eda-4ccd-97f0-f0ed9ed14034",
+            "targetId": "67566e4b-dac3-4a88-8e28-573af07071b1"
+        },
+        {
+            "id": "f00edf45-190d-45ac-b19c-a041d332cd4c",
+            "sourceId": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
+            "targetId": "28362acb-8812-401b-a5e3-b29c4969045c"
+        },
+        {
+            "id": "e3462185-2005-4300-beb0-fc940f3edd03",
+            "sourceId": "dac5223e-6139-4009-9c7a-67c71611f4f2",
+            "targetId": "c09688b8-c8e6-4207-8eed-6edc4d715d2c"
+        },
+        {
+            "id": "9e1c7d7d-df6b-4814-a91b-abff498b7603",
+            "sourceId": "52cef60a-35ed-4941-8e66-3baf1e947d12",
+            "targetId": "ef635377-f074-41bf-9fb0-c695f6692913"
+        },
+        {
+            "id": "70656e4f-166b-4569-b2aa-ed5c37df357d",
+            "sourceId": "6ca9cc54-8b38-4499-bc4f-5225c0e8d160",
+            "targetId": "c4bab59f-7ee9-4f48-ba5e-2e4d295b9f3e"
+        },
+        {
+            "id": "a21ef922-d306-443f-96ac-0496be5b6e8b",
+            "sourceId": "52906eeb-9b69-48bc-a424-1f81c714a88f",
+            "targetId": "b445bc61-ca29-40eb-8fa2-8f8cdb93f7e9"
+        },
+        {
+            "id": "390d4b2c-aed7-406c-8526-05532f64a4bd",
+            "sourceId": "84760eb2-46e0-44db-be19-bbb1d999bfca",
+            "targetId": "749b9f77-682b-457c-9f15-f0557536d860"
+        },
+        {
+            "id": "bf6f0f5b-40e1-40df-b45d-e57ee2505ad5",
+            "sourceId": "400c40b8-4eda-4ccd-97f0-f0ed9ed14034",
+            "targetId": "6559a174-973f-4791-b0ae-90eabe553ead"
+        },
+        {
+            "id": "e7741179-71ff-446a-83e3-b1eba93e06ab",
+            "sourceId": "6559a174-973f-4791-b0ae-90eabe553ead",
+            "targetId": "3a7e72e4-ee54-4ca3-991b-929e0928489d"
         }
     ]
 }

@@ -11,6 +11,7 @@ declare module 'styled-components' {
             inputBackground: string
             inputText: string
             text: string
+            textLight: string
             accentColor: string
             border: string
             lightBorder: string
