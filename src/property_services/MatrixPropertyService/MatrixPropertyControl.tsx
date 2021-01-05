@@ -1,13 +1,16 @@
 import { ChangeEvent, Fragment } from 'react'
 import styled from 'styled-components'
-import { Property, useStore } from '../../state'
+import { Property, useStore } from '../../store'
 import { Input } from '../../components/ui'
-import { MatrixProperty } from './types'
 
-export const MatrixPropertyControl = ({ property }: { property: Property & MatrixProperty }) => {
+export const MatrixPropertyControl = ({
+    property,
+}: {
+    property: Property<'property:matrix', number[][]>
+}) => {
     const { updateProperty } = useStore()
 
-    const value = property.value
+    const value = property.data
 
     let xSize = 0
     let ySize = 0

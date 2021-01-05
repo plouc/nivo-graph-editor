@@ -4,7 +4,7 @@ import { MdSettings } from 'react-icons/md'
 import { themes } from '../theming'
 import { SidebarButton } from './SidebarButton'
 import { Modal, ModalTitle } from './Modal'
-import { useStore } from '../state'
+import { useStore } from '../store'
 
 export const Settings = () => {
     const [isOpen, setIsOpen] = useState(false)

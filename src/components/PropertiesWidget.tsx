@@ -1,5 +1,5 @@
 import { createElement, memo } from 'react'
-import { ResolvedProperty } from '../state'
+import { ResolvedProperty } from '../store'
 import registry from '../registry'
 import { PropertyWidget } from './PropertyWidget'
 
@@ -7,14 +7,14 @@ export const PropertiesWidget = memo(({ properties }: { properties: ResolvedProp
     return (
         <>
             {properties.map(property => {
-                const propertyService = registry.propertyServices[property.type]
-                const hasCustomWidget = propertyService && 'widget' in propertyService
+                const propertyService = registry.getPropertyService(property.type)
 
-                if (!hasCustomWidget) {
+                if (!('widget' in propertyService)) {
                     return <PropertyWidget key={property.name} property={property} />
                 }
 
-                return createElement(propertyService.widget!, { property })
+                // @ts-ignore
+                return createElement(propertyService.widget, { property })
             })}
         </>
     )

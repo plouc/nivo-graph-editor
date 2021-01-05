@@ -1,19 +1,9 @@
 import { PropertyService } from '../services_registry'
 import { ChangeEvent } from 'react'
-import { Property, useStore } from '../state'
+import { Property, useStore } from '../store'
 import { Input } from '../components/ui'
 
-export type TextPropertyOptions = {
-    name: string
-    defaultValue?: string
-    hasOutput?: boolean
-}
-
-export type TextProperty = {
-    value: string
-}
-
-const TextPropertyControl = ({ property }: { property: Property & TextProperty }) => {
+const TextPropertyControl = ({ property }: { property: Property<'property:text', string> }) => {
     const { updateProperty } = useStore()
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,36 +12,20 @@ const TextPropertyControl = ({ property }: { property: Property & TextProperty }
         })
     }
 
-    return <Input type="text" value={property.value} onChange={handleChange} />
+    return <Input type="text" value={property.data} onChange={handleChange} />
 }
 
-export const TextPropertyService: PropertyService<
-    'property:text',
-    TextPropertyOptions,
-    TextProperty,
-    string
-> = {
+export const TextPropertyService: PropertyService<'property:text', string, never, string> = {
     type: 'property:text',
-    factory: ({ name, defaultValue = '', hasOutput = false }: TextPropertyOptions) => {
-        return {
-            name,
-            type: 'property:text',
-            value: defaultValue,
-            hasOutput,
-        }
-    },
-    serialize: property => {
-        // @ts-ignore
-        return property.value
-    },
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data,
-        }
-    },
-    getValue: data => {
-        return data.value
-    },
+    create: spec => ({
+        ...spec,
+        data: spec.data || '',
+    }),
+    getValue: property => property.data,
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
     control: TextPropertyControl,
 }

@@ -1,6 +1,8 @@
 import { keyBy } from 'lodash'
 import { NodeService } from '../services_registry'
 
+export type AxisNodeType = 'node:axis'
+
 export interface AxisNodeData {
     tickSize: number
     tickPadding: number
@@ -9,7 +11,7 @@ export interface AxisNodeData {
     legendOffset: number
 }
 
-export const AxisNodeService: NodeService<'node:axis', AxisNodeData> = {
+export const AxisNodeService: NodeService<AxisNodeType, AxisNodeData> = {
     type: 'node:axis',
     category: 'axis_grid',
     description: `X or Y axis to be used in various chart types.`,

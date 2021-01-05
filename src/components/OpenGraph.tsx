@@ -1,6 +1,6 @@
 import { MdFolderOpen } from 'react-icons/md'
 import { loadFromJSON } from '../fs'
-import { useStore } from '../state'
+import { useStore } from '../store'
 import { SidebarButton } from './SidebarButton'
 import { useCallback } from 'react'
 

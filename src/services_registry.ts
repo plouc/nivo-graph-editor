@@ -1,54 +1,54 @@
 import { groupBy, sortBy } from 'lodash'
-import { CreateProperty, Property, ResolvedNode, ResolvedProperty } from './state'
+import {
+    CreateProperty,
+    generateElementId,
+    Property,
+    PropertySpec,
+    ResolvedNode,
+    ResolvedProperty,
+} from './store'
+import { NodeType, NodeServiceMap, PropertyType, PropertyServiceMap } from './registry'
 
-export interface NodeService<Type extends string, Data> {
+export interface NodeService<Type extends NodeType = NodeType, Data = any> {
     type: Type
     category: string
     description?: string
     hasOutput: boolean
-    properties: CreateProperty[]
+    properties: PropertySpec[]
     factory: (data?: Partial<Data>) => Data
-    getValue: (node: ResolvedNode, registry: ServiceRegistry) => any
-    widget?: (props: { node: ResolvedNode; registry: ServiceRegistry }) => JSX.Element
+    getValue: (node: ResolvedNode<Type>, registry: ServiceRegistry) => any
+    widget?: (props: { node: ResolvedNode<Type>; registry: ServiceRegistry }) => JSX.Element
 }
 
 export interface PropertyService<
-    Type extends string,
-    Options,
-    PropertyData = never,
-    Value = never
+    Type extends PropertyType = PropertyType,
+    Data = any,
+    Options = any,
+    Value = any,
+    SerializedValue = Value
 > {
     type: Type
-    factory: (options: Options) => CreateProperty
-    serialize: (property: ResolvedProperty) => any
-    hydrate: (property: Property, data: any) => Property
-    getValue: (property: PropertyData, registry: ServiceRegistry) => Value
-    widget?: (props: { property: Property & PropertyData }) => JSX.Element
-    control?: (props: { property: Property & PropertyData }) => JSX.Element
+    create: (propertySpec: PropertySpec<Type, Data, Options>) => PropertySpec<Type, Data, Options>
+    getValue: (property: ResolvedProperty<Type, Data, Options>, registry: ServiceRegistry) => Value
+    serialize: (property: ResolvedProperty<Type, Data, Options>) => SerializedValue
+    hydrate: (
+        property: Property<Type, Data, Options>,
+        serializedValue: SerializedValue
+    ) => Property<Type, Data, Options>
+    widget?: (props: { property: Property<Type, Data, Options> }) => JSX.Element
+    control?: (props: { property: Property<Type, Data, Options> }) => JSX.Element
 }
 
 export class ServiceRegistry {
-    nodeServices: Record<string, NodeService<string, any>>
-    propertyServices: Record<string, PropertyService<string, any, any, any>>
+    private readonly nodeServices: NodeServiceMap
+    private readonly propertyServices: PropertyServiceMap
 
-    constructor() {
-        this.nodeServices = {}
-        this.propertyServices = {}
+    constructor(nodes: NodeServiceMap, properties: PropertyServiceMap) {
+        this.nodeServices = nodes
+        this.propertyServices = properties
     }
 
-    registerNodeService(nodeService: NodeService<string, any>) {
-        if (nodeService.type.indexOf('node:') !== 0) {
-            throw new Error(
-                `a node service type should use a 'node:' prefix, got: '${nodeService.type}'`
-            )
-        }
-
-        this.nodeServices[nodeService.type] = nodeService
-
-        return this
-    }
-
-    getNodeService(nodeType: string): NodeService<string, any> {
+    getNodeService(nodeType: NodeType): NodeServiceMap[NodeType] {
         const nodeService = this.nodeServices[nodeType]
         if (!nodeService) {
             throw new Error(`no node service defined for: ${nodeType}`)
@@ -67,19 +67,9 @@ export class ServiceRegistry {
         }))
     }
 
-    registerPropertyService(propertyService: PropertyService<any, any, any, any>) {
-        if (propertyService.type.indexOf('property:') !== 0) {
-            throw new Error(
-                `a property service type should use a 'property:' prefix, got: '${propertyService.type}'`
-            )
-        }
-
-        this.propertyServices[propertyService.type] = propertyService
-
-        return this
-    }
-
-    getPropertyService(propertyType: string): PropertyService<any, any, any, any> {
+    getPropertyService<Type extends PropertyType = PropertyType>(
+        propertyType: Type
+    ): PropertyServiceMap[Type] {
         const propertyService = this.propertyServices[propertyType]
         if (!propertyService) {
             throw new Error(`no property service defined for: ${propertyType}`)
@@ -88,17 +78,39 @@ export class ServiceRegistry {
         return propertyService
     }
 
-    resolvePropertyValue(property: ResolvedProperty, ownValue?: any) {
+    createProperty(propertySpec: PropertySpec) {
+        const propertyService = this.getPropertyService(propertySpec.type)
+
+        const property: CreateProperty = {
+            elementType: 'property',
+            id: generateElementId(),
+            accepts: [],
+            hasOutput: false,
+            data: undefined,
+            options: {},
+            // @ts-ignore
+            ...propertyService.create(propertySpec),
+        }
+
+        return property
+    }
+
+    resolvePropertyValue<Type extends PropertyType = PropertyType>(
+        property: ResolvedProperty<Type>,
+        ownValue?: any
+    ) {
         const { input } = property
         if (!input) {
             return ownValue
         }
 
         if (input.elementType === 'property') {
+            // @ts-ignore
             return this.getPropertyService(input.type).getValue(input, this)
         }
 
         if (input.elementType === 'node') {
+            // @ts-ignore
             return this.getNodeService(input.type).getValue(input, this)
         }
     }

@@ -1,18 +1,31 @@
+import { PropertyType, NodeType } from '../registry'
+
 export type ElementId = string
 
-export interface CreateProperty {
-    type: string
-    name: string
-    accepts?: string[]
-    hasOutput?: boolean
-}
-
-export interface Property extends CreateProperty {
+export interface CreateProperty<
+    Type extends PropertyType = PropertyType,
+    Data = any,
+    Options = any
+> {
+    elementType: 'property'
+    id: ElementId
+    type: Type
     name: string
     accepts: string[]
     hasOutput: boolean
-    id: ElementId
-    elementType: 'property'
+    data: Data
+    options: Options
+}
+
+export type PropertySpec<
+    Type extends PropertyType = PropertyType,
+    Data = any,
+    Options = any
+> = Pick<CreateProperty<Type, Data, Options>, 'type' | 'name'> &
+    Partial<Omit<CreateProperty<Type, Data, Options>, 'elementType' | 'type' | 'name' | 'id'>>
+
+export interface Property<Type extends PropertyType = PropertyType, Data = any, Options = any>
+    extends CreateProperty<Type, Data, Options> {
     nodeId: ElementId
     x: number
     y: number
@@ -20,18 +33,23 @@ export interface Property extends CreateProperty {
     height: number
 }
 
-export interface ResolvedProperty extends Property {
+export interface ResolvedProperty<
+    Type extends PropertyType = PropertyType,
+    Data = any,
+    Options = any
+> extends Property<Type, Data, Options> {
     node: ResolvedNode
     dependencies: (ResolvedNode | ResolvedProperty)[]
-    input?: ResolvedNode | ResolvedProperty
+    input?: ResolvedNode | ResolvedProperty<Type>
 }
 
-export const isProperty = (element: Element): element is Property =>
-    element.elementType === 'property'
+export const isProperty = <Type extends PropertyType = PropertyType>(
+    element: Element
+): element is Property<Type> => element.elementType === 'property'
 
-export interface Node<Data = any> {
+export interface Node<Type extends NodeType = NodeType, Data = any> {
     elementType: 'node'
-    type: string
+    type: Type
     id: ElementId
     x: number
     y: number
@@ -42,14 +60,15 @@ export interface Node<Data = any> {
     properties: ElementId[]
 }
 
-export interface ResolvedNode extends Omit<Node, 'properties'> {
+export interface ResolvedNode<Type extends NodeType = NodeType>
+    extends Omit<Node<Type>, 'properties'> {
     isSelected: boolean
     properties: ResolvedProperty[]
 }
 
-export interface SerializedNode {
+export interface SerializedNode<Type extends NodeType = NodeType> {
     id: ElementId
-    type: string
+    type: Type
     name: string
     x: number
     y: number
@@ -90,7 +109,7 @@ export type State = {
     elements: Element[]
     selectedNodeIds: ElementId[]
     setSelectedNodeIds: (ids: ElementId[]) => void
-    createNode: (type: string) => void
+    createNode: (type: NodeType) => void
     updateNode: (id: ElementId, patch: any) => void
     removeNode: (id: ElementId) => void
     updateProperty: (propertyId: ElementId, patch: any) => void

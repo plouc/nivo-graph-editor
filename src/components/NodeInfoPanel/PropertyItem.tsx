@@ -1,7 +1,7 @@
 import { createElement, useCallback, memo } from 'react'
 import styled from 'styled-components'
 import { FaTimes } from 'react-icons/fa'
-import { ElementId, ResolvedProperty, useSetSelectedNodeIds, useUnlink } from '../../state'
+import { ElementId, ResolvedProperty, useSetSelectedNodeIds, useUnlink } from '../../store'
 import registry from '../../registry'
 
 const Relation = memo(
@@ -70,8 +70,9 @@ export const PropertyItem = memo(({ property }: { property: ResolvedProperty }) 
                     />
                 )}
             </PropertyHeader>
-            {!hasInput && propertyService.control && (
+            {!hasInput && 'control' in propertyService && propertyService.control !== undefined && (
                 <ControlContainer>
+                    {/* @ts-ignore */}
                     {createElement(propertyService.control, { property })}
                 </ControlContainer>
             )}

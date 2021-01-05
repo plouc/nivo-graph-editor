@@ -1,5 +1,5 @@
 import { fileOpen, fileSave } from 'browser-nativefs'
-import { ResolvedLink, ResolvedNode, serializeElements } from './state'
+import { ResolvedLink, ResolvedNode, serializeElements } from './store'
 
 export const saveAsJSON = async (nodes: ResolvedNode[], links: ResolvedLink[]) => {
     const serialized = serializeElements(nodes, links)

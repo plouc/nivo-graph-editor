@@ -28,6 +28,7 @@ export const SeriesXYNodeService: NodeService<'node:series_xy', any> = {
         return node.properties.map(property => {
             const propertyService = registry.getPropertyService(property.type)
 
+            // @ts-ignore
             return propertyService.getValue(property, registry)
         })
     },

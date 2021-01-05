@@ -1,10 +1,4 @@
 import { PropertyService } from '../services_registry'
-import {
-    ChoicesPropertyOptions,
-    ChoiceProperty,
-    ChoicesPropertyService,
-    ChoicesPropertyControl,
-} from './ChoicesPropertyService'
 
 const blendModeChoices = [
     { label: 'normal', value: 'normal' },
@@ -27,26 +21,20 @@ const blendModeChoices = [
 
 export const BlendModePropertyService: PropertyService<
     'property:blend_mode',
-    ChoicesPropertyOptions,
-    ChoiceProperty,
-    string | number
+    string,
+    {},
+    string
 > = {
     type: 'property:blend_mode',
-    factory: ({ name, defaultValue, hasOutput = false }: any) =>
-        ChoicesPropertyService.factory({
-            name,
-            defaultValue,
-            hasOutput,
-            choices: blendModeChoices,
-        }),
-    serialize: ChoicesPropertyService.serialize,
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data,
-            choices: blendModeChoices,
-        }
-    },
-    getValue: ChoicesPropertyService.getValue,
-    control: ChoicesPropertyControl,
+    create: spec => ({
+        ...spec,
+        data: 'normal',
+    }),
+    getValue: property => property.data,
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
+    control: () => <div>BlendModePropertyControl</div>,
 }

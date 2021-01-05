@@ -1,15 +1,15 @@
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import registry from '../../registry'
-import { ResolvedNode, useStore } from '../../state'
+import { ResolvedNode, useSetSelectedNodeIds } from '../../store'
 import { NodeName } from './NodeName'
 import { PropertyItem } from './PropertyItem'
-import { useCallback } from 'react'
 
 export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
     const nodeService = registry.getNodeService(node.type)
-    const { setSelectedNodeIds } = useStore()
+    const setSelectedNodeIds = useSetSelectedNodeIds()
+    // @ts-ignore
     const value: any = nodeService.getValue(node, registry)
 
     const handleClose = useCallback(() => {

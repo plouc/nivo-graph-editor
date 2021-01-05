@@ -87,6 +87,7 @@ export const ScatterPlotNodeService: NodeService<'node:scatterplot', ScatterPlot
         properties.forEach(property => {
             value[property.name] = registry
                 .getPropertyService(property.type)
+                // @ts-ignore
                 .getValue(property, registry)
         })
 

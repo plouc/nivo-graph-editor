@@ -1,34 +1,30 @@
-import { PropertyService } from '../services_registry'
-import { useStore, Property } from '../state'
 import { ChangeEvent } from 'react'
+import { PropertyService } from '../services_registry'
+import { useStore, Property } from '../store'
 
-export type ChoiceProperty = {
+export type ChoicePropertyOptions = {
     choices: {
         label: string
         value: string | number
     }[]
-    value: string | number
 }
 
-export type ChoicesPropertyOptions = {
-    name: string
-    defaultValue?: ChoiceProperty['value']
-    choices: ChoiceProperty['choices']
-    hasOutput?: boolean
-}
-
-export const ChoicesPropertyControl = ({ property }: { property: Property & ChoiceProperty }) => {
+export const ChoicesPropertyControl = ({
+    property,
+}: {
+    property: Property<'property:choices', string, ChoicePropertyOptions>
+}) => {
     const { updateProperty } = useStore()
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
         updateProperty(property.id, {
-            value: event.target.value,
+            data: event.target.value,
         })
     }
 
     return (
-        <select value={property.value} onChange={handleChange}>
-            {property.choices.map(choice => {
+        <select value={property.data} onChange={handleChange}>
+            {property.options.choices.map(choice => {
                 return (
                     <option key={choice.value} value={choice.value}>
                         {choice.label}
@@ -41,32 +37,23 @@ export const ChoicesPropertyControl = ({ property }: { property: Property & Choi
 
 export const ChoicesPropertyService: PropertyService<
     'property:choices',
-    ChoicesPropertyOptions,
-    ChoiceProperty,
-    string | number
+    string,
+    ChoicePropertyOptions,
+    string
 > = {
     type: 'property:choices',
-    factory: ({ name, choices, defaultValue, hasOutput = false }: ChoicesPropertyOptions) => {
-        return {
-            name,
-            type: 'property:choices',
-            choices,
-            value: defaultValue,
-            hasOutput,
-        }
-    },
-    serialize: property => {
-        // @ts-ignore
-        return property.value
-    },
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data,
-        }
-    },
-    getValue: data => {
-        return data.value
-    },
+    create: spec => ({
+        ...spec,
+        data: '',
+        options: spec.options || {
+            choices: [],
+        },
+    }),
+    getValue: property => property.data,
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
     control: ChoicesPropertyControl,
 }

@@ -17,7 +17,7 @@ import {
     SerializedElements,
 } from './types'
 import { generateElementId } from './generateElementId'
-import registry from '../registry'
+import registry, { NodeType } from '../registry'
 import { findLinkingPotentialPort } from './linking'
 
 const DEFAULT_NODE_HEADER_HEIGHT = 24
@@ -71,7 +71,7 @@ export const useStore = create<State>(set => ({
     elements: [],
     selectedNodeIds: [],
     setSelectedNodeIds: selectedNodeIds => set(() => ({ selectedNodeIds })),
-    createNode: type =>
+    createNode: (type: NodeType) =>
         set(state => {
             const nodeService = registry.getNodeService(type)
 
@@ -92,13 +92,9 @@ export const useStore = create<State>(set => ({
             nodeService.properties.forEach(property => {
                 const propertyService = registry.getPropertyService(property.type)
 
-                const newProperty: Property = {
-                    accepts: [],
-                    ...property,
-                    elementType: 'property',
-                    id: generateElementId(),
+                let newProperty: Property = {
+                    ...registry.createProperty(property),
                     nodeId: newNode.id,
-                    name: property.name,
                     x: newNode.x,
                     y:
                         newNode.y +
@@ -106,12 +102,14 @@ export const useStore = create<State>(set => ({
                         newProperties.length * PROPERTY_HEIGHT,
                     height: PROPERTY_HEIGHT,
                     width: newNode.width,
-                    hasOutput: property.hasOutput || false,
                 }
 
-                newProperties.push(
-                    propertyService.hydrate(newProperty, newNode.data[property.name])
-                )
+                if (newNode.data[property.name] !== undefined) {
+                    // @ts-ignore
+                    newProperty = propertyService.hydrate(newProperty, newNode.data[property.name])
+                }
+
+                newProperties.push(newProperty)
             })
 
             newNode.properties = newProperties.map(property => property.id)
@@ -176,13 +174,10 @@ export const useStore = create<State>(set => ({
                         ? node.data[property.name].id
                         : generateElementId()
 
-                    let newProperty = {
-                        ...propertyService.factory(property),
-                        ...property,
-                        elementType: 'property',
+                    let newProperty: Property = {
+                        ...registry.createProperty(property),
                         id: propertyId,
                         nodeId: node.id,
-                        name: property.name,
                         x: node.x,
                         y:
                             DEFAULT_NODE_HEADER_HEIGHT +
@@ -190,10 +185,11 @@ export const useStore = create<State>(set => ({
                             propertyIds.length * PROPERTY_HEIGHT,
                         width: node.width,
                         height: PROPERTY_HEIGHT,
-                    } as Property
+                    }
 
                     if (node.data[property.name]) {
                         newProperty = propertyService.hydrate(
+                            // @ts-ignore
                             newProperty,
                             node.data[property.name].data
                         )
@@ -466,6 +462,7 @@ const serializeProperties = (properties: ResolvedProperty[]) => {
     properties.forEach(property => {
         props[property.name] = {
             id: property.id,
+            // @ts-ignore
             data: registry.getPropertyService(property.type).serialize(property),
         }
     })

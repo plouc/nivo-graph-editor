@@ -1,7 +1,7 @@
 import { useCallback, useState, memo } from 'react'
 import styled from 'styled-components'
 import { MdNoteAdd } from 'react-icons/md'
-import { useLoadGraph } from '../state'
+import { useLoadGraph } from '../store'
 import { Modal, ModalTitle } from './Modal'
 import { SidebarButton } from './SidebarButton'
 

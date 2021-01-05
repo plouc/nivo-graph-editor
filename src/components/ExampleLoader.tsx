@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import { examples } from '../examples'
-import { useStore } from '../state'
+import { useStore } from '../store'
 import { useCallback } from 'react'
 
 const ExampleItem = ({

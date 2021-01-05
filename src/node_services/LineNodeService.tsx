@@ -82,6 +82,7 @@ export const LineNodeService: NodeService<'node:line', LineNodeData> = {
         properties.forEach(property => {
             value[property.name] = registry
                 .getPropertyService(property.type)
+                // @ts-ignore
                 .getValue(property, registry)
         })
 

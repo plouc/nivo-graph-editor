@@ -1,35 +1,22 @@
 import { PropertyService } from '../../services_registry'
-import { ArrayStringPropertyOptions, ArrayStringProperty } from './types'
 import { ArrayStringPropertyControl } from './ArrayStringPropertyControl'
 
 export const ArrayStringPropertyService: PropertyService<
     'property:array_string',
-    ArrayStringPropertyOptions,
-    ArrayStringProperty,
+    string[],
+    never,
     string[]
 > = {
     type: 'property:array_string',
-    factory: ({ name, defaultValue = [], hasOutput = false }: ArrayStringPropertyOptions) => {
-        return {
-            name,
-            type: 'property:array_string',
-            value: defaultValue,
-            accepts: [],
-            hasOutput,
-        }
-    },
-    serialize: property => {
-        // @ts-ignore
-        return property.value
-    },
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data || [],
-        }
-    },
-    getValue: data => {
-        return data.value
-    },
+    create: spec => ({
+        ...spec,
+        data: spec.data || [],
+    }),
+    getValue: property => property.data,
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
     control: ArrayStringPropertyControl,
 }

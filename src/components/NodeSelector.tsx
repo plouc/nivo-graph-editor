@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import registry from '../registry'
-import { useCreateNode } from '../state'
+import { useCreateNode } from '../store'
 import { NodeService } from '../services_registry'
 
-const NodeType = ({ type, onCreate }: { type: NodeService<string, any>; onCreate: () => void }) => {
+const NodeType = ({ type, onCreate }: { type: NodeService; onCreate: () => void }) => {
     const createNode = useCreateNode()
 
     return (
@@ -26,7 +26,7 @@ const Category = ({
 }: {
     category: {
         category: string
-        types: NodeService<string, any>[]
+        types: NodeService[]
     }
     onCreate: () => void
 }) => {
@@ -46,6 +46,7 @@ export const NodeSelector = ({ onCreate }: { onCreate: () => void }) => {
     return (
         <Container>
             {categories.map(category => (
+                // @ts-ignore
                 <Category key={category.category} category={category} onCreate={onCreate} />
             ))}
         </Container>

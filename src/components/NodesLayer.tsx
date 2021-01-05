@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ResolvedNode } from '../state'
+import { ResolvedNode } from '../store'
 import { NodeWidget } from './NodeWidget'
 
 export const NodesLayer = ({ nodes }: { nodes: ResolvedNode[] }) => {

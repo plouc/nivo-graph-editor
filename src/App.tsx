@@ -1,6 +1,6 @@
 import { MouseEvent, useCallback } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { useStore, useSelectedNodes, useGraph } from './state'
+import { useStore, useSelectedNodes, useGraph } from './store'
 import { useCurrentTheme, GlobalStyle } from './theming'
 import {
     AppHeader,

@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { line as d3Line, curveBasis } from 'd3-shape'
 import { FaTimes } from 'react-icons/fa'
-import { ResolvedLink, useStore } from '../state'
+import { ResolvedLink, useStore } from '../store'
 
 const lineGenerator = d3Line().curve(curveBasis)
 

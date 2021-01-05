@@ -1,4 +1,5 @@
 import { NodeService } from '../services_registry'
+import registry from '../registry'
 
 const schemeChoices = [
     { label: 'nivo', value: 'nivo' },
@@ -36,8 +37,10 @@ export const ColorSchemeNodeService: NodeService<'node:color_scheme', ColorSchem
             type: 'property:choices',
             name: 'scheme',
             accepts: ['node:color_scheme'],
-            choices: schemeChoices,
-        } as any,
+            options: {
+                choices: schemeChoices,
+            },
+        },
     ],
     factory: (data = {}) => {
         return {
@@ -48,7 +51,9 @@ export const ColorSchemeNodeService: NodeService<'node:color_scheme', ColorSchem
         const schemeProperty = node.properties.find(property => property.name === 'scheme') as any
 
         return {
-            scheme: schemeProperty.value,
+            scheme: registry
+                .getPropertyService(schemeProperty.type)
+                .getValue(schemeProperty, registry),
         }
     },
 }

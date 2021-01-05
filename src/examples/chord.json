@@ -15,11 +15,11 @@
                 },
                 "keys": {
                     "id": "4b685490-ae10-490d-b962-0c5c92dc4f04",
-                    "data": ["John", "Maeva", "Raoul", "Marcel", "Jane", "Lucien", "Lyu"]
+                    "data": ["John", "Maeva", "Raoul", "Marcel", "Jane", "Lucien", "crap"]
                 },
                 "width": {
                     "id": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
-                    "data": 360
+                    "data": 410
                 },
                 "height": {
                     "id": "8537cef6-b305-43ad-a817-095f9269d777",
@@ -173,11 +173,6 @@
             "targetId": "d942017a-81b0-4d81-b9d7-7941f015d210"
         },
         {
-            "id": "e6c69272-4d35-4ce0-a042-c26f357c03ee",
-            "sourceId": "8537cef6-b305-43ad-a817-095f9269d777",
-            "targetId": "b09a8c5f-86f8-4dcb-bcff-6c3b071fc16e"
-        },
-        {
             "id": "e3cdca0e-968e-467e-b034-606fc3a23de2",
             "sourceId": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
             "targetId": "0b4a8dba-d048-4db7-ad78-ef88fa25c39d"
@@ -186,11 +181,6 @@
             "id": "02100773-b440-455f-a516-901a5714de29",
             "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
             "targetId": "77c75f26-1f41-4333-973e-c6b38d2ef2a0"
-        },
-        {
-            "id": "f9fd568f-9963-449b-86be-0957e933ce38",
-            "sourceId": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
-            "targetId": "8537cef6-b305-43ad-a817-095f9269d777"
         },
         {
             "id": "d42c7fc1-6164-41a7-8a28-73cffa336c13",
@@ -206,6 +196,16 @@
             "id": "3bb9bd85-604f-4435-b03a-cbb31b2db539",
             "sourceId": "68a558d7-88ca-4ad4-b348-eed02b709b33",
             "targetId": "4b03f5ff-a0a3-430f-96be-1d61ba6d2581"
+        },
+        {
+            "id": "6eafeaf6-dfca-497b-86a9-9a50eb2be152",
+            "sourceId": "d2b7540f-6dac-4ad6-93e7-21d30c733557",
+            "targetId": "8537cef6-b305-43ad-a817-095f9269d777"
+        },
+        {
+            "id": "2ffeaca0-31e2-41fc-9db4-2fe2eead0bbf",
+            "sourceId": "d942017a-81b0-4d81-b9d7-7941f015d210",
+            "targetId": "b09a8c5f-86f8-4dcb-bcff-6c3b071fc16e"
         }
     ]
 }

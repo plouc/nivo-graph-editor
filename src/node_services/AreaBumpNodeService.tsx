@@ -1,6 +1,8 @@
 import { AreaBump } from '@nivo/bump'
 import { NodeService } from '../services_registry'
 
+export type AreaBumpNodeType = 'node:area_bump'
+
 export interface AreaBumpNodeData {
     data?: any
     width: number
@@ -15,7 +17,7 @@ export interface AreaBumpNodeData {
     axisBottom?: any
 }
 
-export const AreaBumpNodeService: NodeService<'node:area_bump', AreaBumpNodeData> = {
+export const AreaBumpNodeService: NodeService<AreaBumpNodeType, AreaBumpNodeData> = {
     type: 'node:area_bump',
     category: 'charts',
     description: `An AreaBump chart from @nivo/bump package.`,
@@ -97,6 +99,7 @@ export const AreaBumpNodeService: NodeService<'node:area_bump', AreaBumpNodeData
         properties.forEach(property => {
             value[property.name] = registry
                 .getPropertyService(property.type)
+                // @ts-ignore
                 .getValue(property, registry)
         })
 

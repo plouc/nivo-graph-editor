@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { useStore } from '../state'
+import { useLinking } from '../store'
 
 export const AppFooter = () => {
-    const { linking } = useStore()
+    const linking = useLinking()
 
     return (
         <Container>

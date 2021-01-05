@@ -1,7 +1,7 @@
 import { createElement, useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { ResolvedNode, useStore } from '../state'
+import { ResolvedNode, useStore } from '../store'
 import registry from '../registry'
 import { PropertiesWidget } from './PropertiesWidget'
 import { PortWidget } from './PortWidget'
@@ -41,6 +41,7 @@ export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
                 )}
             </NodeHeader>
             {!hasCustomWidget && <PropertiesWidget properties={node.properties} />}
+            {/* @ts-ignore */}
             {hasCustomWidget && createElement(nodeService.widget!, { node, registry })}
         </NodeContainer>
     )

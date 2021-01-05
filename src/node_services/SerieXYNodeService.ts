@@ -35,8 +35,8 @@ export const SerieXYNodeService: NodeService<'node:serie_xy', SerieXYNodeData> =
         const propertyValues: any = keyBy(properties, 'name')
 
         return {
-            id: propertyValues.id.value,
-            data: propertyValues.data.value,
+            id: propertyValues.id.data,
+            data: propertyValues.data.data,
         }
     },
 }

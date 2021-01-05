@@ -56,7 +56,7 @@ export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
                 max: 1,
                 step: 0.01,
             },
-        } as any,
+        },
         {
             type: 'property:number',
             name: 'innerRadiusOffset',
@@ -67,7 +67,7 @@ export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
                 max: 1,
                 step: 0.01,
             },
-        } as any,
+        },
         {
             type: 'property:ref',
             name: 'theme',
@@ -93,6 +93,7 @@ export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
         properties.forEach(property => {
             value[property.name] = registry
                 .getPropertyService(property.type)
+                // @ts-ignore
                 .getValue(property, registry)
         })
 

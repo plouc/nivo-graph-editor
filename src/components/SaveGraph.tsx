@@ -1,5 +1,5 @@
 import { MdSave } from 'react-icons/md'
-import { ResolvedLink, ResolvedNode } from '../state'
+import { ResolvedLink, ResolvedNode } from '../store'
 import { saveAsJSON } from '../fs'
 import { SidebarButton } from './SidebarButton'
 

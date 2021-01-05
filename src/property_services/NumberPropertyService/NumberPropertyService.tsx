@@ -1,20 +1,15 @@
 import { PropertyService } from '../../services_registry'
-import { NumberPropertyOptions, NumberProperty } from './types'
+import { NumberPropertyOptions } from './types'
 import { NumberPropertyControl } from './NumberPropertyControl'
 
 export const NumberPropertyService: PropertyService<
     'property:number',
+    number,
     NumberPropertyOptions,
-    NumberProperty,
     number
 > = {
     type: 'property:number',
-    factory: ({
-        name,
-        defaultValue = 0,
-        hasOutput = false,
-        options: partialOptions = {},
-    }: NumberPropertyOptions) => {
+    create: ({ options: partialOptions = {}, ...spec }) => {
         const options = {
             controlType: partialOptions.controlType || 'number',
             min: partialOptions.min !== undefined ? partialOptions.min : undefined,
@@ -23,25 +18,17 @@ export const NumberPropertyService: PropertyService<
         }
 
         return {
-            name,
-            type: 'property:number',
-            value: defaultValue,
-            hasOutput,
+            ...spec,
             options,
         }
     },
-    serialize: property => {
-        // @ts-ignore
-        return property.value
+    getValue: (property, registry) => {
+        return registry.resolvePropertyValue(property, property.data)
     },
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data,
-        }
-    },
-    getValue: (property: any, registry) => {
-        return registry.resolvePropertyValue(property, property.value)
-    },
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
     control: NumberPropertyControl,
 }

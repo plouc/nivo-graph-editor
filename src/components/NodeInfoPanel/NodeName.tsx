@@ -9,7 +9,7 @@ import {
 } from 'react'
 import styled from 'styled-components'
 import { MdEdit } from 'react-icons/md'
-import { ElementId, useUpdateNode } from '../../state'
+import { ElementId, useUpdateNode } from '../../store'
 import { useDocumentEventListener } from '../../utils/useDocumentEventListener'
 
 export const NodeName = memo(({ id, name: currentName }: { id: ElementId; name: string }) => {

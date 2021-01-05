@@ -2,27 +2,26 @@ import { ChangeEvent, Fragment, useCallback } from 'react'
 import styled from 'styled-components'
 import { FiPlus } from 'react-icons/fi'
 import { FaTimes } from 'react-icons/fa'
-import { Property, useStore } from '../../state'
+import { Property, useStore } from '../../store'
 import { Input } from '../../components/ui'
-import { ArrayStringProperty } from './types'
 
 export const ArrayStringPropertyControl = ({
     property,
 }: {
-    property: Property & ArrayStringProperty
+    property: Property<'property:array_string', string[]>
 }) => {
     const { updateProperty } = useStore()
 
     const setValue = useCallback(
         (value: string[]) => {
-            updateProperty(property.id, { value })
+            updateProperty(property.id, { data: value })
         },
         [updateProperty, property.id]
     )
 
     const handleChange = (itemIndex: number, event: ChangeEvent<HTMLInputElement>) => {
         setValue(
-            property.value.map((item, index) => {
+            property.data.map((item, index) => {
                 if (index !== itemIndex) return item
 
                 return event.target.value
@@ -31,17 +30,17 @@ export const ArrayStringPropertyControl = ({
     }
 
     const handleAdd = () => {
-        setValue([...property.value, ''])
+        setValue([...property.data, ''])
     }
 
     const handleRemove = (index: number) => {
-        setValue(property.value.filter((_, i) => i !== index))
+        setValue(property.data.filter((_, i) => i !== index))
     }
 
     return (
         <>
             <Grid>
-                {property.value.map((item, index) => {
+                {property.data.map((item, index) => {
                     return (
                         <Fragment key={index}>
                             <span>[{index}]</span>

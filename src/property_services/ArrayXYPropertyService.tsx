@@ -2,23 +2,7 @@ import { ChangeEvent, Fragment } from 'react'
 import styled from 'styled-components'
 import { FiPlus } from 'react-icons/fi'
 import { PropertyService } from '../services_registry'
-import { Property, useStore } from '../state'
-
-export type ArrayXYPropertyOptions = {
-    name: string
-    defaultValue?: {
-        x: number
-        y: number
-    }[]
-    hasOutput?: boolean
-}
-
-export type ArrayXYProperty = {
-    value: {
-        x: number
-        y: number
-    }[]
-}
+import { Property, useStore } from '../store'
 
 const ControlContainer = styled.div`
     display: grid;
@@ -42,7 +26,17 @@ const ControlAddItemButton = styled.div`
     }
 `
 
-const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProperty }) => {
+const ArrayXYPropertyControl = ({
+    property,
+}: {
+    property: Property<
+        'property:array_xy',
+        {
+            x: number
+            y: number
+        }[]
+    >
+}) => {
     const { updateProperty } = useStore()
 
     const handleChange = (
@@ -51,7 +45,7 @@ const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProp
         event: ChangeEvent<HTMLInputElement>
     ) => {
         updateProperty(property.id, {
-            value: property.value.map((item, index) => {
+            data: property.data.map((item, index) => {
                 if (index !== itemIndex) {
                     return item
                 }
@@ -66,8 +60,8 @@ const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProp
 
     const handleAdd = () => {
         updateProperty(property.id, {
-            value: [
-                ...property.value,
+            data: [
+                ...property.data,
                 {
                     x: 0,
                     y: 0,
@@ -78,7 +72,7 @@ const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProp
 
     return (
         <ControlContainer>
-            {property.value.map((item, index) => {
+            {property.data.map((item, index) => {
                 return (
                     <Fragment key={index}>
                         x:{' '}
@@ -106,34 +100,26 @@ const ArrayXYPropertyControl = ({ property }: { property: Property & ArrayXYProp
 
 export const ArrayXYPropertyService: PropertyService<
     'property:array_xy',
-    ArrayXYPropertyOptions,
-    ArrayXYProperty,
+    {
+        x: number
+        y: number
+    }[],
+    {},
     {
         x: number
         y: number
     }[]
 > = {
     type: 'property:array_xy',
-    factory: ({ name, defaultValue = [], hasOutput = false }: ArrayXYPropertyOptions) => {
-        return {
-            name,
-            type: 'property:array_xy',
-            value: defaultValue,
-            hasOutput,
-        }
-    },
-    serialize: property => {
-        // @ts-ignore
-        return property.value
-    },
-    hydrate: (property, data) => {
-        return {
-            ...property,
-            value: data,
-        }
-    },
-    getValue: data => {
-        return data.value
-    },
+    create: spec => ({
+        ...spec,
+        data: spec.data || [],
+    }),
+    getValue: property => property.data,
+    serialize: property => property.data,
+    hydrate: (property, serialized) => ({
+        ...property,
+        data: serialized,
+    }),
     control: ArrayXYPropertyControl,
 }

@@ -25,6 +25,7 @@ export const MatrixNodeService: NodeService<'node:matrix', MatrixNodeData> = {
         properties.forEach(property => {
             value[property.name] = registry
                 .getPropertyService(property.type)
+                // @ts-ignore
                 .getValue(property, registry)
         })
 

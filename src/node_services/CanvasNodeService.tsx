@@ -1,4 +1,4 @@
-import { ResolvedNode } from '../state'
+import { ResolvedNode } from '../store'
 import { NodeService, ServiceRegistry } from '../services_registry'
 import { PropertiesWidget } from '../components/PropertiesWidget'
 
@@ -13,6 +13,7 @@ const CanvasNodeWidget = ({
     node.properties.forEach(property => {
         props[property.name] = registry
             .getPropertyService(property.type)
+            // @ts-ignore
             .getValue(property, registry)
     })
 

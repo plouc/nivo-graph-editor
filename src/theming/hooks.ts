@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useSettings } from '../state'
+import { useSettings } from '../store'
 import { themes } from './themes'
 
 export const useCurrentTheme = () => {

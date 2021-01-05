@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { Property } from '../state'
+import { Property } from '../store'
 import { PortWidget } from './PortWidget'
 
 export const PropertyWidget = memo(({ property }: { property: Property }) => {

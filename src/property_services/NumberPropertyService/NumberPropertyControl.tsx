@@ -1,28 +1,30 @@
 import { ChangeEvent } from 'react'
-import { Property, useStore } from '../../state'
+import { Property, useStore } from '../../store'
 import { Input } from '../../components/ui'
-import { NumberProperty, NumberPropertyOptions } from './types'
+import { NumberPropertyOptions } from './types'
 
-export const NumberPropertyControl = ({ property }: { property: Property & NumberProperty }) => {
+export const NumberPropertyControl = ({
+    property,
+}: {
+    property: Property<'property:number', number, NumberPropertyOptions>
+}) => {
     const { updateProperty } = useStore()
-
-    const options: NumberPropertyOptions['options'] = (property as any).options
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         updateProperty(property.id, {
-            value: Number(event.target.value),
+            data: Number(event.target.value),
         })
     }
 
-    if (options!.controlType === 'number') {
+    if (property.options.controlType === 'number') {
         return (
             <Input
                 type="number"
-                value={property.value}
+                value={property.data}
                 onChange={handleChange}
-                min={options!.min}
-                max={options!.max}
-                step={options!.step}
+                min={property.options.min}
+                max={property.options.max}
+                step={property.options.step}
             />
         )
     }
@@ -30,11 +32,11 @@ export const NumberPropertyControl = ({ property }: { property: Property & Numbe
     return (
         <Input
             type="range"
-            value={property.value}
+            value={property.data}
             onChange={handleChange}
-            min={options!.min}
-            max={options!.max}
-            step={options!.step}
+            min={property.options.min}
+            max={property.options.max}
+            step={property.options.step}
         />
     )
 }

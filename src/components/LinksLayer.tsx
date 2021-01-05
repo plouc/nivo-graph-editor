@@ -1,4 +1,4 @@
-import { ResolvedLink } from '../state'
+import { ResolvedLink } from '../store'
 import { LinkWidget } from './LinkWidget'
 
 export const LinksLayer = ({ links }: { links: ResolvedLink[] }) => {

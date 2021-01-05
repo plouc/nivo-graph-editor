@@ -1,10 +1,12 @@
 import { NodeService } from '../services_registry'
 
+export type BlendModeNodeType = 'node:blend_mode'
+
 export interface BlendModeNodeData {
     blendMode: string
 }
 
-export const BlendModeNodeService: NodeService<'node:blend_mode', BlendModeNodeData> = {
+export const BlendModeNodeService: NodeService<BlendModeNodeType, BlendModeNodeData> = {
     type: 'node:blend_mode',
     category: 'colors',
     hasOutput: true,
