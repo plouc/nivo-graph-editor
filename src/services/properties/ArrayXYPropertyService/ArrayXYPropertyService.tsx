@@ -1,4 +1,5 @@
 import { PropertyService } from '../../../services_registry'
+import registry from '../../../registry'
 import { ArrayXYPropertyControl } from './ArrayXYPropertyControl'
 
 export const arrayXYPropertyType = 'property:array_xy'
@@ -21,7 +22,9 @@ export const ArrayXYPropertyService: PropertyService<
         ...spec,
         data: spec.data || [],
     }),
-    getValue: property => property.data,
+    getValue: property => {
+        return registry.resolvePropertyValue(property, property.data)
+    },
     serialize: property => property.data,
     hydrate: (property, serialized) => ({
         ...property,
