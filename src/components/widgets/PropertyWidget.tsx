@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { Property } from '../store'
+import { Property } from '../../store'
 import { PortWidget } from './PortWidget'
 
 export const PropertyWidget = memo(({ property }: { property: Property }) => {
@@ -45,4 +45,5 @@ const PropertyContainer = styled.div`
 const PropertyName = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 600;
 `

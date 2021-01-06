@@ -10,6 +10,10 @@ export const Input = styled.input`
     font-size: 12px;
     cursor: pointer;
 
+    &[type='number'] {
+        text-align: right;
+    }
+
     &:focus {
         outline: 0;
         background-color: #bbbbbb;

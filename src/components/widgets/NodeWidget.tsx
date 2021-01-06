@@ -1,11 +1,11 @@
 import { createElement, useCallback, MouseEvent, memo } from 'react'
 import styled from 'styled-components'
 import { transparentize } from 'polished'
-import { ResolvedNode, useStore } from '../store'
-import registry, { NodeType } from '../registry'
+import { ResolvedNode, useStore } from '../../store'
+import registry from '../../registry'
+import { getCategoryColor } from '../../theming'
 import { PropertiesWidget } from './PropertiesWidget'
 import { PortWidget } from './PortWidget'
-import { getCategoryColor } from '../theming'
 
 export const NodeWidget = memo(({ node }: { node: ResolvedNode }) => {
     const nodeService = registry.getNodeService(node.type)

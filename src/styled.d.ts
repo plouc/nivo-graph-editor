@@ -18,6 +18,7 @@ declare module 'styled-components' {
             nodeBorder: string
             success: string
             overlay: string
+            discreteLink: string
             categories: {
                 axis_grid: string
                 charts: string

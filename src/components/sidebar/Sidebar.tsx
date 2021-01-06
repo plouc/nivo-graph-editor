@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ResolvedLink, ResolvedNode } from '../store'
+import { ResolvedLink, ResolvedNode } from '../../store'
 import { AddNodeButton } from './AddNodeButton'
 import { NewGraph } from './NewGraph'
 import { SaveGraph } from './SaveGraph'

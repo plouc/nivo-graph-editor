@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import styled from 'styled-components'
 import { MdSettings } from 'react-icons/md'
-import { themes } from '../theming'
+import { themes } from '../../theming'
+import { useSetSettings, useSettings } from '../../store'
+import { Modal, ModalTitle } from '../Modal'
 import { SidebarButton } from './SidebarButton'
-import { Modal, ModalTitle } from './Modal'
-import { useStore } from '../store'
 
-export const Settings = () => {
+export const Settings = memo(() => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const { settings, setSettings } = useStore()
+    const settings = useSettings()
+    const setSettings = useSetSettings()
 
     return (
         <>
@@ -53,7 +54,7 @@ export const Settings = () => {
             )}
         </>
     )
-}
+})
 
 const Container = styled.div`
     padding: 12px;

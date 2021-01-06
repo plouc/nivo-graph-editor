@@ -58,6 +58,7 @@ const updateNodePosition = (
 export const useStore = create<State>(set => ({
     settings: {
         themeId: 'dark',
+        discreteLinks: false,
     },
     setSettings: partialSettings =>
         set(state => {
@@ -438,6 +439,9 @@ export const useStore = create<State>(set => ({
 
 const settingsSelector = (state: State) => state.settings
 export const useSettings = () => useStore(settingsSelector)
+
+const setSettingsSelector = (state: State) => state.setSettings
+export const useSetSettings = () => useStore(setSettingsSelector)
 
 const loadGraphSelector = (state: State) => state.loadGraph
 export const useLoadGraph = () => useStore(loadGraphSelector)

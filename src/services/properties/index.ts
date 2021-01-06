@@ -1,5 +1,6 @@
 export * from './AnglePropertyService'
 export * from './ArrayStringPropertyService'
+export * from './ArrayValueLinkPropertyService'
 export * from './ArrayXYPropertyService'
 export * from './BlendModePropertyService'
 export * from './ChoicesPropertyService'

@@ -4,6 +4,7 @@ import * as service from './services'
 const propertyServiceMap = {
     'property:angle': service.AnglePropertyService,
     'property:array_string': service.ArrayStringPropertyService,
+    'property:array_value_link': service.ArrayValueLinkPropertyService,
     'property:array_xy': service.ArrayXYPropertyService,
     'property:choices': service.ChoicesPropertyService,
     'property:blend_mode': service.BlendModePropertyService,
@@ -27,9 +28,12 @@ const nodeServiceMap = {
     'node:margin': service.MarginNodeService,
     'node:matrix': service.MatrixNodeService,
     'node:nivo_theme': service.NivoThemeNodeService,
+    'node:sankey_data': service.SankeyDataNodeService,
+    'node:sankey': service.SankeyNodeService,
     'node:scatterplot': service.ScatterPlotNodeService,
     'node:serie_xy': service.SerieXYNodeService,
     'node:series_xy': service.SeriesXYNodeService,
+    'node:value_links': service.ValueLinksNodeService,
 }
 export type NodeServiceMap = typeof nodeServiceMap
 export type NodeType = keyof NodeServiceMap

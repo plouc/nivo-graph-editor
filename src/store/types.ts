@@ -106,6 +106,7 @@ export type Element = Node | Property | Link
 
 export interface AppSettings {
     themeId: string
+    discreteLinks: boolean
 }
 
 export type State = {

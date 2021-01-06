@@ -1,0 +1,253 @@
+{
+    "type": "nivo-graph",
+    "version": "beta",
+    "nodes": [
+        {
+            "id": "6be02277-daa2-4df2-bfcc-c5a85e71235d",
+            "type": "node:sankey_data",
+            "name": "Sankey data",
+            "x": 196,
+            "y": 24,
+            "width": 120,
+            "data": {
+                "nodes": {
+                    "id": "39e85875-62e3-41bd-8a58-1ae71544d408",
+                    "data": ["Anastasia", "Bernard", "Carlos", "Denise", "Emile"]
+                },
+                "links": {
+                    "id": "9debc19a-9330-43bf-b19e-988fe99464f2",
+                    "data": []
+                }
+            }
+        },
+        {
+            "id": "76c01be1-db72-4978-9558-342f9864ea8a",
+            "type": "node:value_links",
+            "name": "Sankey links",
+            "x": 22,
+            "y": 22,
+            "width": 120,
+            "data": {
+                "links": {
+                    "id": "7e160a6f-a3ee-4320-92ab-1db6f96dab75",
+                    "data": [
+                        {
+                            "source": "Anastasia",
+                            "target": "Bernard",
+                            "value": 8
+                        },
+                        {
+                            "source": "Bernard",
+                            "target": "Carlos",
+                            "value": 9
+                        },
+                        {
+                            "source": "Anastasia",
+                            "target": "Denise",
+                            "value": 16
+                        },
+                        {
+                            "source": "Bernard",
+                            "target": "Emile",
+                            "value": 9
+                        },
+                        {
+                            "source": "Anastasia",
+                            "target": "Emile",
+                            "value": 5
+                        },
+                        {
+                            "source": "Bernard",
+                            "target": "Denise",
+                            "value": 38
+                        },
+                        {
+                            "source": "Denis",
+                            "target": "Emile",
+                            "value": 16
+                        },
+                        {
+                            "source": "Anastasia",
+                            "target": "Carlos",
+                            "value": 3
+                        },
+                        {
+                            "source": "Carlos",
+                            "target": "Denise",
+                            "value": 14
+                        },
+                        {
+                            "source": "Emile",
+                            "target": "Denise",
+                            "value": 7
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "f18dc982-131d-4206-a394-e5c027f83ff0",
+            "type": "node:canvas",
+            "name": "Sankey diagram preview",
+            "x": 554,
+            "y": 38,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "b31085b1-abb7-4c69-a3cd-ccd484d01651"
+                },
+                "width": {
+                    "id": "6b5b9eb2-5960-4e30-8484-5d045d744b2b",
+                    "data": 300
+                },
+                "height": {
+                    "id": "1dd1e366-18cd-4b5a-baa4-13133a750421",
+                    "data": 240
+                }
+            }
+        },
+        {
+            "id": "fd5bcd58-999b-4397-abf4-d6def6ad81c3",
+            "type": "node:margin",
+            "name": "Margin",
+            "x": 66,
+            "y": 125,
+            "width": 120,
+            "data": {
+                "top": {
+                    "id": "fe5c8b8b-7dc0-401c-b2fc-dd47c4d942ae",
+                    "data": 20
+                },
+                "right": {
+                    "id": "cc4c81eb-0f23-47a0-b3e0-06751a0a134e",
+                    "data": 30
+                },
+                "bottom": {
+                    "id": "a3670e26-43e4-4791-b318-4db6f37ffd2a",
+                    "data": 0
+                },
+                "left": {
+                    "id": "d8b159c2-ef79-43ae-91d1-506c5a2c5bc5",
+                    "data": 0
+                }
+            }
+        },
+        {
+            "id": "ba623cd9-3085-4af6-95cf-efb23e19090a",
+            "type": "node:color_scheme",
+            "name": "Color scheme",
+            "x": 80,
+            "y": 319,
+            "width": 120,
+            "data": {
+                "scheme": {
+                    "id": "d64e4078-f158-46e3-9b73-b2f0db845b0b",
+                    "data": "set2"
+                }
+            }
+        },
+        {
+            "id": "bc043ac3-1683-4700-8bf5-3b0500312acb",
+            "type": "node:nivo_theme",
+            "name": "Theme",
+            "x": 63,
+            "y": 268,
+            "width": 120,
+            "data": {}
+        },
+        {
+            "id": "611fb3b9-56bd-49be-81c2-a6ecc09e7597",
+            "type": "node:sankey",
+            "name": "Sankey diagram",
+            "x": 373,
+            "y": 60,
+            "width": 120,
+            "data": {
+                "data": {
+                    "id": "1cdbdde1-6d67-4403-941c-e5c5c5b5bfae"
+                },
+                "width": {
+                    "id": "9f170960-87fb-48ed-9c29-8a7d1dc157f9",
+                    "data": 500
+                },
+                "height": {
+                    "id": "a69e5700-8888-49ba-b9b1-07a626388900",
+                    "data": 320
+                },
+                "margin": {
+                    "id": "7a32692d-a108-4735-bb52-6d33a6c20c9c"
+                },
+                "layout": {
+                    "id": "de417c43-b042-4a77-88fc-36222d175138",
+                    "data": "horizontal"
+                },
+                "align": {
+                    "id": "60dead8c-abdd-4121-895e-d4ff5372e2f3",
+                    "data": "justify"
+                },
+                "theme": {
+                    "id": "39b55dab-f3a0-46f2-b84f-df34aa4ace88"
+                },
+                "colors": {
+                    "id": "8b0cad67-77c9-4b41-a1ce-e3cab970fd5e"
+                },
+                "linkBlendMode": {
+                    "id": "85a062d8-a437-4854-bcbb-ead8d5df22fb",
+                    "data": "screen"
+                }
+            }
+        }
+    ],
+    "links": [
+        {
+            "id": "045107e6-1048-472a-b27a-71019e2655ce",
+            "sourceId": "76c01be1-db72-4978-9558-342f9864ea8a",
+            "targetId": "9debc19a-9330-43bf-b19e-988fe99464f2"
+        },
+        {
+            "id": "637e1566-7a81-4982-aafc-8bbb67895d3b",
+            "sourceId": "fe5c8b8b-7dc0-401c-b2fc-dd47c4d942ae",
+            "targetId": "a3670e26-43e4-4791-b318-4db6f37ffd2a"
+        },
+        {
+            "id": "7799b853-3bb7-4aef-b05c-dac28f9f9681",
+            "sourceId": "cc4c81eb-0f23-47a0-b3e0-06751a0a134e",
+            "targetId": "d8b159c2-ef79-43ae-91d1-506c5a2c5bc5"
+        },
+        {
+            "id": "8a976999-5677-4ed6-b01e-7c241d7d0806",
+            "sourceId": "6be02277-daa2-4df2-bfcc-c5a85e71235d",
+            "targetId": "1cdbdde1-6d67-4403-941c-e5c5c5b5bfae"
+        },
+        {
+            "id": "9d6f7e56-e950-4a89-a190-d29fa9c9c525",
+            "sourceId": "fd5bcd58-999b-4397-abf4-d6def6ad81c3",
+            "targetId": "7a32692d-a108-4735-bb52-6d33a6c20c9c"
+        },
+        {
+            "id": "6dbcef43-4537-40d5-a7bf-b0642f6531af",
+            "sourceId": "9f170960-87fb-48ed-9c29-8a7d1dc157f9",
+            "targetId": "6b5b9eb2-5960-4e30-8484-5d045d744b2b"
+        },
+        {
+            "id": "a791dbfa-538b-4ce0-9497-9c7dd5a47081",
+            "sourceId": "a69e5700-8888-49ba-b9b1-07a626388900",
+            "targetId": "1dd1e366-18cd-4b5a-baa4-13133a750421"
+        },
+        {
+            "id": "48ece929-4bb7-4420-9927-f2172070fc73",
+            "sourceId": "611fb3b9-56bd-49be-81c2-a6ecc09e7597",
+            "targetId": "b31085b1-abb7-4c69-a3cd-ccd484d01651"
+        },
+        {
+            "id": "69561afc-3acb-428e-a1dc-e1873b19dfc4",
+            "sourceId": "bc043ac3-1683-4700-8bf5-3b0500312acb",
+            "targetId": "39b55dab-f3a0-46f2-b84f-df34aa4ace88"
+        },
+        {
+            "id": "468a2dbe-ec0d-4949-b3d6-053fcae1e2b5",
+            "sourceId": "ba623cd9-3085-4af6-95cf-efb23e19090a",
+            "targetId": "8b0cad67-77c9-4b41-a1ce-e3cab970fd5e"
+        }
+    ]
+}

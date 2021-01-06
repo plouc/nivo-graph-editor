@@ -1,8 +1,8 @@
 import { useCallback, useState, memo } from 'react'
 import { MdNoteAdd } from 'react-icons/md'
-import { useLoadGraph } from '../store'
-import { ConfirmButtons } from './ui/ConfirmButtons'
-import { Modal, ModalTitle } from './Modal'
+import { useLoadGraph } from '../../store'
+import { ConfirmButtons } from '../ui/ConfirmButtons'
+import { Modal, ModalTitle } from '../Modal'
 import { SidebarButton } from './SidebarButton'
 
 export const NewGraph = memo(() => {

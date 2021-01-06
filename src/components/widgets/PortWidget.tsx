@@ -1,7 +1,7 @@
 import { useCallback, MouseEvent, memo } from 'react'
 import styled, { css } from 'styled-components'
-import { ElementId, useLinkingActions, useLinking } from '../store'
-import { getCategoryColor } from '../theming'
+import { ElementId, useLinkingActions, useLinking } from '../../store'
+import { getCategoryColor } from '../../theming'
 
 const CONTAINER_SIZE = 20
 const PORT_SIZE = 10

@@ -1,8 +1,8 @@
-import { MdFolderOpen } from 'react-icons/md'
-import { loadFromJSON } from '../fs'
-import { useStore } from '../store'
-import { SidebarButton } from './SidebarButton'
 import { useCallback } from 'react'
+import { MdFolderOpen } from 'react-icons/md'
+import { loadFromJSON } from '../../fs'
+import { useStore } from '../../store'
+import { SidebarButton } from './SidebarButton'
 
 export const OpenGraph = () => {
     const { loadGraph } = useStore()

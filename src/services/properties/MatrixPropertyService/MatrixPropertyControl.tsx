@@ -23,7 +23,7 @@ export const MatrixPropertyControl = ({
 
     const setValue = (valueUpdate: number[][]) => {
         updateProperty(property.id, {
-            value: valueUpdate,
+            data: valueUpdate,
         })
     }
 

@@ -1,6 +1,6 @@
 import { ResolvedNode } from '../../store'
 import { NodeService } from '../../services_registry'
-import { PropertiesWidget } from '../../components/PropertiesWidget'
+import { PropertiesWidget } from '../../components/widgets'
 import registry from '../../registry'
 
 const CanvasNodeWidget = ({ node }: { node: ResolvedNode }) => {
@@ -39,7 +39,13 @@ export const CanvasNodeService: NodeService<'node:canvas', CanvasNodeData> = {
             name: 'content',
             type: 'property:ref',
             category: 'render',
-            accepts: ['node:area_bump', 'node:chord', 'node:line', 'node:scatterplot'],
+            accepts: [
+                'node:area_bump',
+                'node:chord',
+                'node:line',
+                'node:sankey',
+                'node:scatterplot',
+            ],
         },
         {
             name: 'width',

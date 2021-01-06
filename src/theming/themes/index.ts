@@ -1,3 +1,4 @@
+import { blueTheme } from './blueTheme'
 import { darkTheme } from './darkTheme'
 import { lightTheme } from './lightTheme'
 
@@ -11,5 +12,10 @@ export const themes = [
         id: 'light',
         name: 'Light theme',
         theme: lightTheme,
+    },
+    {
+        id: 'blue',
+        name: 'Blue theme',
+        theme: blueTheme,
     },
 ]

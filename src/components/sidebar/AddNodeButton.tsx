@@ -1,8 +1,8 @@
 import { useState, memo, useCallback } from 'react'
 import { MdLibraryAdd } from 'react-icons/md'
-import { Modal, ModalTitle } from './Modal'
+import { Modal, ModalTitle } from '../Modal'
+import { NodeSelector } from '../NodeSelector'
 import { SidebarButton } from './SidebarButton'
-import { NodeSelector } from './NodeSelector'
 
 export const AddNodeButton = memo(() => {
     const [isOpen, setIsOpen] = useState(false)

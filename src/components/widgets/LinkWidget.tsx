@@ -2,15 +2,16 @@ import { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { line as d3Line, curveBasis } from 'd3-shape'
 import { FaTimes } from 'react-icons/fa'
-import { ResolvedLink, useStore } from '../store'
-import { getCategoryColor } from '../theming'
-import registry from '../registry'
+import { ResolvedLink, useSettings, useStore } from '../../store'
+import { getCategoryColor } from '../../theming'
+import registry from '../../registry'
 
 const lineGenerator = d3Line().curve(curveBasis)
 
 const UNLINK_BUTTON_SIZE = 18
 
 export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
+    const { discreteLinks } = useSettings()
     const { source, target } = link
 
     const sourceElementType = source.elementType
@@ -103,9 +104,9 @@ export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
     }
 
     return (
-        <>
-            <Path d={path} category={category} isHover={isHover} />
-            {!isHover && <Circle cx={center[0]} cy={center[1]} r={4} category={category} />}
+        <Container category={category} discreteLinks={discreteLinks}>
+            <Path d={path} isHover={isHover} />
+            {!isHover && <Circle cx={center[0]} cy={center[1]} r={4} />}
             <CapturePath d={path} onMouseEnter={handleHover} onMouseLeave={handleOut} />
             {isHover && (
                 <foreignObject
@@ -118,15 +119,24 @@ export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
                         onMouseEnter={handleHover}
                         onMouseLeave={handleOut}
                         onClick={handleUnlink}
-                        category={category}
                     >
                         <FaTimes />
                     </UnlinkButton>
                 </foreignObject>
             )}
-        </>
+        </Container>
     )
 }
+
+const Container = styled.g<{
+    discreteLinks: boolean
+    category: string
+}>`
+    color: ${props =>
+        props.discreteLinks
+            ? props.theme.colors.discreteLink
+            : getCategoryColor(props.category, props.theme)};
+`
 
 const CapturePath = styled.path`
     pointer-events: all;
@@ -136,17 +146,14 @@ const CapturePath = styled.path`
 `
 
 const Path = styled.path<{
-    category: string
     isHover: boolean
 }>`
     fill: none;
-    stroke: ${props => getCategoryColor(props.category, props.theme)};
+    stroke: currentColor;
     stroke-width: ${props => (props.isHover ? 3 : 1)}px;
 `
 
-const UnlinkButton = styled.div<{
-    category: string
-}>`
+const UnlinkButton = styled.div`
     pointer-events: all;
     display: flex;
     justify-content: center;
@@ -156,15 +163,12 @@ const UnlinkButton = styled.div<{
     border-radius: ${UNLINK_BUTTON_SIZE / 2}px;
     cursor: pointer;
     background-color: ${props => props.theme.colors.background};
-    color: ${props => getCategoryColor(props.category, props.theme)};
-    border: 2px solid ${props => getCategoryColor(props.category, props.theme)};
+    border: 2px solid currentColor;
     font-size: 10px;
 `
 
-const Circle = styled.circle<{
-    category: string
-}>`
+const Circle = styled.circle`
     fill: ${props => props.theme.colors.background};
-    stroke: ${props => getCategoryColor(props.category, props.theme)};
+    stroke: currentColor;
     stroke-width: 2px;
 `

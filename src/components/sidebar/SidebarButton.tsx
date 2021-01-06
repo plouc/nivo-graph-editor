@@ -6,7 +6,7 @@ const Button = styled.div`
     height: 64px;
     cursor: pointer;
     background-color: ${props => props.theme.colors.topDepthBackground};
-    color: #777777;
+    color: ${props => props.theme.colors.textLight};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@ const Button = styled.div`
 
     &:hover {
         background-color: #222222;
-        color: #eeeeee;
+        color: ${props => props.theme.colors.text};
     }
 `
 

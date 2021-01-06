@@ -38,6 +38,7 @@ export const ColorSchemeNodeService: NodeService<'node:color_scheme', ColorSchem
             type: 'property:choices',
             category: 'colors_theming',
             accepts: ['node:color_scheme'],
+            hasOutput: true,
             options: {
                 choices: schemeChoices,
             },

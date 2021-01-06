@@ -18,6 +18,7 @@ export const lightTheme: DefaultTheme = {
         nodeBorder: '#cccccc',
         success: '#0ab537',
         overlay: transparentize(0.3, '#eeeeee'),
+        discreteLink: '#cccccc',
         categories: {
             axis_grid: '#60399b',
             charts: '#006dcd',
