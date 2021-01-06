@@ -80,7 +80,7 @@ export const useStore = create<State>(set => ({
                 elementType: 'node',
                 id: generateElementId(),
                 type: type,
-                name: nodeService.type.replace('_', ' '),
+                name: nodeService.type.replace('node:', '').replace('_', ' '),
                 x: 100,
                 y: 100,
                 width: 120,
