@@ -121,8 +121,22 @@ export const useStore = create<State>(set => ({
         }),
     removeNode: id =>
         set(state => {
+            const propertyIds = state.elements
+                .filter(element => element.elementType === 'property' && element.nodeId === id)
+                .map(property => property.id)
+            const nodeAndPropertyIds = [id, ...propertyIds]
+
             return {
-                elements: state.elements.filter(element => element.id !== id),
+                elements: state.elements.filter(element => {
+                    if (element.elementType === 'link') {
+                        return (
+                            !nodeAndPropertyIds.includes(element.sourceId) &&
+                            !nodeAndPropertyIds.includes(element.targetId)
+                        )
+                    }
+
+                    return !nodeAndPropertyIds.includes(element.id)
+                }),
             }
         }),
     updateNode: (id, patch) =>
@@ -433,6 +447,9 @@ export const useCreateNode = () => useStore(createNodeSelector)
 
 const updateNodeSelector = (state: State) => state.updateNode
 export const useUpdateNode = () => useStore(updateNodeSelector)
+
+const removeNodeSelector = (state: State) => state.removeNode
+export const useRemoveNode = () => useStore(removeNodeSelector)
 
 const setSelectedNodeIdsSelector = (state: State) => state.setSelectedNodeIds
 export const useSetSelectedNodeIds = () => useStore(setSelectedNodeIdsSelector)

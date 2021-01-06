@@ -111,14 +111,14 @@
             "data": {
                 "scheme": {
                     "id": "e74b9dd1-ec35-4ac4-bb09-c616d6abe2e0",
-                    "data": "set2"
+                    "data": "brown_blueGreen"
                 }
             }
         },
         {
             "id": "7413fc14-80c3-4c07-9ee0-ee46e66fceec",
             "type": "node:canvas",
-            "name": "Chord diagram preview",
+            "name": "Chord diagram 1 preview",
             "x": 31,
             "y": 122,
             "width": 120,
@@ -133,20 +133,6 @@
                 "height": {
                     "id": "b09a8c5f-86f8-4dcb-bcff-6c3b071fc16e",
                     "data": 240
-                }
-            }
-        },
-        {
-            "id": "eeac5692-c5db-47e5-a32b-4502dae1d897",
-            "type": "node:blend_mode",
-            "name": "Blend mode",
-            "x": 1075,
-            "y": 42,
-            "width": 120,
-            "data": {
-                "blendMode": {
-                    "id": "dedb267f-c386-47ca-bc00-88abfacaefe6",
-                    "data": "screen"
                 }
             }
         },
@@ -195,7 +181,7 @@
         {
             "id": "e3249239-6422-45cb-8d66-a072db42051d",
             "type": "node:canvas",
-            "name": "node:canvas",
+            "name": "Chord diagram 2 preview",
             "x": 875,
             "y": 126,
             "width": 120,
@@ -223,7 +209,7 @@
             "data": {
                 "scheme": {
                     "id": "b590dea2-27dc-46f8-8def-f634f342b651",
-                    "data": "pink_yellowGreen"
+                    "data": "purple_orange"
                 }
             }
         }

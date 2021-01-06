@@ -4,6 +4,7 @@ import { MdClose } from 'react-icons/md'
 import registry from '../../registry'
 import { ResolvedNode, useSetSelectedNodeIds } from '../../store'
 import { NodeName } from './NodeName'
+import { NodeControls } from './NodeControls'
 import { PropertyItem } from './PropertyItem'
 
 export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
@@ -25,6 +26,7 @@ export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
                     <MdClose />
                 </Close>
             </Header>
+            <NodeControls node={node} />
             <Properties>
                 {node.properties.map(property => (
                     <PropertyItem key={property.id} property={property} />
