@@ -105,7 +105,7 @@ export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
         const props = registry.resolvePropertyValues(properties)
 
         // check if the chart can be rendered
-        if (!Array.isArray(props.matrix) || !Array.isArray(props.keys)) {
+        if (!Array.isArray(props.matrix) || !Array.isArray(props.keys) || props.keys.length === 0) {
             return <div />
         }
 
