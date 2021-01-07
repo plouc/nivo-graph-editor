@@ -58,6 +58,7 @@ const updateNodePosition = (
 export const useStore = create<State>(set => ({
     settings: {
         themeId: 'dark',
+        animateLinks: false,
         discreteLinks: false,
     },
     setSettings: partialSettings =>

@@ -6,7 +6,16 @@ export const AppFooter = memo(() => {
     const settings = useSettings()
     const setSettings = useSetSettings()
 
-    const { discreteLinks } = settings
+    const { animateLinks, discreteLinks } = settings
+
+    const toggleAnimateLinks = useCallback(
+        () =>
+            setSettings({
+                animateLinks: !animateLinks,
+            }),
+        [setSettings, animateLinks]
+    )
+
     const toggleDiscreteLinks = useCallback(
         () =>
             setSettings({
@@ -17,6 +26,10 @@ export const AppFooter = memo(() => {
 
     return (
         <Container>
+            <SettingItem onClick={toggleAnimateLinks}>
+                <span>animate links</span>
+                <SettingItemButton>{animateLinks ? 'on' : 'off'}</SettingItemButton>
+            </SettingItem>
             <SettingItem onClick={toggleDiscreteLinks}>
                 <span>discrete links</span>
                 <SettingItemButton>{discreteLinks ? 'on' : 'off'}</SettingItemButton>

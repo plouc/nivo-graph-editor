@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { line as d3Line, curveBasis } from 'd3-shape'
 import { FaTimes } from 'react-icons/fa'
 import { ResolvedLink, useSettings, useStore } from '../../store'
@@ -11,7 +11,7 @@ const lineGenerator = d3Line().curve(curveBasis)
 const UNLINK_BUTTON_SIZE = 18
 
 export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
-    const { discreteLinks } = useSettings()
+    const { animateLinks, discreteLinks } = useSettings()
     const { source, target } = link
 
     const sourceElementType = source.elementType
@@ -105,7 +105,7 @@ export const LinkWidget = ({ link }: { link: ResolvedLink }) => {
 
     return (
         <Container category={category} discreteLinks={discreteLinks}>
-            <Path d={path} isHover={isHover} />
+            <Path d={path} isHover={isHover} animate={animateLinks} />
             {!isHover && <Circle cx={center[0]} cy={center[1]} r={4} />}
             <CapturePath d={path} onMouseEnter={handleHover} onMouseLeave={handleOut} />
             {isHover && (
@@ -145,12 +145,26 @@ const CapturePath = styled.path`
     stroke-width: 8px;
 `
 
+const flowAnimation = keyframes`
+    to {
+        stroke-dashoffset: -1000;
+    }
+`
+
 const Path = styled.path<{
     isHover: boolean
+    animate: boolean
 }>`
     fill: none;
     stroke: currentColor;
     stroke-width: ${props => (props.isHover ? 3 : 1)}px;
+    ${props =>
+        props.animate
+            ? css`
+                  stroke-dasharray: 4 6;
+                  animation: ${flowAnimation} 20s linear infinite;
+              `
+            : ''}
 `
 
 const UnlinkButton = styled.div`

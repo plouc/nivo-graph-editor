@@ -106,6 +106,7 @@ export type Element = Node | Property | Link
 
 export interface AppSettings {
     themeId: string
+    animateLinks: boolean
     discreteLinks: boolean
 }
 
