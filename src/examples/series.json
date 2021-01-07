@@ -467,6 +467,20 @@
                     "data": 240
                 }
             }
+        },
+        {
+            "id": "77a7b703-1aed-4a0f-8fe3-e1fd9e514b82",
+            "type": "node:note",
+            "name": "Graph description",
+            "x": 892,
+            "y": 506,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "0d7d4b07-853e-4db9-87a8-04de5146fdf8",
+                    "data": "With a nodes/links approach, it's relatively easy to use the same dataset for various chart types and have all of them in sync."
+                }
+            }
         }
     ],
     "links": [

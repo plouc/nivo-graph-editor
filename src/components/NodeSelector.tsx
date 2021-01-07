@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useMemo, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import registry from '../registry'
@@ -49,6 +49,13 @@ const Category = ({
 export const NodeSelector = ({ onCreate }: { onCreate: () => void }) => {
     const categories = useMemo(() => registry.getNodeServiceCategories(), [])
     const [searchTerm, setSearchTerm] = useState('')
+    const searchInput = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        if (searchInput.current) {
+            searchInput.current.focus()
+        }
+    }, [searchInput])
 
     const handleSearchTermChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
@@ -82,6 +89,7 @@ export const NodeSelector = ({ onCreate }: { onCreate: () => void }) => {
         <>
             <SearchBox>
                 <SearchInput
+                    ref={searchInput}
                     type="text"
                     placeholder="search node type"
                     value={searchTerm}

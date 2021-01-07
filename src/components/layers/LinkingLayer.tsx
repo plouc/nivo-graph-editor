@@ -1,7 +1,7 @@
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { FaChevronRight, FaCheck } from 'react-icons/fa'
-import { useStore } from '../store'
-import { ReactNode } from 'react'
+import { useStore } from '../../store'
 
 const ICON_SIZE = 24
 const ICON_SPACING = 16

@@ -1,5 +1,5 @@
-import { ResolvedLink } from '../store'
-import { LinkWidget } from './widgets'
+import { ResolvedLink } from '../../store'
+import { LinkWidget } from '../widgets'
 
 export const LinksLayer = ({ links }: { links: ResolvedLink[] }) => {
     return (

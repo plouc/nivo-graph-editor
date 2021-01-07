@@ -70,8 +70,8 @@
             "id": "6ca9cc54-8b38-4499-bc4f-5225c0e8d160",
             "type": "node:nivo_theme",
             "name": "Chart theme",
-            "x": 548,
-            "y": 478,
+            "x": 551,
+            "y": 106,
             "width": 120,
             "data": {}
         },
@@ -79,8 +79,8 @@
             "id": "3928a5af-dee1-4026-9bd0-2a94ed0751d1",
             "type": "node:margin",
             "name": "Margin",
-            "x": 546,
-            "y": 342,
+            "x": 543,
+            "y": 422,
             "width": 120,
             "data": {
                 "top": {
@@ -105,8 +105,8 @@
             "id": "52906eeb-9b69-48bc-a424-1f81c714a88f",
             "type": "node:color_scheme",
             "name": "Color scheme 1",
-            "x": 379,
-            "y": 479,
+            "x": 32,
+            "y": 546,
             "width": 120,
             "data": {
                 "scheme": {
@@ -203,13 +203,41 @@
             "id": "d2325a14-3ac1-4b05-98ae-7df7986e99c8",
             "type": "node:color_scheme",
             "name": "Color scheme 2",
-            "x": 724,
-            "y": 481,
+            "x": 1076,
+            "y": 550,
             "width": 120,
             "data": {
                 "scheme": {
                     "id": "b590dea2-27dc-46f8-8def-f634f342b651",
                     "data": "purple_orange"
+                }
+            }
+        },
+        {
+            "id": "26dd3b21-5fb6-49f7-9bd6-e6e9188ef8f6",
+            "type": "node:note",
+            "name": "Graph description",
+            "x": 1051,
+            "y": 22,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "1231b7c4-3c5a-499c-bb6e-42eeecade648",
+                    "data": "The same matrix data is used to render 2 chord diagrams using a different color scheme."
+                }
+            }
+        },
+        {
+            "id": "4e7e9bc8-702c-4f9a-aae2-9da585bd5dcd",
+            "type": "node:note",
+            "name": "Margin note",
+            "x": 543,
+            "y": 545,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "2c96055e-4ebb-4de2-afa3-60fe45127b57",
+                    "data": "Linking the top property to others, we can easily control the global margin of the charts."
                 }
             }
         }
@@ -244,21 +272,6 @@
             "id": "02100773-b440-455f-a516-901a5714de29",
             "sourceId": "25429862-babf-454d-aa19-289efa0a6c28",
             "targetId": "77c75f26-1f41-4333-973e-c6b38d2ef2a0"
-        },
-        {
-            "id": "d42c7fc1-6164-41a7-8a28-73cffa336c13",
-            "sourceId": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
-            "targetId": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb"
-        },
-        {
-            "id": "cc7b83fe-16dd-46ff-ab6a-9c3a8d4dc8a0",
-            "sourceId": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb",
-            "targetId": "68a558d7-88ca-4ad4-b348-eed02b709b33"
-        },
-        {
-            "id": "3bb9bd85-604f-4435-b03a-cbb31b2db539",
-            "sourceId": "68a558d7-88ca-4ad4-b348-eed02b709b33",
-            "targetId": "4b03f5ff-a0a3-430f-96be-1d61ba6d2581"
         },
         {
             "id": "6eafeaf6-dfca-497b-86a9-9a50eb2be152",
@@ -329,6 +342,21 @@
             "id": "92ee277a-fb0b-4a20-8b72-93e2706c6f19",
             "sourceId": "d2325a14-3ac1-4b05-98ae-7df7986e99c8",
             "targetId": "b445bc61-ca29-40eb-8fa2-8f8cdb93f7e9"
+        },
+        {
+            "id": "e8be88f6-8c5b-4c05-b3e3-1f2079bc2399",
+            "sourceId": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
+            "targetId": "5b42813d-5ab1-4c82-9c04-ee54b245bdbb"
+        },
+        {
+            "id": "d39706a4-8dc1-4189-abc4-f0d6a710b314",
+            "sourceId": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
+            "targetId": "68a558d7-88ca-4ad4-b348-eed02b709b33"
+        },
+        {
+            "id": "b0d78ec3-f5f4-4806-b482-fe18e2800ec1",
+            "sourceId": "dab3d4ba-eef7-4eea-86c1-29c8a2f21c29",
+            "targetId": "4b03f5ff-a0a3-430f-96be-1d61ba6d2581"
         }
     ]
 }

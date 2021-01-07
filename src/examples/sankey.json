@@ -196,6 +196,20 @@
                     "data": "screen"
                 }
             }
+        },
+        {
+            "id": "35c90cc6-4828-43da-a353-1625c7d3f430",
+            "type": "node:note",
+            "name": "Graph description",
+            "x": 375,
+            "y": 297,
+            "width": 120,
+            "data": {
+                "content": {
+                    "id": "e92b87a6-326a-4f59-be08-dac8ff4b7850",
+                    "data": "A sample sankey diagram."
+                }
+            }
         }
     ],
     "links": [
