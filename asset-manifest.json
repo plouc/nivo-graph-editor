@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/nivo-graph-editor/static/js/main.98bf9078.chunk.js",
-    "main.js.map": "/nivo-graph-editor/static/js/main.98bf9078.chunk.js.map",
+    "main.js": "/nivo-graph-editor/static/js/main.7dbb55f7.chunk.js",
+    "main.js.map": "/nivo-graph-editor/static/js/main.7dbb55f7.chunk.js.map",
     "runtime-main.js": "/nivo-graph-editor/static/js/runtime-main.83049294.js",
     "runtime-main.js.map": "/nivo-graph-editor/static/js/runtime-main.83049294.js.map",
-    "static/js/2.07c84b0d.chunk.js": "/nivo-graph-editor/static/js/2.07c84b0d.chunk.js",
-    "static/js/2.07c84b0d.chunk.js.map": "/nivo-graph-editor/static/js/2.07c84b0d.chunk.js.map",
+    "static/js/2.bde6fdd8.chunk.js": "/nivo-graph-editor/static/js/2.bde6fdd8.chunk.js",
+    "static/js/2.bde6fdd8.chunk.js.map": "/nivo-graph-editor/static/js/2.bde6fdd8.chunk.js.map",
     "static/js/3.e48fdc48.chunk.js": "/nivo-graph-editor/static/js/3.e48fdc48.chunk.js",
     "static/js/3.e48fdc48.chunk.js.map": "/nivo-graph-editor/static/js/3.e48fdc48.chunk.js.map",
     "static/js/4.06482838.chunk.js": "/nivo-graph-editor/static/js/4.06482838.chunk.js",
@@ -28,7 +28,7 @@
     "static/js/12.d1e0d0b2.chunk.js.map": "/nivo-graph-editor/static/js/12.d1e0d0b2.chunk.js.map",
     "index.html": "/nivo-graph-editor/index.html",
     "static/js/11.b97e0e76.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/11.b97e0e76.chunk.js.LICENSE.txt",
-    "static/js/2.07c84b0d.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/2.07c84b0d.chunk.js.LICENSE.txt",
+    "static/js/2.bde6fdd8.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/2.bde6fdd8.chunk.js.LICENSE.txt",
     "static/js/5.f02c89de.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/5.f02c89de.chunk.js.LICENSE.txt",
     "static/js/6.a664d35d.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/6.a664d35d.chunk.js.LICENSE.txt",
     "static/js/7.a20be112.chunk.js.LICENSE.txt": "/nivo-graph-editor/static/js/7.a20be112.chunk.js.LICENSE.txt",
@@ -36,7 +36,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.83049294.js",
-    "static/js/2.07c84b0d.chunk.js",
-    "static/js/main.98bf9078.chunk.js"
+    "static/js/2.bde6fdd8.chunk.js",
+    "static/js/main.7dbb55f7.chunk.js"
   ]
 }
