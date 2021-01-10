@@ -1,8 +1,10 @@
 import { AreaBump } from '@nivo/bump'
-import { NodeService } from '../../services_registry'
-import registry from '../../registry'
+import { NodeService } from '../../../services_registry'
+import registry from '../../../registry'
+import { AreaBumpNodeIcon } from './AreaBumpNodeIcon'
 
-export type AreaBumpNodeType = 'node:area_bump'
+export const areaBumpNodeType = 'node:area_bump' as const
+export type AreaBumpNodeType = typeof areaBumpNodeType
 
 export interface AreaBumpNodeData {
     data?: any
@@ -19,9 +21,10 @@ export interface AreaBumpNodeData {
 }
 
 export const AreaBumpNodeService: NodeService<AreaBumpNodeType, AreaBumpNodeData> = {
-    type: 'node:area_bump',
-    category: 'charts',
+    type: areaBumpNodeType,
     description: `An AreaBump chart from @nivo/bump package.`,
+    category: 'charts',
+    icon: AreaBumpNodeIcon,
     hasOutput: true,
     properties: [
         {

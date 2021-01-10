@@ -1,7 +1,10 @@
 import { ResolvedNode } from '../../store'
 import { NodeService } from '../../services_registry'
+import { FaImage } from 'react-icons/fa'
 import { PropertiesWidget } from '../../components/widgets'
 import registry from '../../registry'
+import styled from 'styled-components'
+import { getCategoryColor } from '../../theming'
 
 const CanvasNodeWidget = ({ node }: { node: ResolvedNode }) => {
     const props = registry.resolvePropertyValues(node.properties)
@@ -23,6 +26,34 @@ const CanvasNodeWidget = ({ node }: { node: ResolvedNode }) => {
     )
 }
 
+const CanvasNodeIcon = ({ size, category }: { size: number; category: string }) => {
+    return (
+        <Icon
+            category={category}
+            style={{
+                width: size,
+                height: size,
+            }}
+        >
+            <FaImage />
+        </Icon>
+    )
+}
+
+const Icon = styled.div<{
+    category: string
+}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => getCategoryColor(props.category, props.theme)};
+    
+    svg {
+        width: 70%;
+        height: 70%;
+    }
+`
+
 export interface CanvasNodeData {
     content?: any
     width: number
@@ -31,8 +62,9 @@ export interface CanvasNodeData {
 
 export const CanvasNodeService: NodeService<'node:canvas', CanvasNodeData> = {
     type: 'node:canvas',
-    category: 'render',
     description: `A canvas to render a React node.`,
+    category: 'render',
+    icon: CanvasNodeIcon,
     hasOutput: false,
     properties: [
         {

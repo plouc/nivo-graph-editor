@@ -1,5 +1,9 @@
-import { NodeService } from '../../services_registry'
-import registry from '../../registry'
+import { NodeService } from '../../../services_registry'
+import registry from '../../../registry'
+import { SankeyNodeIcon } from './SankeyNodeIcon'
+
+export const sankeyDataNodeType = 'node:sankey_data' as const
+export type SankeyDataNodeType = typeof sankeyDataNodeType
 
 export interface SankeyDataNodeData {
     nodes: string[]
@@ -10,10 +14,11 @@ export interface SankeyDataNodeData {
     }[]
 }
 
-export const SankeyDataNodeService: NodeService<'node:sankey_data', SankeyDataNodeData> = {
-    type: 'node:sankey_data',
-    category: 'data',
+export const SankeyDataNodeService: NodeService<SankeyDataNodeType, SankeyDataNodeData> = {
+    type: sankeyDataNodeType,
     description: 'Nodes & Links to be used with a sankey diagram.',
+    category: 'data',
+    icon: SankeyNodeIcon,
     hasOutput: true,
     properties: [
         {

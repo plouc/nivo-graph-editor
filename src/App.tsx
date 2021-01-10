@@ -71,7 +71,7 @@ const Canvas = styled.div`
     top: 46px;
     bottom: 52px;
     left: 64px;
-    width: calc(100% - 364px);
+    width: calc(100% - 424px);
     height: calc(100% - 82px);
     background: ${props => props.theme.colors.background};
     overflow: hidden;
@@ -81,7 +81,7 @@ const InfoPanel = styled.div`
     position: fixed;
     top: 46px;
     right: 0;
-    width: 300px;
+    width: 360px;
     height: 100%;
     background: ${props => props.theme.colors.topDepthBackground};
     overflow-y: auto;

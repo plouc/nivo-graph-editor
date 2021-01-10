@@ -1,6 +1,10 @@
 import { Chord } from '@nivo/chord'
-import { NodeService } from '../../services_registry'
-import registry from '../../registry'
+import { NodeService } from '../../../services_registry'
+import registry from '../../../registry'
+import { ChordNodeIcon } from './ChordNodeIcon'
+
+export const chordNodeType = 'node:chord' as const
+export type ChordNodeType = typeof chordNodeType
 
 export interface ChordNodeData {
     matrix?: any
@@ -14,10 +18,11 @@ export interface ChordNodeData {
     colors?: any
 }
 
-export const ChordNodeService: NodeService<'node:chord', ChordNodeData> = {
-    type: 'node:chord',
-    category: 'charts',
+export const ChordNodeService: NodeService<ChordNodeType, ChordNodeData> = {
+    type: chordNodeType,
     description: `An Chord diagram from @nivo/chord package.`,
+    category: 'charts',
+    icon: ChordNodeIcon,
     hasOutput: true,
     properties: [
         {

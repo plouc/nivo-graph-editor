@@ -1,5 +1,8 @@
 import { NodeService } from '../../services_registry'
 import registry from '../../registry'
+import {IoColorFilterOutline} from "react-icons/io5";
+import styled from "styled-components";
+import {getCategoryColor} from "../../theming";
 
 const schemeChoices = [
     { label: 'nivo', value: 'nivo' },
@@ -27,10 +30,39 @@ export interface ColorSchemeNodeData {
     scheme: string
 }
 
+const ColorSchemeNodeIcon = ({ size, category }: { size: number; category: string }) => {
+    return (
+        <Icon
+            category={category}
+            style={{
+                width: size,
+                height: size,
+            }}
+        >
+            <IoColorFilterOutline />
+        </Icon>
+    )
+}
+
+const Icon = styled.div<{
+    category: string
+}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => getCategoryColor(props.category, props.theme)};
+
+    svg {
+        width: 70%;
+        height: 70%;
+    }
+`
+
 export const ColorSchemeNodeService: NodeService<'node:color_scheme', ColorSchemeNodeData> = {
     type: 'node:color_scheme',
-    category: 'colors_theming',
     description: `A predefined color scheme to be used with nivo charts.`,
+    category: 'colors_theming',
+    icon: ColorSchemeNodeIcon,
     hasOutput: true,
     properties: [
         {

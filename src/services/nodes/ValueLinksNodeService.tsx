@@ -1,5 +1,8 @@
+import styled from 'styled-components'
+import { FiShare2 } from 'react-icons/fi'
 import { NodeService } from '../../services_registry'
 import registry from '../../registry'
+import { getCategoryColor } from '../../theming'
 
 export interface ValueLinksNodeData {
     links: {
@@ -9,11 +12,40 @@ export interface ValueLinksNodeData {
     }[]
 }
 
+const ValueLinksNodeIcon = ({ size, category }: { size: number; category: string }) => {
+    return (
+        <Icon
+            category={category}
+            style={{
+                width: size,
+                height: size,
+            }}
+        >
+            <FiShare2 />
+        </Icon>
+    )
+}
+
+const Icon = styled.div<{
+    category: string
+}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => getCategoryColor(props.category, props.theme)};
+
+    svg {
+        width: 70%;
+        height: 70%;
+    }
+`
+
 export const ValueLinksNodeService: NodeService<'node:value_links', ValueLinksNodeData> = {
     type: 'node:value_links',
-    category: 'data',
     description:
         'An array of links between a source and a target plus a value bound to this relationship.',
+    category: 'data',
+    icon: ValueLinksNodeIcon,
     hasOutput: true,
     properties: [
         {

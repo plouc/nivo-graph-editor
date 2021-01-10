@@ -13,6 +13,7 @@ export interface NodeService<Type extends NodeType = NodeType, Data = any> {
     type: Type
     category: string
     description?: string
+    icon?: (props: { size: number; category: string }) => JSX.Element
     hasOutput: boolean
     properties: PropertySpec[]
     factory: (data?: Partial<Data>) => Data

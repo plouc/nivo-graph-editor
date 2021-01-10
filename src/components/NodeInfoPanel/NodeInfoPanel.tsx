@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import { createElement, memo, useCallback } from 'react'
 import styled from 'styled-components'
 import { MdClose } from 'react-icons/md'
 import registry from '../../registry'
@@ -21,7 +21,17 @@ export const NodeInfoPanel = memo(({ node }: { node: ResolvedNode }) => {
         <div>
             <Header>
                 <NodeName id={node.id} name={node.name} />
-                <Id>{node.type}</Id>
+                <NodeTypeContainer hasIcon={!!nodeService.icon}>
+                    {nodeService.icon && (
+                        <NodeTypeIcon>
+                            {createElement(nodeService.icon, {
+                                size: 38,
+                                category: nodeService.category,
+                            })}
+                        </NodeTypeIcon>
+                    )}
+                    <Id>{node.type.replace('node:', '').replace('_', ' ')}</Id>
+                </NodeTypeContainer>
                 <Close onClick={handleClose}>
                     <MdClose />
                 </Close>
@@ -56,6 +66,25 @@ const Id = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+`
+
+const NodeTypeContainer = styled.div<{
+    hasIcon: boolean
+}>`
+    position: relative;
+    min-height: ${props => (props.hasIcon ? '36px' : 'auto')};
+    padding-left: ${props => (props.hasIcon ? '50px' : 0)};
+    display: flex;
+    align-items: center;
+`
+
+const NodeTypeIcon = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const Close = styled.span`

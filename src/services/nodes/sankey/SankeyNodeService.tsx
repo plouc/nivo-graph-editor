@@ -1,6 +1,10 @@
 import { Sankey } from '@nivo/sankey'
-import { NodeService } from '../../services_registry'
-import registry from '../../registry'
+import { NodeService } from '../../../services_registry'
+import registry from '../../../registry'
+import { SankeyNodeIcon } from './SankeyNodeIcon'
+
+export const sankeyNodeType = 'node:sankey' as const
+export type SankeyNodeType = typeof sankeyNodeType
 
 export interface SankeyNodeData {
     data?: any
@@ -16,10 +20,11 @@ export interface SankeyNodeData {
     axisLeft?: any
 }
 
-export const SankeyNodeService: NodeService<'node:sankey', SankeyNodeData> = {
-    type: 'node:sankey',
-    category: 'charts',
+export const SankeyNodeService: NodeService<SankeyNodeType, SankeyNodeData> = {
+    type: sankeyNodeType,
     description: `A Sankey diagram from @nivo/sankey package.`,
+    category: 'charts',
+    icon: SankeyNodeIcon,
     hasOutput: true,
     properties: [
         {

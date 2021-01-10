@@ -121,7 +121,7 @@ const Name = styled.span`
 const Container = styled.div`
     height: 32px;
     padding: 0;
-    margin: 0 32px 9px 0;
+    margin: 0 32px 5px 0;
     font-size: 16px;
     font-weight: 800;
     display: flex;

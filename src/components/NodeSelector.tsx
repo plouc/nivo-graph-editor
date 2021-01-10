@@ -1,4 +1,12 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+    ChangeEvent,
+    createElement,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from 'react'
 import styled from 'styled-components'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import registry from '../registry'
@@ -8,18 +16,28 @@ import { getCategoryColor } from '../theming'
 
 const NodeType = ({ type, onCreate }: { type: NodeService; onCreate: () => void }) => {
     const createNode = useCreateNode()
+    const hasIcon = type.icon !== undefined
 
     return (
         <NodeTypeItem
+            category={type.category}
+            hasIcon={hasIcon}
             onClick={() => {
                 createNode(type.type)
                 onCreate()
             }}
         >
-            <NodeTypeTitle category={type.category}>
-                {type.type.replace('node:', '').replace('_', ' ')}
-            </NodeTypeTitle>
-            {type.description && <NodeTypeDescription>{type.description}</NodeTypeDescription>}
+            {type.icon && (
+                <NodeTypeIcon>
+                    {createElement(type.icon, { size: 42, category: type.category })}
+                </NodeTypeIcon>
+            )}
+            <div>
+                <NodeTypeTitle category={type.category}>
+                    {type.type.replace('node:', '').replace('_', ' ')}
+                </NodeTypeTitle>
+                {type.description && <NodeTypeDescription>{type.description}</NodeTypeDescription>}
+            </div>
         </NodeTypeItem>
     )
 }
@@ -181,18 +199,55 @@ const CategoryTitle = styled.h3<{
     color: ${props => getCategoryColor(props.category, props.theme)};
 `
 
-const NodeTypeItem = styled.div`
-    padding: 12px 12px;
+const NodeTypeIcon = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.6;
+`
+
+const NodeTypeItem = styled.div<{
+    hasIcon: boolean
+    category: string
+}>`
+    position: relative;
+    min-height: ${props => (props.hasIcon ? '64px' : 'auto')};
+    padding: 12px 12px 12px ${props => (props.hasIcon ? 68 : 12)}px;
     border-bottom: 1px solid ${props => props.theme.colors.lightBorder};
     font-size: 14px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 100%;
+        width: 4px;
+        background-color: ${props => getCategoryColor(props.category, props.theme)};
+        opacity: 0;
+    }
 
     &:last-child {
         border-bottom: none;
     }
 
     &:hover {
-        background-color: ${props => props.theme.colors.mediumDepthBackground};
+        ${NodeTypeIcon} {
+            opacity: 1;
+        }
+        
+        &:after {
+            opacity: 1;
+        }
     }
 `
 
@@ -210,5 +265,5 @@ const NodeTypeDescription = styled.div`
     font-weight: 400;
     font-size: 12px;
     margin-top: 6px;
-    color: ${props => props.theme.colors.textLight};
+    color: ${props => props.theme.colors.text};
 `
