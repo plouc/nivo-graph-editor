@@ -1,3 +1,0 @@
-/*! For license information please see 7.a20be112.chunk.js.LICENSE.txt */
-(this["webpackJsonpnivo-graph-editor"]=this["webpackJsonpnivo-graph-editor"]||[]).push([[7],{516:function(e,t,n){"use strict";n.r(t);var r=n(18),c=n(35);t.default=function(){var e=Object(c.a)(r.mark((function e(t){var n,c,i=arguments;return r.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:n=i.length>1&&void 0!==i[1]?i[1]:{},(c=document.createElement("a")).download=n.fileName||"Untitled",c.href=URL.createObjectURL(t),c.addEventListener("click",(function(){setTimeout((function(){return URL.revokeObjectURL(c.href)}),3e4)})),c.click();case 3:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}()}}]);
-//# sourceMappingURL=7.a20be112.chunk.js.map
